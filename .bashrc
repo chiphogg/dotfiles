@@ -5,10 +5,6 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoredups:ignorespace
-
 # Added by Chip, 2010-08-24
 export HISTCONTROL=erasedups
 export HISTSIZE=10000
@@ -101,7 +97,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 [[ -f ~/.bash_custom_settings ]] && . ~/.bash_custom_settings
-eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
+# Is this an Ubuntu-only line?
+# eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 
 #------------------------------------------------------------------------
 # this is for XCRYSDEN 1.5.21; added by XCRYSDEN installation on
@@ -118,3 +115,8 @@ if [[ -z "$Environ_Sourced" && -f /etc/profile ]]
 then
   source /etc/profile
 fi
+
+# ghar setup: for synchronizing homedir stuff
+export GHAR_DIR="$HOME/tools/ghar"
+export PATH="$PATH:$GHAR_DIR/bin/"
+. "$GHAR_DIR/ghar-bash-completion.sh"
