@@ -1,6 +1,55 @@
-" pathogen: manage packages intelligently
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FIRST: setup vundle, the vim package manager
+" This code taken from https://github.com/gmarik/vundle/
+
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" tpope's plugins (Tim Pope)
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rhubarb'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-markdown'
+
+" tomtom's plugins (Tom Link)
+Bundle 'chiphogg/viki_vim'
+Bundle 'tomtom/tlib_vim'
+
+" Fancy text objects
+Bundle 'kana/vim-textobj-user'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'argtextobj.vim'
+
+" Other plugins
+Bundle 'suan/vim-instant-markdown'
+Bundle 'jcf/vim-latex'
+Bundle 'chiphogg/Vim-R-plugin'
+Bundle 'spiiph/vim-space'
+Bundle 'sjl/gundo.vim'
+Bundle 'matchit.zip'
+
+"" Plugins to try later?
+"Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-easymotion'
+"Bundle 'tomtom/tcomment_vim'
+"Bundle 'gregsexton/gitv'
+"Bundle 'EnhancedJumps'
+
+filetype plugin indent on     " required!
+
+" End vundle section
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 :set number
 :let mapleader=","
@@ -69,19 +118,21 @@ inoremap <a-f> [<++>]
 :let g:leave_my_textwidth_alone = 1
 
 " easy editing of this file
-:nmap <Leader>ve :sp ~/.vimrc<CR>
-:nmap <Leader>vs :source ~/.vimrc<CR>
+:nnoremap <Leader>ve :sp ~/.vimrc<CR>
+:nnoremap <Leader>vs :source ~/.vimrc<CR>
 
 " Datestamp <F4> and timestamp <F5>
-nmap <F4> m`:r!date "+\%F"<CR>D'`pjdd'`10l
-imap <F4> <Esc><F4>a
-cmap <F4> <C-R>=(strftime("%F"))<CR>
-nmap <F5> m`:r!date "+\%R"<CR>D'`pjdd'`5l
-imap <F5> <Esc><F5>a
-
+nnoremap <F4> "=strftime("%F")<CR>p
+vnoremap <F4> "=strftime("%F")<CR>p
+inoremap <F4> <C-R>=(strftime("%F"))<CR>
+cnoremap <F4> <C-R>=(strftime("%F"))<CR>
+nnoremap <F5> "=strftime("%R")<CR>p
+vnoremap <F5> "=strftime("%R")<CR>p
+inoremap <F5> <C-R>=(strftime("%R"))<CR>
+cnoremap <F5> <C-R>=(strftime("%R"))<CR>
 
 " vim viki stuff
-au BufRead,BufNewFile *.viki set ft=viki 
+au BufRead,BufNewFile *.viki set ft=viki
 let g:vikiHide="update"
 let g:vikiUseParentSuffix = 1
 let g:vikiNameTypes="sSeuixwf"

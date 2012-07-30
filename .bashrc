@@ -9,12 +9,10 @@
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoredups:ignorespace
 
-# append to the history file, don't overwrite it
+# Added by Chip, 2010-08-24
+export HISTCONTROL=erasedups
+export HISTSIZE=10000
 shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -40,12 +38,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+  # We have color support; assume it's compliant with Ecma-48
+  # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+  # a case would tend to support setf rather than setaf.)
+  color_prompt=yes
     else
-	color_prompt=
+  color_prompt=
     fi
 fi
 
@@ -114,3 +112,9 @@ XCRYSDEN_SCRATCH=/home/chogg/.xcrys_tmp
 export XCRYSDEN_TOPDIR XCRYSDEN_SCRATCH
 PATH="$XCRYSDEN_TOPDIR:$PATH:$XCRYSDEN_TOPDIR/scripts:$XCRYSDEN_TOPDIR/util"
 
+# If this is a non-interactive shell, we still want to get
+# the stuff (like $PATH) in /etc/profile if we haven't already
+if [[ -z "$Environ_Sourced" && -f /etc/profile ]]
+then
+  source /etc/profile
+fi
