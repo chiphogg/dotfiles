@@ -38,6 +38,13 @@ Bundle 'chiphogg/Vim-R-plugin'
 Bundle 'spiiph/vim-space'
 Bundle 'sjl/gundo.vim'
 Bundle 'matchit.zip'
+Bundle 'xolox/vim-easytags'
+
+" Python stuff.  pydiction gives tab completion for python code. vim-flake8
+" lets you check that formatting is PEP-8 compliant.
+Bundle 'nvie/vim-flake8'
+"Not working; not sure why...
+"Bundle 'rkulla/pydiction'
 
 "" Plugins to try later?
 "Bundle 'Lokaltog/vim-powerline'
@@ -50,6 +57,10 @@ filetype plugin indent on     " required!
 
 " End vundle section
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Make all tag files local to each project, rather than global.
+:set tags=./tags;
+:let g:easytags_dynamic_files = 2
 
 :set number
 :let mapleader=","
