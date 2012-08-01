@@ -58,10 +58,6 @@ filetype plugin indent on     " required!
 " End vundle section
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Make all tag files local to each project, rather than global.
-:set tags=./tags;
-:let g:easytags_dynamic_files = 2
-
 :set number
 :let mapleader=","
 :set ai
@@ -234,6 +230,8 @@ nnoremap <Leader>wc <C-W>c
 nnoremap          <Leader>wd <C-W><Tab>z<CR>1<C-W>_<C-W>w
 nnoremap          <Leader>wx <C-W>W<C-W>c
 nnoremap <silent> <Leader>wX <C-W>W<C-W>c:call MaximizeWindow()<CR>
+" Kill all other windows (also turns off diff mode)
+nnoremap <silent> <Leader>wo :diffoff<CR><C-W>o
 " Make tab navigation easier
 nnoremap <silent> <Leader>tn :tabnew<CR>:tabmove<CR>
 nnoremap <silent> <Leader>th :tabprevious<CR>
@@ -294,3 +292,7 @@ endfunc
 " edited: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
 " 2011-12-13
 autocmd BufEnter * silent! lcd %:p:h
+
+" Make all tag files local to each project, rather than global.
+:set tags=./.tags;
+:let g:easytags_dynamic_files = 2
