@@ -38,6 +38,13 @@ Bundle 'chiphogg/Vim-R-plugin'
 Bundle 'spiiph/vim-space'
 Bundle 'sjl/gundo.vim'
 Bundle 'matchit.zip'
+Bundle 'xolox/vim-easytags'
+
+" Python stuff.  pydiction gives tab completion for python code. vim-flake8
+" lets you check that formatting is PEP-8 compliant.
+Bundle 'nvie/vim-flake8'
+"Not working; not sure why...
+"Bundle 'rkulla/pydiction'
 
 "" Plugins to try later?
 "Bundle 'Lokaltog/vim-powerline'
@@ -223,6 +230,8 @@ nnoremap <Leader>wc <C-W>c
 nnoremap          <Leader>wd <C-W><Tab>z<CR>1<C-W>_<C-W>w
 nnoremap          <Leader>wx <C-W>W<C-W>c
 nnoremap <silent> <Leader>wX <C-W>W<C-W>c:call MaximizeWindow()<CR>
+" Kill all other windows (also turns off diff mode)
+nnoremap <silent> <Leader>wo :diffoff<CR><C-W>o
 " Make tab navigation easier
 nnoremap <silent> <Leader>tn :tabnew<CR>:tabmove<CR>
 nnoremap <silent> <Leader>th :tabprevious<CR>
@@ -283,3 +292,7 @@ endfunc
 " edited: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
 " 2011-12-13
 autocmd BufEnter * silent! lcd %:p:h
+
+" Make all tag files local to each project, rather than global.
+:set tags=./.tags;
+:let g:easytags_dynamic_files = 2
