@@ -39,6 +39,7 @@ Bundle 'spiiph/vim-space'
 Bundle 'sjl/gundo.vim'
 Bundle 'matchit.zip'
 Bundle 'xolox/vim-easytags'
+Bundle 'chiphogg/vim-choggutils'
 
 " Python stuff.  pydiction gives tab completion for python code. vim-flake8
 " lets you check that formatting is PEP-8 compliant.
@@ -47,7 +48,7 @@ Bundle 'nvie/vim-flake8'
 "Bundle 'rkulla/pydiction'
 
 "" Plugins to try later?
-"Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/vim-powerline'
 "Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'tomtom/tcomment_vim'
 "Bundle 'gregsexton/gitv'
@@ -297,4 +298,12 @@ autocmd BufEnter * silent! lcd %:p:h
 :set tags=./.tags;
 :let g:easytags_dynamic_files = 2
 
-:let g:rplugin_cmd_in_insert_mode = 0
+" Vim-R plugin options:
+" Disable insert-mode commands (incredibly annoying when writing R
+" documentation, or Sweave):
+:let g:vimrplugin_insert_mode_cmds = 0
+" Not sure yet if I want to install screen
+:let g:vimrplugin_screenplugin = 0
+
+" Powerline customizations
+:let Powerline_symbols = "compatible"
