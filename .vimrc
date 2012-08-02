@@ -296,3 +296,5 @@ autocmd BufEnter * silent! lcd %:p:h
 " Make all tag files local to each project, rather than global.
 :set tags=./.tags;
 :let g:easytags_dynamic_files = 2
+
+:let g:rplugin_cmd_in_insert_mode = 0
