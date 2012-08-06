@@ -46,6 +46,7 @@ Bundle 'xolox/vim-easytags'
 Bundle 'chiphogg/vim-choggutils'
 Bundle 'godlygeek/tabular'
 Bundle 'chiphogg/vim-vtd'
+Bundle 'vimwiki'
 
 " Python stuff.  pydiction gives tab completion for python code. vim-flake8
 " lets you check that formatting is PEP-8 compliant.
