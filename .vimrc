@@ -79,7 +79,7 @@ filetype plugin indent on     " required!
 " http://www.bulheller.com/vim/vimrc.shtml
 " 2009-04-14
 " Easy paste mode toggling
-map <F7> :call Paste_on_off()<CR>
+noremap <F7> :call Paste_on_off()<CR>
 set pastetoggle=<F7>
 let paste_mode = 0 " 0 = normal, 1 = paste
 func! Paste_on_off()
@@ -163,15 +163,15 @@ function! JumpToFuncBound(times, searchstr, breakoutstr)
   endfor
   call setreg('/', old_reg, old_regtype)
 endf
-map [[ :<C-U>call JumpToFuncBound(v:count1, "?{", "w999[{")<CR><C-L>
-map ][ :<C-U>call JumpToFuncBound(v:count1, "/}", "w999]}")<CR><C-L>
-map ]] :<C-U>norm 0f{999]}][%<CR>
-map [] :let old_reg=getreg('/')<Bar>let old_regtype=getregtype('/')<CR>k$][%?}<CR>:call setreg('/', old_reg, old_regtype)<CR>
+noremap [[ :<C-U>call JumpToFuncBound(v:count1, "?{", "w999[{")<CR><C-L>
+noremap ][ :<C-U>call JumpToFuncBound(v:count1, "/}", "w999]}")<CR><C-L>
+noremap ]] :<C-U>norm 0f{999]}][%<CR>
+noremap [] :let old_reg=getreg('/')<Bar>let old_regtype=getregtype('/')<CR>k$][%?}<CR>:call setreg('/', old_reg, old_regtype)<CR>
 
-map [[ ?{<CR>w99[{
-map ][ /}<CR>b99]}
-map ]] j0[[%/{<CR>
-map [] k$][%?}<CR>
+noremap [[ ?{<CR>w99[{
+noremap ][ /}<CR>b99]}
+noremap ]] j0[[%/{<CR>
+noremap [] k$][%?}<CR>
 
 let vimrplugin_term_cmd = "urxvt -e R --vanilla"
 
@@ -274,8 +274,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 " Finally, setting 'list' makes word wrap behave badly.  So it should be
 " toggleable.
-map <F8> :call List_on_off()<CR>
-map! <F8> <Esc>:call List_on_off()<CR>a
+noremap <F8> :call List_on_off()<CR>
+noremap! <F8> <Esc>:call List_on_off()<CR>a
 let g:list_mode = 1 " 0 = normal, 1 = list
 func! List_on_off()
     if g:list_mode == 0
