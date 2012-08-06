@@ -140,7 +140,13 @@ inoremap <F5> <C-R>=(strftime("%R"))<CR>
 cnoremap <F5> <C-R>=(strftime("%R"))<CR>
 
 " vim viki stuff
-au BufRead,BufNewFile *.viki set ft=viki
+augroup filetype_viki
+  autocmd!
+  autocmd BufRead,BufNewFile *.viki set ft=viki
+  " Change the local current directory to the directory of the file being
+  " edited: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
+  autocmd BufEnter *.viki silent! lcd %:p:h
+augroup END
 let g:vikiHide="update"
 let g:vikiUseParentSuffix = 1
 let g:vikiNameTypes="sSeuixwf"
@@ -253,7 +259,7 @@ nnoremap <silent> <Leader>tt :!TaskTodayViki<CR><CR>zMzv
 nnoremap <Leader>tcc :echo "This should edit your 'CURRENT task-context' file... but you haven't yet figured out how exactly you want that to work!"<CR>
 nnoremap <Leader>tcl :sp ~/productivity/viki/.localContexts<CR>
 
-" Fold focusing: 
+" Fold focusing:
 " close all folds, and open only enough to view the current line
 nnoremap <Leader>z zMzv
 nnoremap ZJ zjzMzv
@@ -267,10 +273,13 @@ set expandtab
 " See http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+augroup extra_whitespace
+  autocmd!
+  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+  autocmd BufWinLeave * call clearmatches()
+augroup END
 " Finally, setting 'list' makes word wrap behave badly.  So it should be
 " toggleable.
 noremap <F8> :call List_on_off()<CR>
@@ -288,11 +297,6 @@ func! List_on_off()
     endif
     return
 endfunc
-
-" Change the local current directory to the directory of the file being
-" edited: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
-" 2011-12-13
-autocmd BufEnter * silent! lcd %:p:h
 
 " Make all tag files local to each project, rather than global.
 :set tags=./.tags;
