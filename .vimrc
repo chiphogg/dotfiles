@@ -1,6 +1,10 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FIRST: setup vundle, the vim package manager
-" This code taken from https://github.com/gmarik/vundle/
+" Charles Hogg's vimrc settings
+
+" Vundle -- the Right Way to manage Vim plugins ----------------------------{{{1
+
+" The basic pattern of this code is adapted from gmarik/vundle README.md
+" I believe this section has to come first... but looking back, I'm not
+" really sure *why* I think that.
 
 set nocompatible               " be iMproved
 filetype off                   " required!
@@ -56,26 +60,31 @@ Bundle 'nvie/vim-flake8'
 "Bundle 'EnhancedJumps'
 "" https://github.com/garbas/vim-snipmate/
 
-filetype plugin indent on     " required!
+" Confused?  Read :help :filetype-overview
+filetype plugin indent on     " required for vundle! (and generally a good idea)
 
-" End vundle section
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Basic settings -----------------------------------------------------------{{{1
+
+" ',' is easy to type, so use it for <Leader> to make compound commands easier:
+:let mapleader=","
+" Unfortunately, this introduces a delay for the ',' command.  Let's compensate
+" by introducing a speedy alternative...
+:noremap ,. ,
+
+" Undifferentiated crap ----------------------------------------------------{{{1
+" I should probably go through this; sort and comment it...
 
 :set number
-:let mapleader=","
+
 :set ai
 :set nohlsearch
-:set tw=0
+
+:set textwidth=80
 :set tabstop=2
 :set sw=2
-":map! <C-CR> </p><CR><CR><p>
-":map! <S-CR> <br><CR>
-:filetype plugin on
-:filetype plugin indent on
 :syntax on
 :set wrap
 :set linebreak
-:set laststatus=2
 
 " http://www.bulheller.com/vim/vimrc.shtml
 " 2009-04-14
@@ -138,22 +147,6 @@ nnoremap <F5> "=strftime("%R")<CR>p
 vnoremap <F5> "=strftime("%R")<CR>p
 inoremap <F5> <C-R>=(strftime("%R"))<CR>
 cnoremap <F5> <C-R>=(strftime("%R"))<CR>
-
-" vim viki stuff
-augroup filetype_viki
-  autocmd!
-  autocmd BufRead,BufNewFile *.viki set ft=viki
-  " Change the local current directory to the directory of the file being
-  " edited: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
-  autocmd BufEnter *.viki silent! lcd %:p:h
-augroup END
-let g:vikiHide="update"
-let g:vikiUseParentSuffix = 1
-let g:vikiNameTypes="sSeuixwf"
-let g:vikiOpenUrlWith_http = '!firefox %{URL}'
-let g:vikiOpenUrlWith_https = '!firefox %{URL}'
-let g:vikiFolds="hf"
-let b:vikiNoSimpleNames=1
 
 " Taken from ":help [["
 " Modified 2011-02-04 using http://vim.wikia.com/wiki/Search_for_visually_selected_text
@@ -312,6 +305,9 @@ endfunc
 " Customized statusline =)
 " First, setup fugitive statusline to be used if fugitive is installed.
 " Adapted from http://stackoverflow.com/q/5983906/1523582
+"
+" FIXME: Note that this gives me a git statusline even for non-git files!
+" There must be a better way...
 func! GitStat()
   let l:gstat=''
   runtime! autoload/fugitive.vim
@@ -320,6 +316,9 @@ func! GitStat()
   endif
   return l:gstat
 endfunc
+" Put a statusline for *every* window, *always*.
+set laststatus=2
+" Now, set what actually goes in that statusline:
 set statusline =%-.20F\         " Full pathname, left-justified
 set statusline+=%h              " 'Help' flag
 set statusline+=%m              " 'Modified' flag
@@ -328,3 +327,57 @@ set statusline+=%{GitStat()}    " Git statusline from fugitive.vim
 set statusline+=%=              " Everything else goes to the far-right
 set statusline+=%-14.(%l,%c%V%) " Current line
 set statusline+=\ (%P)          " Percentage through the file
+
+
+" Plugin settings ----------------------------------------------------------{{{1
+
+" viki ---------------------------------------------------------------------{{{2
+
+augroup filetype_viki
+  autocmd!
+  autocmd BufRead,BufNewFile *.viki set ft=viki
+  " Change the local current directory to the directory of the file being
+  " edited: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
+  autocmd BufEnter *.viki silent! lcd %:p:h
+  " I'm trying to explore options for remapping viki keybindings, but this
+  " doesn't work yet:
+  autocmd FileType viki
+        \execute "nnoremap <buffer> <silent> <CR> :VikiJump<CR>"
+augroup END
+
+let g:vikiHide="update"
+let g:vikiUseParentSuffix = 1
+let g:vikiNameTypes="sSeuixwf"
+let g:vikiOpenUrlWith_http = '!firefox %{URL}'
+let g:vikiOpenUrlWith_https = '!firefox %{URL}'
+let g:vikiFolds="hf"
+let b:vikiNoSimpleNames=1
+
+" vimwiki ------------------------------------------------------------------{{{2
+let g:vimwiki_folding=1
+
+" Filetype settings --------------------------------------------------------{{{1
+" NOTE: I should probably consider putting these in a full-fledged
+" ftplugin!
+
+" Vimscript ----------------------------------------------------------------{{{2
+augroup filetype_vim
+  autocmd!
+  " Fold based on the triple-{ symbol.  sjl explains why you want this:
+  " http://learnvimscriptthehardway.stevelosh.com/chapters/18.html
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" Python -------------------------------------------------------------------{{{2
+augroup filetype_python
+  autocmd!
+  " Helping vim with python's PEP-8 conventions; taken from:
+  " http://henry.precheur.org/vim/python
+  autocmd FileType python
+        \ setlocal shiftwidth=4
+        \ setlocal softtabstop=4
+        \ setlocal tabstop=4
+        \ setlocal textwidth=80
+        \ setlocal smarttab
+        \ setlocal expandtab
+augroup END
