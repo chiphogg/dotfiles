@@ -308,3 +308,23 @@ endfunc
 :let g:vimrplugin_insert_mode_cmds = 0
 " Not sure yet if I want to install screen
 :let g:vimrplugin_screenplugin = 0
+
+" Customized statusline =)
+" First, setup fugitive statusline to be used if fugitive is installed.
+" Adapted from http://stackoverflow.com/q/5983906/1523582
+func! GitStat()
+  let l:gstat=''
+  runtime! autoload/fugitive.vim
+  if exists('*fugitive#statusline')
+    let l:gstat=fugitive#statusline()
+  endif
+  return l:gstat
+endfunc
+set statusline =%-.20F\         " Full pathname, left-justified
+set statusline+=%h              " 'Help' flag
+set statusline+=%m              " 'Modified' flag
+set statusline+=%r\ \ \         " 'Readonly' flag
+set statusline+=%{GitStat()}    " Git statusline from fugitive.vim
+set statusline+=%=              " Everything else goes to the far-right
+set statusline+=%-14.(%l,%c%V%) " Current line
+set statusline+=\ (%P)          " Percentage through the file
