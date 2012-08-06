@@ -41,6 +41,7 @@ Bundle 'matchit.zip'
 Bundle 'xolox/vim-easytags'
 Bundle 'chiphogg/vim-choggutils'
 Bundle 'godlygeek/tabular'
+Bundle 'chiphogg/vim-vtd'
 
 " Python stuff.  pydiction gives tab completion for python code. vim-flake8
 " lets you check that formatting is PEP-8 compliant.
@@ -102,8 +103,6 @@ nnoremap ZE :w\|cq<CR>
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 inoremap <a-f> [<++>]
-
-":source /usr/share/vim/vim72/macros/matchit.vim
 
 :omap lp ?^$\\|^\s*\(\\begin\\|\\end\\|\\label\)?1<CR>//-1<CR>.<CR>
 
