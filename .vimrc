@@ -1,6 +1,6 @@
 " Charles Hogg's vimrc settings
 
-" Vundle -- the Right Way to manage Vim plugins ----------------------------{{{1
+" Vundle -- the Right Way to manage Vim plugins ---------------------------{{{1
 
 " The basic pattern of this code is adapted from gmarik/vundle README.md
 " I believe this section has to come first... but looking back, I'm not
@@ -61,154 +61,60 @@ Bundle 'nvie/vim-flake8'
 "Bundle 'EnhancedJumps'
 "" https://github.com/garbas/vim-snipmate/
 
-" Confused?  Read :help :filetype-overview
-filetype plugin indent on     " required for vundle! (and generally a good idea)
+" Confused?  Read ":help :filetype-overview"
+filetype plugin indent on    " required for vundle! (and generally a good idea)
 
-" Basic settings -----------------------------------------------------------{{{1
+" Basic settings ----------------------------------------------------------{{{1
 
 " ',' is easy to type, so use it for <Leader> to make compound commands easier:
-:let mapleader=","
+let mapleader=","
 " Unfortunately, this introduces a delay for the ',' command.  Let's compensate
 " by introducing a speedy alternative...
-:noremap ,. ,
+noremap ,. ,
 
-" Undifferentiated crap ----------------------------------------------------{{{1
-" I should probably go through this; sort and comment it...
-
-:set number
-
-:set ai
-:set nohlsearch
-
-:set textwidth=80
-:set tabstop=2
-:set sw=2
-:syntax on
-:set wrap
-:set linebreak
-
-" http://www.bulheller.com/vim/vimrc.shtml
-" 2009-04-14
-" Easy paste mode toggling
-noremap <F7> :call Paste_on_off()<CR>
-set pastetoggle=<F7>
-let paste_mode = 0 " 0 = normal, 1 = paste
-func! Paste_on_off()
-    if g:paste_mode == 0
-        set paste
-        echo "Paste mode: ON"
-        let g:paste_mode = 1
-    else
-        set nopaste
-        echo "Paste mode: OFF"
-        let g:paste_mode = 0
-    endif
-    return
+" Customized statusline =) ------------------------------------------------{{{2
+" First, setup fugitive statusline to be used if fugitive is installed.
+" Adapted from http://stackoverflow.com/q/5983906/1523582
+"
+" FIXME: Note that this gives me a git statusline even for non-git files!
+" There must be a better way...
+func! GitStat()
+  let l:gstat=''
+  runtime! autoload/fugitive.vim
+  if exists('*fugitive#statusline')
+    let l:gstat=fugitive#statusline()
+  endif
+  return l:gstat
 endfunc
+" Put a statusline for *every* window, *always*.
+set laststatus=2
+" Now, set what actually goes in that statusline:
+set statusline =%-.20F\         " Full pathname, left-justified
+set statusline+=%h              " 'Help' flag
+set statusline+=%m              " 'Modified' flag
+set statusline+=%r\ \ \         " 'Readonly' flag
+set statusline+=%{GitStat()}    " Git statusline from fugitive.vim
+set statusline+=%=              " Everything else goes to the far-right
+set statusline+=%-14.(%l,%c%V%) " Current line
+set statusline+=\ (%P)          " Percentage through the file
 
-" Save, and quit with nonzero exit status
-nnoremap ZE :w\|cq<CR>
+" Folding -----------------------------------------------------------------{{{2
+"
+" Fold Focusing
+" Close all folds, and open only enough to view the current line
+nnoremap <Leader>z zMzv
+" Go up (ZK) and down (ZJ) a fold, closing all other folds
+nnoremap ZJ zjzMzv
+nnoremap ZK zkzMzv
 
-" This prevents Ctrl-U and Ctrl-W from killing me :P
-inoremap <c-u> <c-g>u<c-u>
-inoremap <c-w> <c-g>u<c-w>
-inoremap <a-f> [<++>]
+" Start with the "big-picture" view of a file
+set foldlevelstart=0
 
-:omap lp ?^$\\|^\s*\(\\begin\\|\\end\\|\\label\)?1<CR>//-1<CR>.<CR>
-
-" LaTeX Suite stuff
-:set winaltkeys=no
-:let g:Tex_ItemStyle_sublist = '\item '
-:let g:Tex_ItemStyle_outerlist = '\item[] '
-:let g:Tex_ItemStyle_innerlist = '\item '
-:let g:Tex_ItemStyle_subbulletlist = '\item '
-:let g:tex_flavor = 'latex' 
-:let g:Tex_CompileRule_dvi = 'latex -interaction=nonstopmode -src-specials $*'
-:let g:Tex_GotoError=0
-:let g:Tex_Env_subfigure = "\\subfloat[<+caption+>]\<CR>{\<CR>\\includegraphics[width=<+width+>]{<+eps file+>}\<CR>\\label{<+subfigure label+>}\<CR>}\<CR>\\hspace{<+spacing+>}<++>"
-:let g:Tex_Env_subfloat = g:Tex_Env_subfigure
-:let g:Tex_HotKeyMappings = 'itemize,enumerate'
-:let g:Tex_PromptedCommands = 'footnote,texttt,textit,textbf'
-:let g:Tex_Env_figure = "\\begin{figure}[<+Placement: (h)ere, separate (p)age, (t)op, (b)ottom+>]\<CR>\\begin{center}\<CR>\\includegraphics[width=<+width+>]{<+filename+>}\<CR>\\end{center}\<CR>\\caption{<+caption+>}\<CR>\\label{fig:<+label+>}\<CR>\\end{figure}<++>\<CR>"
-:let g:Tex_Env_frame = "\\begin{frame}{<+Title+>}\<CR><+body+>\<CR>\\end{frame}<++>"
-:let g:Tex_Env_columns = "\\begin{columns}[onlytextwidth]\<CR>\\begin{column}{0.5\\textwidth}\<CR>\\begin{center}\<CR><+ left +>\<CR>\\end{center}\<CR>\\end{column}\<CR>\\begin{column}{0.5\\textwidth}\<CR><+ right +>\<CR>\\end{column}\<CR>\\end{columns}"
-:let g:Tex_Env_img = "\\includegraphics[width=<+width+>]{<+filename+>}"
-:let g:leave_my_textwidth_alone = 1
-
-" easy editing of this file
-:nnoremap <Leader>ve :sp ~/.vimrc<CR>
-:nnoremap <Leader>vs :source ~/.vimrc<CR>
-
-" Datestamp <F4> and timestamp <F5>
-nnoremap <F4> "=strftime("%F")<CR>p
-vnoremap <F4> "=strftime("%F")<CR>p
-inoremap <F4> <C-R>=(strftime("%F"))<CR>
-cnoremap <F4> <C-R>=(strftime("%F"))<CR>
-nnoremap <F5> "=strftime("%R")<CR>p
-vnoremap <F5> "=strftime("%R")<CR>p
-inoremap <F5> <C-R>=(strftime("%R"))<CR>
-cnoremap <F5> <C-R>=(strftime("%R"))<CR>
-
-" Taken from ":help [["
-" Modified 2011-02-04 using http://vim.wikia.com/wiki/Search_for_visually_selected_text
-" Goal being to leave search buffers untouched
-function! JumpToFuncBound(times, searchstr, breakoutstr)
-  let old_reg=getreg('/')
-  let old_regtype=getregtype('/')
-  norm m'
-  for i in range(a:times)
-    exe a:searchstr
-    norm a:breakoutstr
-  endfor
-  call setreg('/', old_reg, old_regtype)
-endf
-noremap [[ :<C-U>call JumpToFuncBound(v:count1, "?{", "w999[{")<CR><C-L>
-noremap ][ :<C-U>call JumpToFuncBound(v:count1, "/}", "w999]}")<CR><C-L>
-noremap ]] :<C-U>norm 0f{999]}][%<CR>
-noremap [] :let old_reg=getreg('/')<Bar>let old_regtype=getregtype('/')<CR>k$][%?}<CR>:call setreg('/', old_reg, old_regtype)<CR>
-
-noremap [[ ?{<CR>w99[{
-noremap ][ /}<CR>b99]}
-noremap ]] j0[[%/{<CR>
-noremap [] k$][%?}<CR>
-
-let vimrplugin_term_cmd = "urxvt -e R --vanilla"
-
-" Script-l, latex 'ell', is handy to have.  Need to convert hex (2113) to
-" decimal (8467).
-digraph el 8467
-" Similarly, ballot check and 'x'
-digraph ck 10003
-digraph cx 10007
-" Parallel, perpendicular, dagger
-digraph pa 8741
-digraph pe 10178
-digraph da 8224
-" "nabla" character
-digraph nb 8711
-" asterisk, left contraction, right contraction
-digraph as 8727
-digraph lc 8971
-digraph rc 8970
-
-" Disable the bell
-set vb t_vb=""
-
-" Really, you always want the backtick, but the apostrophe is much more
-" conveniently located.  So, swap 'em!
-nnoremap ' `
-nnoremap ` '
-
-" Read in any settings which are local to this computer 
-" (i.e. NOT synchronized via unison)
-let s:localSettings = glob('~/.localvimrc')
-if len(s:localSettings) > 0
- source ~/.localvimrc
-endif
+" Windows, tabs, and buffers ----------------------------------------------{{{2
 
 " Code I wrote 2011-09-30 to maximize windows easily
 function! MaximizeWindow()
-  exe "norm \<C-W>99999>\<C-W>_"
+  exe "normal! \<C-W>99999>\<C-W>_"
 endf
 nnoremap <silent> <Leader>m        :call MaximizeWindow()<CR>
 nnoremap <silent> <Leader>wm       :call MaximizeWindow()<CR>
@@ -238,31 +144,19 @@ nnoremap <silent> <Leader>tn :tabnew<CR>:tabmove<CR>
 nnoremap <silent> <Leader>th :tabprevious<CR>
 nnoremap <silent> <Leader>tl :tabnext<CR>
 
-" Code from 2011-09-30 to put current filename in paste buffer
-function! CopyBuffer(fromBuffer, toBuffer)
-  let old_reg=getreg(a:fromBuffer)
-  let old_regtype=getregtype(a:fromBuffer)
-  call setreg(a:toBuffer, old_reg, old_regtype)
-endf
-nnoremap <silent> <Leader>% :call CopyBuffer('%', '"')<CR>
 
-" PRODUCTIVITY SYSTEM stuff
-" Refresh today's tasks
-nnoremap <silent> <Leader>tt :!TaskTodayViki<CR><CR>zMzv
-" Edit current contexts
-nnoremap <Leader>tcc :echo "This should edit your 'CURRENT task-context' file... but you haven't yet figured out how exactly you want that to work!"<CR>
-nnoremap <Leader>tcl :sp ~/productivity/viki/.localContexts<CR>
+" Text formatting ---------------------------------------------------------{{{2
 
-" Fold focusing:
-" close all folds, and open only enough to view the current line
-nnoremap <Leader>z zMzv
-nnoremap ZJ zjzMzv
-nnoremap ZK zkzMzv
+" 80 characters helps readability (79 for fudge factor).
+set textwidth=79
 
-" 2011-10-05: converted to spacifying my tabs.  First, make any tab characters
-" visible; then, turn off this setting for all files.
+" Spaces or tabs?
+" Experience shows: tabs *occasionally* cause problems; spaces *never* do.
+" e.g., http://bugs.python.org/issue7012
+" Besides, vim is smart enough to make it "feel like" real tabs.
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+" Make tabs visible!
 set list listchars=tab:»·,precedes:<,extends:>
-set expandtab
 " Also highlight trailing whitespace (but not in insert mode)
 " See http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -274,23 +168,138 @@ augroup extra_whitespace
   autocmd InsertLeave * match ExtraWhitespace /\s\+$/
   autocmd BufWinLeave * call clearmatches()
 augroup END
-" Finally, setting 'list' makes word wrap behave badly.  So it should be
-" toggleable.
-noremap <F8> :call List_on_off()<CR>
-noremap! <F8> <Esc>:call List_on_off()<CR>a
-let g:list_mode = 1 " 0 = normal, 1 = list
-func! List_on_off()
-    if g:list_mode == 0
-        set list
-        echo "List mode: ON"
-        let g:list_mode = 1
-    else
-        set nolist
-        echo "List mode: OFF"
-        let g:list_mode = 0
-    endif
-    return
+" Unfortunately, visible tabs require 'list', which makes soft word wrap behave
+" badly.  So it should be toggleable.
+noremap <F8> :call List_toggle()<CR>
+noremap! <F8> <Esc>:call List_toggle()<CR>a
+func! List_toggle()
+  set list!
+  let l:list_feat = "Showing Tabs"
+  let l:nolist_feat = "Wrapping Words"
+  echo (&list ? l:list_feat : l:nolist_feat)."! (but not ".
+        \ (&list ? l:nolist_feat : l:list_feat).")"
 endfunc
+
+
+" Soft-wrapping is more readable than scrolling...
+set wrap
+" ...but don't break in the middle of a word!
+set linebreak
+
+" Almost every filetype is better with autoindent.
+" (Let filetype-specific settings handle the rest.)
+set autoindent
+
+" Format options (full list at ":help fo-table"; see also ":help 'fo'")
+" Change between += and -= to toggle an option
+set fo +=c  " Automatically format comments,
+set fo +=q  "  and let me do it manually too.
+set fo +=r  " Auto-continue comments if I'm still typing away in insert mode,
+set fo -=o  "  but not if I'm coming from normal mode (I find this annoying).
+set fo +=n  " Handle numbered lists properly: a lifesaver when writing emails!
+
+" Usability aids ----------------------------------------------------------{{{2
+
+" When would I ever *not* want these?
+set number   " Line numbers
+syntax on    " syntax highlighting
+set showcmd  " Show partial commands as you type
+
+" Occasionally useful, but mainly too annoying.
+set nohlsearch
+
+" Really, you always want the backtick, but the apostrophe is much more
+" conveniently located.  So, swap 'em!
+nnoremap ' `
+nnoremap ` '
+
+" <C-U> can delete text which undo can't recover. These mappings prevent that.
+" http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
+inoremap <c-u> <c-g>u<c-u>
+inoremap <c-w> <c-g>u<c-w>
+
+" Small feature enhancements ----------------------------------------------{{{2
+
+" Easy Datestamp <F4> and timestamp <F5>
+nnoremap <F4> "=strftime("%F")<CR>p
+vnoremap <F4> "=strftime("%F")<CR>p
+inoremap <F4> <C-R>=(strftime("%F"))<CR>
+cnoremap <F4> <C-R>=(strftime("%F"))<CR>
+nnoremap <F5> "=strftime("%R")<CR>p
+vnoremap <F5> "=strftime("%R")<CR>p
+inoremap <F5> <C-R>=(strftime("%R"))<CR>
+cnoremap <F5> <C-R>=(strftime("%R"))<CR>
+
+" Easy paste mode toggling with F7, adapted from:
+" http://www.bulheller.com/vimrc.html
+" Normal mode:
+nnoremap <F7> :call Paste_toggle()<CR>
+func! Paste_toggle()
+  set paste!
+  echo "Paste mode: ".(&paste ? "ON" : "OFF")
+endfunc
+" Insert mode:
+set pastetoggle=<F7>
+
+" Undifferentiated crap ---------------------------------------------------{{{1
+" I should probably go through this; sort and comment it...
+
+" Save, and quit with nonzero exit status
+nnoremap ZE :w\|cq<CR>
+
+" easy editing of this file
+nnoremap <Leader>ve :sp ~/.vimrc<CR>
+nnoremap <Leader>vs :source ~/.vimrc<CR>
+
+" Taken from ":help [["
+" Modified 2011-02-04 using http://vim.wikia.com/wiki/Search_for_visually_selected_text
+" Goal being to leave search buffers untouched
+function! JumpToFuncBound(times, searchstr, breakoutstr)
+  let old_reg=getreg('/')
+  let old_regtype=getregtype('/')
+  norm m'
+  for i in range(a:times)
+    exe a:searchstr
+    norm a:breakoutstr
+  endfor
+  call setreg('/', old_reg, old_regtype)
+endf
+noremap [[ :<C-U>call JumpToFuncBound(v:count1, "?{", "w999[{")<CR><C-L>
+noremap ][ :<C-U>call JumpToFuncBound(v:count1, "/}", "w999]}")<CR><C-L>
+noremap ]] :<C-U>norm 0f{999]}][%<CR>
+noremap [] :let old_reg=getreg('/')<Bar>let old_regtype=getregtype('/')<CR>k$][%?}<CR>:call setreg('/', old_reg, old_regtype)<CR>
+
+noremap [[ ?{<CR>w99[{
+noremap ][ /}<CR>b99]}
+noremap ]] j0[[%/{<CR>
+noremap [] k$][%?}<CR>
+
+" Script-l, latex 'ell', is handy to have.  Need to convert hex (2113) to
+" decimal (8467).
+digraph el 8467
+" Similarly, ballot check and 'x'
+digraph ck 10003
+digraph cx 10007
+" Parallel, perpendicular, dagger
+digraph pa 8741
+digraph pe 10178
+digraph da 8224
+" "nabla" character
+digraph nb 8711
+" asterisk, left contraction, right contraction
+digraph as 8727
+digraph lc 8971
+digraph rc 8970
+
+" Disable the bell
+set vb t_vb=""
+
+" Read in any settings which are local to this computer 
+" (i.e. NOT synchronized via unison)
+let s:localSettings = glob('~/.localvimrc')
+if len(s:localSettings) > 0
+ source ~/.localvimrc
+endif
 
 " Make all tag files local to each project, rather than global.
 :set tags=./.tags;
@@ -303,36 +312,32 @@ endfunc
 " Not sure yet if I want to install screen
 :let g:vimrplugin_screenplugin = 0
 
-" Customized statusline =)
-" First, setup fugitive statusline to be used if fugitive is installed.
-" Adapted from http://stackoverflow.com/q/5983906/1523582
-"
-" FIXME: Note that this gives me a git statusline even for non-git files!
-" There must be a better way...
-func! GitStat()
-  let l:gstat=''
-  runtime! autoload/fugitive.vim
-  if exists('*fugitive#statusline')
-    let l:gstat=fugitive#statusline()
-  endif
-  return l:gstat
-endfunc
-" Put a statusline for *every* window, *always*.
-set laststatus=2
-" Now, set what actually goes in that statusline:
-set statusline =%-.20F\         " Full pathname, left-justified
-set statusline+=%h              " 'Help' flag
-set statusline+=%m              " 'Modified' flag
-set statusline+=%r\ \ \         " 'Readonly' flag
-set statusline+=%{GitStat()}    " Git statusline from fugitive.vim
-set statusline+=%=              " Everything else goes to the far-right
-set statusline+=%-14.(%l,%c%V%) " Current line
-set statusline+=\ (%P)          " Percentage through the file
+" Plugin settings ---------------------------------------------------------{{{1
 
+" Vim-R Plugin ------------------------------------------------------------{{{2
+let vimrplugin_term_cmd = "urxvt -e R --vanilla"
 
-" Plugin settings ----------------------------------------------------------{{{1
+" LaTeX Suite -------------------------------------------------------------{{{2
+set winaltkeys=no
+onoremap lp ?^$\\|^\s*\(\\begin\\|\\end\\|\\label\)?1<CR>//-1<CR>.<CR>
+let g:Tex_ItemStyle_sublist = '\item '
+let g:Tex_ItemStyle_outerlist = '\item[] '
+let g:Tex_ItemStyle_innerlist = '\item '
+let g:Tex_ItemStyle_subbulletlist = '\item '
+let g:tex_flavor = 'latex' 
+let g:Tex_CompileRule_dvi = 'latex -interaction=nonstopmode -src-specials $*'
+let g:Tex_GotoError=0
+let g:Tex_Env_subfigure = "\\subfloat[<+caption+>]\<CR>{\<CR>\\includegraphics[width=<+width+>]{<+eps file+>}\<CR>\\label{<+subfigure label+>}\<CR>}\<CR>\\hspace{<+spacing+>}<++>"
+let g:Tex_Env_subfloat = g:Tex_Env_subfigure
+let g:Tex_HotKeyMappings = 'itemize,enumerate'
+let g:Tex_PromptedCommands = 'footnote,texttt,textit,textbf'
+let g:Tex_Env_figure = "\\begin{figure}[<+Placement: (h)ere, separate (p)age, (t)op, (b)ottom+>]\<CR>\\begin{center}\<CR>\\includegraphics[width=<+width+>]{<+filename+>}\<CR>\\end{center}\<CR>\\caption{<+caption+>}\<CR>\\label{fig:<+label+>}\<CR>\\end{figure}<++>\<CR>"
+let g:Tex_Env_frame = "\\begin{frame}{<+Title+>}\<CR><+body+>\<CR>\\end{frame}<++>"
+let g:Tex_Env_columns = "\\begin{columns}[onlytextwidth]\<CR>\\begin{column}{0.5\\textwidth}\<CR>\\begin{center}\<CR><+ left +>\<CR>\\end{center}\<CR>\\end{column}\<CR>\\begin{column}{0.5\\textwidth}\<CR><+ right +>\<CR>\\end{column}\<CR>\\end{columns}"
+let g:Tex_Env_img = "\\includegraphics[width=<+width+>]{<+filename+>}"
+let g:leave_my_textwidth_alone = 1
 
-" viki ---------------------------------------------------------------------{{{2
+" viki --------------------------------------------------------------------{{{2
 
 augroup filetype_viki
   autocmd!
@@ -354,7 +359,7 @@ let g:vikiOpenUrlWith_https = '!firefox %{URL}'
 let g:vikiFolds="hf"
 let b:vikiNoSimpleNames=1
 
-" vimwiki ------------------------------------------------------------------{{{2
+" vimwiki -----------------------------------------------------------------{{{2
 let g:vimwiki_folding=1
 augroup filetype_vimwiki
   autocmd FileType vimwiki :execute "normal! :inoremap <buffer> <silent> <Tab> <Esc>glma"
@@ -362,11 +367,11 @@ augroup filetype_vimwiki
         \ "inoremap <buffer> <silent> <S-Tab> <Esc>glla"
 augroup END
 
-" Filetype settings --------------------------------------------------------{{{1
+" Filetype settings -------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged
 " ftplugin!
 
-" Vimscript ----------------------------------------------------------------{{{2
+" Vimscript ---------------------------------------------------------------{{{2
 augroup filetype_vim
   autocmd!
   " Fold based on the triple-{ symbol.  sjl explains why you want this:
@@ -374,16 +379,16 @@ augroup filetype_vim
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" Python -------------------------------------------------------------------{{{2
+" Python ------------------------------------------------------------------{{{2
 augroup filetype_python
   autocmd!
   " Helping vim with python's PEP-8 conventions; taken from:
   " http://henry.precheur.org/vim/python
-  autocmd FileType python
-        \ setlocal shiftwidth=4
-        \ setlocal softtabstop=4
-        \ setlocal tabstop=4
-        \ setlocal textwidth=80
-        \ setlocal smarttab
-        \ setlocal expandtab
+  autocmd FileType python setlocal
+        \ shiftwidth=4
+        \ softtabstop=4
+        \ tabstop=4
+        \ textwidth=80
+        \ smarttab
+        \ expandtab
 augroup END
