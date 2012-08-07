@@ -356,6 +356,11 @@ let b:vikiNoSimpleNames=1
 
 " vimwiki ------------------------------------------------------------------{{{2
 let g:vimwiki_folding=1
+augroup filetype_vimwiki
+  autocmd FileType vimwiki :execute "normal! :inoremap <buffer> <silent> <Tab> <Esc>glma"
+  autocmd FileType vimwiki :execute
+        \ "inoremap <buffer> <silent> <S-Tab> <Esc>glla"
+augroup END
 
 " Filetype settings --------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged
