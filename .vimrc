@@ -6,15 +6,17 @@
 " I believe this section has to come first... but looking back, I'm not
 " really sure *why* I think that.
 
+" Opening boilerplate --------------------------------------------------{{{2
 set nocompatible               " be iMproved
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
+" let Vundle manage Vundle ---------------------------------------------{{{2
 " required!
 Bundle 'gmarik/vundle'
+" ----------------------------------------------------------------------}}}2
 
 " tpope's plugins (Tim Pope)
 Bundle 'tpope/vim-fugitive'
@@ -47,6 +49,7 @@ Bundle 'chiphogg/vim-choggutils'
 Bundle 'godlygeek/tabular'
 Bundle 'chiphogg/vim-vtd'
 Bundle 'vimwiki'
+Bundle 'duff/vim-scratch'
 
 " Python stuff.  pydiction gives tab completion for python code. vim-flake8
 " lets you check that formatting is PEP-8 compliant.
@@ -72,7 +75,7 @@ let mapleader=","
 " by introducing a speedy alternative...
 noremap ,. ,
 
-" Customized statusline =) ------------------------------------------------{{{2
+" Customized statusline =) ---------------------------------------------{{{2
 " First, setup fugitive statusline to be used if fugitive is installed.
 " Adapted from http://stackoverflow.com/q/5983906/1523582
 "
@@ -98,7 +101,7 @@ set statusline+=%=              " Everything else goes to the far-right
 set statusline+=%-14.(%l,%c%V%) " Current line
 set statusline+=\ (%P)          " Percentage through the file
 
-" Folding -----------------------------------------------------------------{{{2
+" Folding --------------------------------------------------------------{{{2
 "
 " Fold Focusing
 " Close all folds, and open only enough to view the current line
@@ -110,7 +113,7 @@ nnoremap ZK zkzMzv
 " Start with the "big-picture" view of a file
 set foldlevelstart=0
 
-" Windows, tabs, and buffers ----------------------------------------------{{{2
+" Windows, tabs, and buffers -------------------------------------------{{{2
 
 " Code I wrote 2011-09-30 to maximize windows easily
 function! MaximizeWindow()
@@ -145,7 +148,7 @@ nnoremap <silent> <Leader>th :tabprevious<CR>
 nnoremap <silent> <Leader>tl :tabnext<CR>
 
 
-" Text formatting ---------------------------------------------------------{{{2
+" Text formatting ------------------------------------------------------{{{2
 
 " 80 characters helps readability (79 for fudge factor).
 set textwidth=79
@@ -172,6 +175,9 @@ augroup END
 " badly.  So it should be toggleable.
 noremap <F8> :call List_toggle()<CR>
 noremap! <F8> <Esc>:call List_toggle()<CR>a
+" Telling the user whether "list mode" is on/off is not very informative.
+" Instead, say exactly which feature they gained, and exactly which one they
+" lost, by choosing this mode:
 func! List_toggle()
   set list!
   let l:list_feat = "Showing Tabs"
@@ -192,35 +198,67 @@ set autoindent
 
 " Format options (full list at ":help fo-table"; see also ":help 'fo'")
 " Change between += and -= to toggle an option
-set fo +=c  " Automatically format comments,
-set fo +=q  "  and let me do it manually too.
+set fo -=t  " Don't auto-wrap text...
+set fo +=c  " ...or comments; I believe this is causing epic E323/E316 errors
+            " with easytag.vim (and possibly others).
+set fo +=q  " Let me format comments manually.
 set fo +=r  " Auto-continue comments if I'm still typing away in insert mode,
 set fo -=o  "  but not if I'm coming from normal mode (I find this annoying).
 set fo +=n  " Handle numbered lists properly: a lifesaver when writing emails!
 
-" Usability aids ----------------------------------------------------------{{{2
-
-" When would I ever *not* want these?
-set number   " Line numbers
-syntax on    " syntax highlighting
-set showcmd  " Show partial commands as you type
-
-" Occasionally useful, but mainly too annoying.
-set nohlsearch
+" Improving basic commands ---------------------------------------------{{{2
 
 " Really, you always want the backtick, but the apostrophe is much more
-" conveniently located.  So, swap 'em!
+" conveniently located.  So, save your fingers and swap 'em!
 nnoremap ' `
 nnoremap ` '
 
+" Jump list navigation: Ctrl-O goes back, and Tab goes forward.  But Tab is
+" *perfect* for navigating vimwiki links!
+" MY solution: Use Ctrl-P to go forward.  P is to the right of O, so the
+" mnemonic is (O, P) <-> (Left, Right) one jump
+" (Btw, the default normal-mode Ctrl-P appears fairly useless: looks like a
+" clone of 'k'.  So, we're not giving up much.)
+noremap <C-P> <Tab>
+
 " <C-U> can delete text which undo can't recover. These mappings prevent that.
 " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
-inoremap <c-u> <c-g>u<c-u>
-inoremap <c-w> <c-g>u<c-w>
+inoremap <C-U> <C-G>U<C-U>
+inoremap <C-W> <C-G>U<C-W>
 
-" Small feature enhancements ----------------------------------------------{{{2
+"" Taken from ":help section"
+"" Modified 2011-02-04 using http://vim.wikia.com/wiki/Search_for_visually_selected_text
+"" (Goal being to leave search buffers untouched)
+"" Unfortunately, this just doesn't work right now, so I'm commenting it out.
+"function! JumpToFuncBound(times, searchstr, breakoutstr)
+"  let old_reg=getreg('/')
+"  let old_regtype=getregtype('/')
+"  norm m'
+"  for i in range(a:times)
+"    exe a:searchstr
+"    norm a:breakoutstr
+"  endfor
+"  call setreg('/', old_reg, old_regtype)
+"endf
+"noremap [[ :<C-U>call JumpToFuncBound(v:count1, "?{", "w999[{")<CR><C-L>
+"noremap ][ :<C-U>call JumpToFuncBound(v:count1, "/}", "w999]}")<CR><C-L>
+"noremap ]] :<C-U>norm 0f{999]}][%<CR>
+"noremap [] :let old_reg=getreg('/')<Bar>let old_regtype=getregtype('/')<CR>k$][%?}<CR>:call setreg('/', old_reg, old_regtype)<CR>
 
-" Easy Datestamp <F4> and timestamp <F5>
+" So, I basically just use the provided versions.  They pollute history... 
+" but they work!
+noremap [[ ?{<CR>w99[{
+noremap ][ /}<CR>b99]}
+noremap ]] j0[[%/{<CR>
+noremap [] k$][%?}<CR>
+
+" Small feature enhancements -------------------------------------------{{{2
+
+" Easy editing of .vimrc: ,ve to edit; ,vs to source ----------------{{{3
+nnoremap <Leader>ve :split ~/.vimrc<CR>
+nnoremap <Leader>vs :source ~/.vimrc<CR>
+
+" Easy Datestamp <F4> and timestamp <F5> ----------------------------{{{3
 nnoremap <F4> "=strftime("%F")<CR>p
 vnoremap <F4> "=strftime("%F")<CR>p
 inoremap <F4> <C-R>=(strftime("%F"))<CR>
@@ -230,8 +268,9 @@ vnoremap <F5> "=strftime("%R")<CR>p
 inoremap <F5> <C-R>=(strftime("%R"))<CR>
 cnoremap <F5> <C-R>=(strftime("%R"))<CR>
 
-" Easy paste mode toggling with F7, adapted from:
-" http://www.bulheller.com/vimrc.html
+" Easy paste mode toggling with <F7> --------------------------------{{{3
+" adapted and simplified from http://www.bulheller.com/vimrc.html
+
 " Normal mode:
 nnoremap <F7> :call Paste_toggle()<CR>
 func! Paste_toggle()
@@ -241,38 +280,7 @@ endfunc
 " Insert mode:
 set pastetoggle=<F7>
 
-" Undifferentiated crap ---------------------------------------------------{{{1
-" I should probably go through this; sort and comment it...
-
-" Save, and quit with nonzero exit status
-nnoremap ZE :w\|cq<CR>
-
-" easy editing of this file
-nnoremap <Leader>ve :sp ~/.vimrc<CR>
-nnoremap <Leader>vs :source ~/.vimrc<CR>
-
-" Taken from ":help [["
-" Modified 2011-02-04 using http://vim.wikia.com/wiki/Search_for_visually_selected_text
-" Goal being to leave search buffers untouched
-function! JumpToFuncBound(times, searchstr, breakoutstr)
-  let old_reg=getreg('/')
-  let old_regtype=getregtype('/')
-  norm m'
-  for i in range(a:times)
-    exe a:searchstr
-    norm a:breakoutstr
-  endfor
-  call setreg('/', old_reg, old_regtype)
-endf
-noremap [[ :<C-U>call JumpToFuncBound(v:count1, "?{", "w999[{")<CR><C-L>
-noremap ][ :<C-U>call JumpToFuncBound(v:count1, "/}", "w999]}")<CR><C-L>
-noremap ]] :<C-U>norm 0f{999]}][%<CR>
-noremap [] :let old_reg=getreg('/')<Bar>let old_regtype=getregtype('/')<CR>k$][%?}<CR>:call setreg('/', old_reg, old_regtype)<CR>
-
-noremap [[ ?{<CR>w99[{
-noremap ][ /}<CR>b99]}
-noremap ]] j0[[%/{<CR>
-noremap [] k$][%?}<CR>
+" Digraphs (easy input for certain non-ASCII chars) --------------------{{{2
 
 " Script-l, latex 'ell', is handy to have.  Need to convert hex (2113) to
 " decimal (8467).
@@ -286,13 +294,31 @@ digraph pe 10178
 digraph da 8224
 " "nabla" character
 digraph nb 8711
+
+" Useful for geometric algebra:
 " asterisk, left contraction, right contraction
 digraph as 8727
 digraph lc 8971
 digraph rc 8970
 
+" Miscellaneous settings -----------------------------------------------{{{2
+
+" When would I ever *not* want these?
+set number   " Line numbers
+syntax on    " syntax highlighting
+set showcmd  " Show partial commands as you type
+
+" Occasionally useful, but mainly too annoying.
+set nohlsearch
+
 " Disable the bell
 set vb t_vb=""
+
+" Undifferentiated crap ---------------------------------------------------{{{1
+" I should probably go through this; sort and comment it...
+
+" Save, and quit with nonzero exit status
+nnoremap ZE :w\|cq<CR>
 
 " Read in any settings which are local to this computer 
 " (i.e. NOT synchronized via unison)
@@ -301,23 +327,32 @@ if len(s:localSettings) > 0
  source ~/.localvimrc
 endif
 
+" Plugin settings ---------------------------------------------------------{{{1
+
+" easytags -------------------------------------------------------------{{{2
+
 " Make all tag files local to each project, rather than global.
 :set tags=./.tags;
 :let g:easytags_dynamic_files = 2
 
-" Vim-R plugin options:
+" VTD ------------------------------------------------------------------{{{2
+
+" I like my VTD commands to start with ',t'
+" (',th' to go Home, ',td' to check off as "done", etc.)
+let g:vtd_map_prefix=',t'
+
+" Vim-R Plugin ---------------------------------------------------------{{{2
+
+let vimrplugin_term_cmd = "urxvt -e R --vanilla"
+
 " Disable insert-mode commands (incredibly annoying when writing R
 " documentation, or Sweave):
 :let g:vimrplugin_insert_mode_cmds = 0
 " Not sure yet if I want to install screen
 :let g:vimrplugin_screenplugin = 0
 
-" Plugin settings ---------------------------------------------------------{{{1
 
-" Vim-R Plugin ------------------------------------------------------------{{{2
-let vimrplugin_term_cmd = "urxvt -e R --vanilla"
-
-" LaTeX Suite -------------------------------------------------------------{{{2
+" LaTeX Suite ----------------------------------------------------------{{{2
 set winaltkeys=no
 onoremap lp ?^$\\|^\s*\(\\begin\\|\\end\\|\\label\)?1<CR>//-1<CR>.<CR>
 let g:Tex_ItemStyle_sublist = '\item '
@@ -337,7 +372,7 @@ let g:Tex_Env_columns = "\\begin{columns}[onlytextwidth]\<CR>\\begin{column}{0.5
 let g:Tex_Env_img = "\\includegraphics[width=<+width+>]{<+filename+>}"
 let g:leave_my_textwidth_alone = 1
 
-" viki --------------------------------------------------------------------{{{2
+" viki -----------------------------------------------------------------{{{2
 
 augroup filetype_viki
   autocmd!
@@ -359,8 +394,14 @@ let g:vikiOpenUrlWith_https = '!firefox %{URL}'
 let g:vikiFolds="hf"
 let b:vikiNoSimpleNames=1
 
-" vimwiki -----------------------------------------------------------------{{{2
+" vimwiki --------------------------------------------------------------{{{2
+
+" Enable folding; it's really handy :)
 let g:vimwiki_folding=1
+
+" I already use ',ww' for zooming around windows, so I need to remap it:
+nmap <Leader><Leader>ww <Plug>VimwikiIndex
+
 augroup filetype_vimwiki
   autocmd FileType vimwiki :execute "normal! :inoremap <buffer> <silent> <Tab> <Esc>glma"
   autocmd FileType vimwiki :execute
@@ -368,10 +409,9 @@ augroup filetype_vimwiki
 augroup END
 
 " Filetype settings -------------------------------------------------------{{{1
-" NOTE: I should probably consider putting these in a full-fledged
-" ftplugin!
+" NOTE: I should probably consider putting these in a full-fledged ftplugin!
 
-" Vimscript ---------------------------------------------------------------{{{2
+" Vimscript ------------------------------------------------------------{{{2
 augroup filetype_vim
   autocmd!
   " Fold based on the triple-{ symbol.  sjl explains why you want this:
@@ -379,7 +419,7 @@ augroup filetype_vim
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" Python ------------------------------------------------------------------{{{2
+" Python ---------------------------------------------------------------{{{2
 augroup filetype_python
   autocmd!
   " Helping vim with python's PEP-8 conventions; taken from:
