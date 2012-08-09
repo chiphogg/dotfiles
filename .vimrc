@@ -50,6 +50,9 @@ Bundle 'godlygeek/tabular'
 Bundle 'chiphogg/vim-vtd'
 Bundle 'vimwiki'
 Bundle 'duff/vim-scratch'
+Bundle 'wincent/Command-T'
+Bundle 'bufexplorer.zip'
+Bundle 'scrooloose/nerdtree'
 
 " Python stuff.  pydiction gives tab completion for python code. vim-flake8
 " lets you check that formatting is PEP-8 compliant.
@@ -114,6 +117,9 @@ nnoremap ZK zkzMzv
 set foldlevelstart=0
 
 " Windows, tabs, and buffers -------------------------------------------{{{2
+
+" Finally getting comfortable enough with buffers to use this:
+set hidden
 
 " Code I wrote 2011-09-30 to maximize windows easily
 function! MaximizeWindow()
@@ -329,28 +335,17 @@ endif
 
 " Plugin settings ---------------------------------------------------------{{{1
 
+" Command-T ------------------------------------------------------------{{{2
+
+" Defaults conflict with my VTD plugin and bufexplorer, so I remap 'em:
+nnoremap <silent> <LocalLeader>t :CommandT<CR>
+nnoremap <silent> <LocalLeader>b :CommandTBuffer<CR>
+
 " easytags -------------------------------------------------------------{{{2
 
 " Make all tag files local to each project, rather than global.
-:set tags=./.tags;
-:let g:easytags_dynamic_files = 2
-
-" VTD ------------------------------------------------------------------{{{2
-
-" I like my VTD commands to start with ',t'
-" (',th' to go Home, ',td' to check off as "done", etc.)
-let g:vtd_map_prefix=',t'
-
-" Vim-R Plugin ---------------------------------------------------------{{{2
-
-let vimrplugin_term_cmd = "urxvt -e R --vanilla"
-
-" Disable insert-mode commands (incredibly annoying when writing R
-" documentation, or Sweave):
-:let g:vimrplugin_insert_mode_cmds = 0
-" Not sure yet if I want to install screen
-:let g:vimrplugin_screenplugin = 0
-
+set tags=./.tags;
+let g:easytags_dynamic_files = 2
 
 " LaTeX Suite ----------------------------------------------------------{{{2
 set winaltkeys=no
@@ -371,6 +366,9 @@ let g:Tex_Env_frame = "\\begin{frame}{<+Title+>}\<CR><+body+>\<CR>\\end{frame}<+
 let g:Tex_Env_columns = "\\begin{columns}[onlytextwidth]\<CR>\\begin{column}{0.5\\textwidth}\<CR>\\begin{center}\<CR><+ left +>\<CR>\\end{center}\<CR>\\end{column}\<CR>\\begin{column}{0.5\\textwidth}\<CR><+ right +>\<CR>\\end{column}\<CR>\\end{columns}"
 let g:Tex_Env_img = "\\includegraphics[width=<+width+>]{<+filename+>}"
 let g:leave_my_textwidth_alone = 1
+
+" NERD-tree ------------------------------------------------------------{{{2
+nnoremap <Leader>/ :NERDTreeToggle<CR>
 
 " viki -----------------------------------------------------------------{{{2
 
@@ -394,6 +392,17 @@ let g:vikiOpenUrlWith_https = '!firefox %{URL}'
 let g:vikiFolds="hf"
 let b:vikiNoSimpleNames=1
 
+" Vim-R Plugin ---------------------------------------------------------{{{2
+
+let vimrplugin_term_cmd = "urxvt -e R --vanilla"
+
+" Disable insert-mode commands (incredibly annoying when writing R
+" documentation, or Sweave):
+:let g:vimrplugin_insert_mode_cmds = 0
+" Not sure yet if I want to install screen
+:let g:vimrplugin_screenplugin = 0
+
+
 " vimwiki --------------------------------------------------------------{{{2
 
 " Enable folding; it's really handy :)
@@ -407,6 +416,12 @@ augroup filetype_vimwiki
   autocmd FileType vimwiki :execute
         \ "inoremap <buffer> <silent> <S-Tab> <Esc>glla"
 augroup END
+
+" VTD ------------------------------------------------------------------{{{2
+
+" I like my VTD commands to start with ',t'
+" (',th' to go Home, ',td' to check off as "done", etc.)
+let g:vtd_map_prefix=',t'
 
 " Filetype settings -------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
