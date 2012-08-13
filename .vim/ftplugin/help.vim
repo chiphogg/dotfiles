@@ -9,5 +9,5 @@ if &readonly == 1
   nnoremap <buffer> S ?\|\zs\S\+\ze\|<CR>
 
   " What, did you think you'd be defining/using macros in help mode?
-  nnoremap q :q<CR>
+  nnoremap <buffer> q :q<CR>
 endif

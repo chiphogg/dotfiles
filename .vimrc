@@ -149,11 +149,6 @@ nnoremap          <Leader>wx <C-W>W<C-W>c
 nnoremap <silent> <Leader>wX <C-W>W<C-W>c:call MaximizeWindow()<CR>
 " Kill all other windows (also turns off diff mode)
 nnoremap <silent> <Leader>wo :diffoff<CR><C-W>o
-" Make tab navigation easier
-nnoremap <silent> <Leader>tn :tabnew<CR>:tabmove<CR>
-nnoremap <silent> <Leader>th :tabprevious<CR>
-nnoremap <silent> <Leader>tl :tabnext<CR>
-
 
 " Text formatting ------------------------------------------------------{{{2
 
@@ -215,7 +210,12 @@ set fo +=n  " Handle numbered lists properly: a lifesaver when writing emails!
 
 " Improving basic commands ---------------------------------------------{{{2
 
-" Really, you always want the backtick, but the apostrophe is much more
+" Easy quit-all, which is unlikely to be mistyped.
+" (If you really miss going into 'ex mode', `gQ` should be close enough.)
+nnoremap QWER :qa<CR>
+
+" Jumping to marks: You pretty much always want to jump to the cursor position
+" (`), not the beginning of the line (').  But, the apostrophe is much more
 " conveniently located.  So, save your fingers and swap 'em!
 nnoremap ' `
 nnoremap ` '
@@ -320,19 +320,6 @@ set nohlsearch
 
 " Disable the bell
 set vb t_vb=""
-
-" Undifferentiated crap ---------------------------------------------------{{{1
-" I should probably go through this; sort and comment it...
-
-" Save, and quit with nonzero exit status
-nnoremap ZE :w\|cq<CR>
-
-" Read in any settings which are local to this computer 
-" (i.e. NOT synchronized via unison)
-let s:localSettings = glob('~/.localvimrc')
-if len(s:localSettings) > 0
- source ~/.localvimrc
-endif
 
 " Plugin settings ---------------------------------------------------------{{{1
 
@@ -448,3 +435,11 @@ augroup filetype_python
         \ smarttab
         \ expandtab
 augroup END
+
+" Local settings ----------------------------------------------------------{{{1
+
+" We can put settings local to this particular machine in ~/.vimrc_local
+if filereadable(expand("~/.vimrc_local"))
+  source ~/.vimrc_local
+endif
+
