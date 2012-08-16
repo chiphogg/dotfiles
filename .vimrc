@@ -322,6 +322,10 @@ set vb t_vb=""
 
 " Plugin settings ---------------------------------------------------------{{{1
 
+" fugitive -------------------------------------------------------------{{{2
+
+nnoremap <silent> <LocalLeader>gs :Gstatus<CR>
+
 " Command-T ------------------------------------------------------------{{{2
 
 " Defaults conflict with my VTD plugin and bufexplorer, so I remap 'em:
