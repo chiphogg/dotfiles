@@ -211,8 +211,7 @@ set fo +=n  " Handle numbered lists properly: a lifesaver when writing emails!
 " Improving basic commands ---------------------------------------------{{{2
 
 " Easy quit-all, which is unlikely to be mistyped.
-" (If you really miss going into 'ex mode', `gQ` should be close enough.)
-nnoremap QWER :qa<CR>
+nnoremap <silent> <Leader>qwer :confirm qa<CR>
 
 " Jumping to marks: You pretty much always want to jump to the cursor position
 " (`), not the beginning of the line (').  But, the apostrophe is much more
