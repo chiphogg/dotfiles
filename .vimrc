@@ -232,6 +232,11 @@ noremap <C-P> <Tab>
 inoremap <C-U> <C-G>U<C-U>
 inoremap <C-W> <C-G>U<C-W>
 
+" Some filetypes work best with 'nowrap'.  Vim moves left and right using zL
+" and zH, but this is awkward.  ZL and ZH are easier alternatives.
+nnoremap ZL zL
+nnoremap ZH zH
+
 "" Taken from ":help section"
 "" Modified 2011-02-04 using http://vim.wikia.com/wiki/Search_for_visually_selected_text
 "" (Goal being to leave search buffers untouched)
@@ -401,12 +406,6 @@ let g:vimwiki_folding=1
 
 " I already use ',ww' for zooming around windows, so I need to remap it:
 nmap <Leader><Leader>ww <Plug>VimwikiIndex
-
-augroup filetype_vimwiki
-  autocmd FileType vimwiki :execute "normal! :inoremap <buffer> <silent> <Tab> <Esc>glma"
-  autocmd FileType vimwiki :execute
-        \ "inoremap <buffer> <silent> <S-Tab> <Esc>glla"
-augroup END
 
 " VTD ------------------------------------------------------------------{{{2
 
