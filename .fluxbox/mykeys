@@ -13,6 +13,21 @@ OnWindow Mod1 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing BottomRight}
 OnToolbar Mouse4 :NextWorkspace
 OnToolbar Mouse5 :PrevWorkspace
 
+!mouse actions added by fluxbox-update_configs
+OnTitlebar Mouse2 :StartTabbing
+
+!mouse actions added by fluxbox-update_configs
+OnTitlebar Double Mouse1 :Shade
+OnTitlebar Mouse3 :WindowMenu
+
+!mouse actions added by fluxbox-update_configs
+OnWindow Mod1 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
+OnWindow Mod1 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing BottomRight}
+
+!mouse actions added by fluxbox-update_configs
+OnToolbar Mouse4 :NextWorkspace
+OnToolbar Mouse5 :PrevWorkspace
+
 OnDesktop Mouse1 :HideMenus
 OnDesktop Mouse2 :WorkspaceMenu
 OnDesktop Mouse3 :RootMenu
@@ -28,6 +43,8 @@ Control F9 :ToggleDecor
 
 Mod1 Tab :NextWindow {groups} (workspace=[current])
 Mod1 Shift Tab :PrevWindow {groups} (workspace=[current])
+Mod4 Tab :NextTab
+Mod4 Shift Tab :PrevTab
 
 Mod1 F1 :Workspace 1
 Mod1 F2 :Workspace 2
@@ -44,33 +61,34 @@ Mod4 Shift F2 :TakeToWorkspace 2
 Mod4 Shift F3 :TakeToWorkspace 3
 Mod4 Shift F4 :TakeToWorkspace 4
 
-Ctrl Mod1 a :ExecCommand urxvt -e bash -c R\ --vanilla
-Ctrl Mod1 b :ExecCommand fbsetbg -c -r /home/chogg/.fluxbox/backgrounds
-Ctrl Mod1 e :Exec /home/chogg/bin/run_or_switchto "Thunderbird" "/usr/bin/thunderbird"
-Ctrl Mod1 f :exec chromium-browser
-Ctrl Mod1 g :ExecCommand gdmflexiserver
-Ctrl Mod1 h :MoveLeft 30
-Ctrl Mod1 i :ResizeVertical -8
-Ctrl Mod1 j :MoveDown 30
-Ctrl Mod1 k :MoveUp 30
-Ctrl Mod1 l :MoveRight 30
-Ctrl Mod1 m :MaximizeWindow
-Ctrl Mod1 n :Exec /home/chogg/bin/run_or_switchto "(/mnt/share/chip_notes/src) - GVIM" "/home/chogg/bin/VikiIndex /mnt/share/chip_notes/src"
-Ctrl Mod1 o :ResizeHorizontal 8
-Ctrl Mod1 p :ExecCommand urxvt -e bash -c ipython
-Ctrl Mod1 q :Close
-Ctrl Mod1 r :Reconfigure
-Ctrl Mod1 s :ExecCommand urxvt
-Ctrl Mod1 u :ResizeVertical 8
-Ctrl Mod1 v :ExecCommand gvim
-Ctrl Mod1 x :Exit
-Ctrl Mod1 y :ResizeHorizontal -8
+Control Mod1 a :ExecCommand urxvt -e R --no-save --no-restore
+Control Mod1 b :ExecCommand fbsetbg -c -r /home/chogg/.fluxbox/backgrounds
+Control Mod1 c :ExecCommand fbrun
+Control Mod1 e :Exec /home/chogg/bin/run_or_switchto "Thunderbird" "/usr/bin/thunderbird"
+Control Mod1 f :exec chromium-browser
+Control Mod1 g :ExecCommand gdmflexiserver
+Control Mod1 h :MoveLeft 30
+Control Mod1 i :ResizeVertical -8
+Control Mod1 j :MoveDown 30
+Control Mod1 k :MoveUp 30
+Control Mod1 l :MoveRight 30
+Control Mod1 m :MaximizeWindow
+Control Mod1 n :Exec /home/chogg/bin/run_or_switchto "(/mnt/share/chip_notes/src) - GVIM" "/home/chogg/bin/VikiIndex /mnt/share/chip_notes/src"
+Control Mod1 o :ResizeHorizontal 8
+Control Mod1 p :ExecCommand urxvt -e bash -c ipython
+Control Mod1 q :Close
+Control Mod1 r :Reconfigure
+Control Mod1 s :ExecCommand urxvt
+Control Mod1 u :ResizeVertical 8
+Control Mod1 v :ExecCommand gvim
+Control Mod1 x :Exit
+Control Mod1 y :ResizeHorizontal -8
 
 Mod4 Shift a :ExecCommand feh -Z -D 2 /mnt/share/pictures/CU720/*/*.jpg
 Mod4 Shift f :ExecCommand firefox -ProfileManager -no-remote 2>> /home/chogg/firefox_errors
-Mod4 Shift l :ExecCommand /home/chogg/bin/halfscreen left
+Mod4 Shift l :ExecCommand /home/chogg/bin/halfscreen left 55
 Mod4 Shift m :ToggleCmd {ShowDesktop} {DeIconify all originquiet}
-Mod4 Shift r :ExecCommand /home/chogg/bin/halfscreen right
+Mod4 Shift r :ExecCommand /home/chogg/bin/halfscreen right 55
 Mod4 Shift v :ExecCommand gvim -geometry 1670x1030+5+5
 Mod4 Shift s :ExecCommand feh -Z -D 2 ~/.fluxbox/backgrounds ~/.fluxbox/old_family_bg
 
