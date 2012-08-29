@@ -292,7 +292,7 @@ cnoremap <F5> <C-R>=(strftime("%R"))<CR>
 " adapted and simplified from http://www.bulheller.com/vimrc.html
 
 " Normal mode:
-nnoremap <F7> :call Paste_toggle()<CR>
+nnoremap <silent> <F7> :call Paste_toggle()<CR>
 func! Paste_toggle()
   set paste!
   echo "Paste mode: ".(&paste ? "ON" : "OFF")
