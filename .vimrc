@@ -54,6 +54,7 @@ Bundle 'wincent/Command-T'
 Bundle 'bufexplorer.zip'
 Bundle 'scrooloose/nerdtree'
 Bundle 'chiphogg/vim-foldypython'
+Bundle 'VOoM'
 
 " Python stuff.  pydiction gives tab completion for python code. vim-flake8
 " lets you check that formatting is PEP-8 compliant.
@@ -407,6 +408,14 @@ let g:vimwiki_folding=1
 " I already use ',ww' for zooming around windows, so I need to remap it:
 nmap <Leader><Leader>ww <Plug>VimwikiIndex
 
+" VOoM -----------------------------------------------------------------{{{2
+let g:voom_ft_modes = {}
+let g:voom_ft_modes['viki'] = 'viki'
+let g:voom_ft_modes['vimwiki'] = 'vimwiki'
+let g:voom_ft_modes['markdown'] = 'markdown'
+let g:voom_ft_modes['pandoc'] = 'markdown'
+nnoremap <Leader>o :<C-U>VoomToggle<CR>
+
 " VTD ------------------------------------------------------------------{{{2
 
 " I like my VTD commands to start with ',t'
@@ -415,14 +424,6 @@ let g:vtd_map_prefix=',t'
 
 " Filetype settings -------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
-
-" Vimscript ------------------------------------------------------------{{{2
-augroup filetype_vim
-  autocmd!
-  " Fold based on the triple-{ symbol.  sjl explains why you want this:
-  " http://learnvimscriptthehardway.stevelosh.com/chapters/18.html
-  autocmd FileType vim setlocal foldmethod=marker
-augroup END
 
 " Python ---------------------------------------------------------------{{{2
 augroup filetype_python
@@ -436,6 +437,25 @@ augroup filetype_python
         \ textwidth=80
         \ smarttab
         \ expandtab
+augroup END
+
+" Vimscript ------------------------------------------------------------{{{2
+augroup filetype_vim
+  autocmd!
+  " Fold based on the triple-{ symbol.  sjl explains why you want this:
+  " http://learnvimscriptthehardway.stevelosh.com/chapters/18.html
+  autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+" voomtree -------------------------------------------------------------{{{2
+
+augroup filetype_voomtree
+  autocmd!
+  " Let hjkl navigate the tree just like arrow keys.  It's the Vim way. :)
+  autocmd FileType voomtree nnoremap <buffer><silent> j j:<C-u>call Voom_TreeSelect(1)<CR>
+  autocmd FileType voomtree nnoremap <buffer><silent> k k:<C-u>call Voom_TreeSelect(1)<CR>
+  autocmd FileType voomtree nnoremap <buffer><silent> h :<C-u>call Voom_TreeLeft()<CR>
+  autocmd FileType voomtree nnoremap <buffer><silent> l :<C-u>call Voom_TreeRight()<CR>
 augroup END
 
 " Local settings ----------------------------------------------------------{{{1
