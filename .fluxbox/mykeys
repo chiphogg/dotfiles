@@ -86,9 +86,9 @@ Control Mod1 y :ResizeHorizontal -8
 
 Mod4 Shift a :ExecCommand feh -Z -D 2 /mnt/share/pictures/CU720/*/*.jpg
 Mod4 Shift f :ExecCommand firefox -ProfileManager -no-remote 2>> /home/chogg/firefox_errors
-Mod4 Shift l :ExecCommand /home/chogg/bin/halfscreen left 55
+Mod4 Shift l :ExecCommand /home/chogg/bin/halfscreen left 50
 Mod4 Shift m :ToggleCmd {ShowDesktop} {DeIconify all originquiet}
-Mod4 Shift r :ExecCommand /home/chogg/bin/halfscreen right 55
+Mod4 Shift r :ExecCommand /home/chogg/bin/halfscreen right 50
 Mod4 Shift v :ExecCommand gvim -geometry 1670x1030+5+5
 Mod4 Shift s :ExecCommand feh -Z -D 2 ~/.fluxbox/backgrounds ~/.fluxbox/old_family_bg
 
