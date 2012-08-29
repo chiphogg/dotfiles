@@ -106,6 +106,14 @@ set statusline+=%=              " Everything else goes to the far-right
 set statusline+=%-14.(%l,%c%V%) " Current line
 set statusline+=\ (%P)          " Percentage through the file
 
+" Diff mode ------------------------------------------------------------{{{2
+
+if &diff
+  noremap <Leader>1 :diffget LOCAL<CR>
+  noremap <Leader>2 :diffget BASE<CR>
+  noremap <Leader>3 :diffget REMOTE<CR>
+endif
+
 " Folding --------------------------------------------------------------{{{2
 "
 " Fold Focusing
