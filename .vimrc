@@ -29,7 +29,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-markdown'
 
 " tomtom's plugins (Tom Link)
-Bundle 'chiphogg/viki_vim'
+Bundle 'tomtom/viki_vim'
 Bundle 'tomtom/tlib_vim'
 
 " Fancy text objects
@@ -379,14 +379,18 @@ nnoremap <Leader>/ :NERDTreeToggle<CR>
 
 augroup filetype_viki
   autocmd!
-  autocmd BufRead,BufNewFile *.viki set ft=viki
+  "autocmd BufRead,BufNewFile *.viki set ft=viki
   " Change the local current directory to the directory of the file being
   " edited: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
   autocmd BufEnter *.viki silent! lcd %:p:h
   " I'm trying to explore options for remapping viki keybindings, but this
   " doesn't work yet:
   autocmd FileType viki
-        \execute "nnoremap <buffer> <silent> <CR> :VikiJump<CR>"
+        \ exec "nnoremap <buffer> <silent> <Tab> :VikiFindNext<CR>"
+  autocmd FileType viki
+        \ exec "nnoremap <buffer> <silent> <S-Tab> :VikiFindPrev<CR>"
+  autocmd FileType viki exec "nnoremap <buffer> <silent> <CR> :VikiJump<CR>"
+  autocmd FileType viki let b:vikiNoSimpleNames=1
 augroup END
 
 let g:vikiHide="update"
@@ -395,7 +399,7 @@ let g:vikiNameTypes="sSeuixwf"
 let g:vikiOpenUrlWith_http = '!firefox %{URL}'
 let g:vikiOpenUrlWith_https = '!firefox %{URL}'
 let g:vikiFolds="hf"
-let b:vikiNoSimpleNames=1
+let g:vikiFoldMethodVersion=1
 
 " Vim-R Plugin ---------------------------------------------------------{{{2
 
