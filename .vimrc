@@ -379,12 +379,11 @@ nnoremap <Leader>/ :NERDTreeToggle<CR>
 
 augroup filetype_viki
   autocmd!
-  "autocmd BufRead,BufNewFile *.viki set ft=viki
   " Change the local current directory to the directory of the file being
   " edited: http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
+  " (This gives me C-X,C-F filename autocompletion)
   autocmd BufEnter *.viki silent! lcd %:p:h
-  " I'm trying to explore options for remapping viki keybindings, but this
-  " doesn't work yet:
+  " Smoother (vimwiki-style) navigation:
   autocmd FileType viki
         \ exec "nnoremap <buffer> <silent> <Tab> :VikiFindNext<CR>"
   autocmd FileType viki
