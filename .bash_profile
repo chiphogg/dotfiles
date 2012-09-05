@@ -7,3 +7,5 @@ then
   source ~/.bash_complete
 fi
 export KDEWM=fluxbox
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
