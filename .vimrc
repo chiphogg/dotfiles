@@ -26,7 +26,6 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-markdown'
 
 " tomtom's plugins (Tom Link)
 Bundle 'tomtom/viki_vim'
@@ -39,6 +38,7 @@ Bundle 'argtextobj.vim'
 
 " Other plugins
 Bundle 'suan/vim-instant-markdown'
+Bundle 'vim-pandoc/vim-pandoc'
 Bundle 'jcf/vim-latex'
 Bundle 'jcfaria/Vim-R-plugin'
 Bundle 'spiiph/vim-space'
