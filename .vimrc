@@ -40,6 +40,7 @@ Bundle 'argtextobj.vim'
 " Other plugins
 Bundle 'suan/vim-instant-markdown'
 Bundle 'vim-pandoc/vim-pandoc'
+Bundle 'tpope/vim-markdown'
 Bundle 'jcf/vim-latex'
 Bundle 'jcfaria/Vim-R-plugin'
 Bundle 'spiiph/vim-space'
