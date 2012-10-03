@@ -241,8 +241,8 @@ noremap <C-P> <Tab>
 
 " <C-U> can delete text which undo can't recover. These mappings prevent that.
 " http://vim.wikia.com/wiki/Recover_from_accidental_Ctrl-U
-inoremap <C-U> <C-G>U<C-U>
-inoremap <C-W> <C-G>U<C-W>
+inoremap <C-U> <C-G>u<C-U>
+inoremap <C-W> <C-G>u<C-W>
 
 " Some filetypes work best with 'nowrap'.  Vim moves left and right using zL
 " and zH, but this is awkward.  ZL and ZH are easier alternatives.
