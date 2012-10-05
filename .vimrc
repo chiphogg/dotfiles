@@ -409,6 +409,7 @@ let g:vikiFoldMethodVersion=1
 
 " Vim-R Plugin ---------------------------------------------------------{{{2
 
+let r_indent_align_args = 0
 let vimrplugin_term_cmd = "urxvt -e R --vanilla"
 let vimrplugin_underscore = 0
 
