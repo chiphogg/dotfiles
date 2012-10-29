@@ -8,6 +8,7 @@
 # Added by Chip, 2010-08-24
 export HISTCONTROL=erasedups
 export HISTSIZE=10000
+export HISTFILESIZE=20000
 shopt -s histappend
 
 # check the window size after each command and, if necessary,
@@ -100,15 +101,6 @@ fi
 # Is this an Ubuntu-only line?
 # eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib)
 
-#------------------------------------------------------------------------
-# this is for XCRYSDEN 1.5.21; added by XCRYSDEN installation on
-# Tue Jan 18 22:53:43 EST 2011
-#------------------------------------------------------------------------
-XCRYSDEN_TOPDIR=/home/chogg/local_install/XCrySDen-1.5.17-bin-shared
-XCRYSDEN_SCRATCH=/home/chogg/.xcrys_tmp
-export XCRYSDEN_TOPDIR XCRYSDEN_SCRATCH
-PATH="$XCRYSDEN_TOPDIR:$PATH:$XCRYSDEN_TOPDIR/scripts:$XCRYSDEN_TOPDIR/util"
-
 # If this is a non-interactive shell, we still want to get
 # the stuff (like $PATH) in /etc/profile if we haven't already
 if [[ -z "$Environ_Sourced" && -f /etc/profile ]]
@@ -119,4 +111,5 @@ fi
 # ghar setup: for synchronizing homedir stuff
 export GHAR_DIR="$HOME/tools/ghar"
 export PATH="$PATH:$GHAR_DIR/bin/"
+export PATH="$PATH:$HOME/bin/"
 . "$GHAR_DIR/ghar-bash-completion.sh"
