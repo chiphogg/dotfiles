@@ -1,0 +1,6 @@
+set bell-style none
+set expand-tilde off
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+"\C-P": history-search-backward
+"\C-N": history-search-forward
