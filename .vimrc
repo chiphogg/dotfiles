@@ -337,6 +337,9 @@ set nohlsearch
 " Disable the bell
 set vb t_vb=""
 
+" Default colorscheme for terminal-mode vim is unreadable
+colorscheme desert
+
 " Plugin settings ---------------------------------------------------------{{{1
 
 " fugitive -------------------------------------------------------------{{{2
