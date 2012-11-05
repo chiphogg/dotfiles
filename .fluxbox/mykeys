@@ -13,21 +13,6 @@ OnWindow Mod1 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing BottomRight}
 OnToolbar Mouse4 :NextWorkspace
 OnToolbar Mouse5 :PrevWorkspace
 
-!mouse actions added by fluxbox-update_configs
-OnTitlebar Mouse2 :StartTabbing
-
-!mouse actions added by fluxbox-update_configs
-OnTitlebar Double Mouse1 :Shade
-OnTitlebar Mouse3 :WindowMenu
-
-!mouse actions added by fluxbox-update_configs
-OnWindow Mod1 Mouse1 :MacroCmd {Raise} {Focus} {StartMoving}
-OnWindow Mod1 Mouse3 :MacroCmd {Raise} {Focus} {StartResizing BottomRight}
-
-!mouse actions added by fluxbox-update_configs
-OnToolbar Mouse4 :NextWorkspace
-OnToolbar Mouse5 :PrevWorkspace
-
 OnDesktop Mouse1 :HideMenus
 OnDesktop Mouse2 :WorkspaceMenu
 OnDesktop Mouse3 :RootMenu
@@ -35,7 +20,6 @@ OnDesktop Mouse4 :NextWorkspace
 OnDesktop Mouse5 :PrevWorkspace
 
 Control F9 :ToggleDecor
-
 
 Mod1 Tab :NextWindow {groups} (workspace=[current])
 Mod1 Shift Tab :PrevWindow {groups} (workspace=[current])
@@ -79,10 +63,14 @@ Control Mod1 v :ExecCommand gvim
 Control Mod1 x :Exit
 Control Mod1 y :ResizeHorizontal -8
 
+Mod4 l :ExecCommand gnome-screensaver-command --lock
+
 Mod4 Shift a :ExecCommand feh -Z -D 2 /mnt/share/pictures/CU720/*/*.jpg
+Mod4 Shift b :ExecCommand halfscreen bottom 50
 Mod4 Shift f :ExecCommand firefox -ProfileManager -no-remote 2>> /home/chogg/firefox_errors
-Mod4 Shift l :ExecCommand /home/chogg/bin/halfscreen left 50
+Mod4 Shift l :ExecCommand halfscreen left 50
 Mod4 Shift m :ToggleCmd {ShowDesktop} {DeIconify all originquiet}
-Mod4 Shift r :ExecCommand /home/chogg/bin/halfscreen right 50
+Mod4 Shift r :ExecCommand halfscreen right 50
 Mod4 Shift s :ExecCommand feh -Z -D 2 ~/.fluxbox/backgrounds ~/.fluxbox/old_family_bg
+Mod4 Shift t :ExecCommand halfscreen top 50
 

@@ -83,3 +83,7 @@ export GHAR_DIR="$HOME/tools/ghar"
 export PATH="$PATH:$GHAR_DIR/bin/"
 export PATH="$PATH:$HOME/bin/"
 . "$GHAR_DIR/ghar-bash-completion.sh"
+
+# Fixes errors like this one:
+# WARNING **: Unable to create Ubuntu Menu Proxy: Timeout was reached
+alias gvim='UBUNTU_MENUPROXY= gvim'

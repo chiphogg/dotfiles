@@ -20,7 +20,6 @@ Bundle 'gmarik/vundle'
 
 " tpope's plugins (Tim Pope)
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rhubarb'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
@@ -38,12 +37,10 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'argtextobj.vim'
 
 " Other plugins
-Bundle 'suan/vim-instant-markdown'
 Bundle 'vim-pandoc/vim-pandoc'
 Bundle 'tpope/vim-markdown'
 Bundle 'jcf/vim-latex'
 Bundle 'jcfaria/Vim-R-plugin'
-Bundle 'spiiph/vim-space'
 Bundle 'sjl/gundo.vim'
 Bundle 'matchit.zip'
 Bundle 'xolox/vim-easytags'
@@ -57,7 +54,6 @@ Bundle 'bufexplorer.zip'
 Bundle 'scrooloose/nerdtree'
 Bundle 'chiphogg/vim-foldypython'
 Bundle 'VOoM'
-Bundle 'JSON.vim'
 
 " Python stuff.  pydiction gives tab completion for python code. vim-flake8
 " lets you check that formatting is PEP-8 compliant.
@@ -347,6 +343,9 @@ set nohlsearch
 
 " Disable the bell
 set vb t_vb=""
+
+" Default colorscheme for terminal-mode vim is unreadable
+colorscheme desert
 
 " Plugin settings ---------------------------------------------------------{{{1
 
