@@ -54,6 +54,7 @@ Bundle 'bufexplorer.zip'
 Bundle 'scrooloose/nerdtree'
 Bundle 'chiphogg/vim-foldypython'
 Bundle 'VOoM'
+Bundle 'majutsushi/tagbar'
 
 " Python stuff.  pydiction gives tab completion for python code. vim-flake8
 " lets you check that formatting is PEP-8 compliant.
