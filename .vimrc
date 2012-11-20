@@ -288,9 +288,9 @@ vnoremap <F5> "=strftime("%R")<CR>p
 inoremap <F5> <C-R>=(strftime("%R"))<CR>
 cnoremap <F5> <C-R>=(strftime("%R"))<CR>
 
-" Easy paste mode toggling with <F7> --------------------------------{{{3
-" adapted and simplified from http://www.bulheller.com/vimrc.html
+" Paste mode commands: toggle with <F7>; auto-turnoff; retroactive --{{{3
 
+" Toggling with <F7> (simplified from http://www.bulheller.com/vimrc.html)
 " Normal mode:
 nnoremap <silent> <F7> :call Paste_toggle()<CR>
 func! Paste_toggle()
@@ -299,6 +299,22 @@ func! Paste_toggle()
 endfunc
 " Insert mode:
 set pastetoggle=<F7>
+
+" Paste mode persists by default.  I don't recall ever *wanting* this to happen,
+" but I *do* sometimes get burned by this.  The following autocommand prevents
+" this from happening (wrapped in an augroup in case .vimrc gets reloaded).
+augroup paste
+  autocmd!
+  autocmd InsertLeave * set nopaste
+augroup END
+
+" If you forget to set paste mode before pasting, it's nice to be able to
+" 'rescue' the paste (undo, set paste, and re-paste).
+inoremap <silent> <C-A> <esc>u:set paste<CR>.gi
+" Be careful!  This may not do what you expect if you entered other text before
+" copy-pasting.  I think the ideal way to handle this would be to remap all
+" paste commands so they insert an undo break (see :help i_CTRL-G_u) first.
+" I defer this implementation until later (it's low priority).
 
 " Refresh syntax highlighting <F12> ---------------------------------{{{3
 " Very handy when constructing a syntax file!
