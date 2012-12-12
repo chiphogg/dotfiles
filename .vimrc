@@ -323,11 +323,11 @@ inoremap <silent> <C-A> <esc>u:set paste<CR>.gi
 nnoremap <silent> <F12> :syntax clear \| syntax off \| syntax on<CR>
 
 " Save system clipboards on exit ------------------------------------{{{3
-function SaveClipboard()
-  call system("xsel -ip", getreg('*'))
-  call system("xsel -ib", getreg('+'))
+function s:SaveClipboard()
+  echom system("xsel -ip", getreg('*'))
+  echom system("xsel -ib", getreg('+'))
 endfunction
-autocmd VimLeave * call SaveClipboard()
+autocmd VimLeave * call s:SaveClipboard()
 
 " Digraphs (easy input for certain non-ASCII chars) --------------------{{{2
 

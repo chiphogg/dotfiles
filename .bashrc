@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+export EDITOR="gvim -f"
+
 # Added by Chip, 2010-08-24
 export HISTCONTROL=erasedups
 export HISTSIZE=10000
