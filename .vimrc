@@ -37,6 +37,8 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'argtextobj.vim'
 
 " Other plugins
+Bundle 'YankRing.vim'
+Bundle 'scrooloose/syntastic'
 Bundle 'vim-pandoc/vim-pandoc'
 Bundle 'tpope/vim-markdown'
 Bundle 'jcf/vim-latex'
@@ -464,6 +466,19 @@ nnoremap <Leader>o :<C-U>VoomToggle<CR>
 " I like my VTD commands to start with ',t'
 " (',th' to go Home, ',td' to check off as "done", etc.)
 let g:vtd_map_prefix=',t'
+
+" YankRing.vim ---------------------------------------------------------{{{2
+
+function! YRRunAfterMaps()
+  " Make Y consistent with D and C: yank only to EOL, instead of whole line
+  nnoremap Y :<C-U>YRYankCount 'y$'<CR>
+endfunction
+
+" <C-P> conflicts with my mapping for "next jump", so pick different mappings.
+" See section 5.13 (YRReplace) of :help yankring
+let g:yankring_replace_n_pkey = '<Char-172>'
+let g:yankring_replace_n_nkey = '<Char-174>'
+
 
 " Filetype settings -------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
