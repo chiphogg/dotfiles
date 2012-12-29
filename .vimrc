@@ -453,6 +453,19 @@ let g:vimwiki_folding=1
 " I already use ',ww' for zooming around windows, so I need to remap it:
 nmap <Leader><Leader>ww <Plug>VimwikiIndex
 
+" Open URLs with chrome, if possible
+function! VimwikiLinkHandler(link)
+  try
+    if a:link =~# '\v^http'
+      execute ':!google-chrome ' . a:link
+      return 1
+    endif
+  catch
+    echo "Couldn't open chrome.  Is the command 'google-chrome'?"
+  endtry
+  return 0
+endfunction
+
 " VOoM -----------------------------------------------------------------{{{2
 let g:voom_ft_modes = {}
 let g:voom_ft_modes['viki'] = 'viki'
