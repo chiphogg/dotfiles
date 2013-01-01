@@ -26,6 +26,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-capslock'
+Bundle 'tpope/vim-sleuth'
 
 " tomtom's plugins (Tom Link)
 Bundle 'tomtom/viki_vim'
