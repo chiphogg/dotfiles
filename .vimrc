@@ -324,13 +324,6 @@ inoremap <silent> <C-A> <esc>u:set paste<CR>.gi
 " Very handy when constructing a syntax file!
 nnoremap <silent> <F12> :syntax clear \| syntax off \| syntax on<CR>
 
-" Save system clipboards on exit ------------------------------------{{{3
-function s:SaveClipboard()
-  echom system("xsel -ip", getreg('*'))
-  echom system("xsel -ib", getreg('+'))
-endfunction
-autocmd VimLeave * call s:SaveClipboard()
-
 " Digraphs (easy input for certain non-ASCII chars) --------------------{{{2
 
 " Script-l, latex 'ell', is handy to have.  Need to convert hex (2113) to
