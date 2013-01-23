@@ -477,6 +477,11 @@ let g:vtd_map_prefix=',t'
 
 " YankRing.vim ---------------------------------------------------------{{{2
 
+function! YRRunAfterMaps()
+  " Make Y consistent with D and C: yank only to EOL, instead of whole line
+  nnoremap Y :<C-U>YRYankCount 'y$'<CR>
+endfunction
+
 " <C-P> conflicts with my mapping for "next jump", so pick different mappings.
 " See section 5.13 (YRReplace) of :help yankring
 let g:yankring_replace_n_pkey = '<Char-172>'
