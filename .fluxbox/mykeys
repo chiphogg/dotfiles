@@ -68,13 +68,13 @@ Control Mod1 Shift r :Restart
 Mod4 l :ExecCommand gnome-screensaver-command --lock
 
 Mod4 Shift a :ExecCommand feh -Z -D 2 /mnt/share/pictures/CU720/*/*.jpg
-Mod4 Shift b :ExecCommand halfscreen bottom 50
+Mod4 Shift b :ExecCommand halfscreen bottom 22 25
 Mod4 Shift f :ExecCommand firefox -ProfileManager -no-remote 2>> /home/chogg/firefox_errors
-Mod4 Shift l :ExecCommand halfscreen left 50
+Mod4 Shift l :ExecCommand halfscreen left 22 25
 Mod4 Shift m :ToggleCmd {ShowDesktop} {DeIconify all originquiet}
-Mod4 Shift r :ExecCommand halfscreen right 50
+Mod4 Shift r :ExecCommand halfscreen right 22 25
 Mod4 Shift s :ExecCommand feh -Z -D 2 ~/.fluxbox/backgrounds ~/.fluxbox/old_family_bg
-Mod4 Shift t :ExecCommand halfscreen top 50
+Mod4 Shift t :ExecCommand halfscreen top 22 25
 
 # Poor man's tiling window management
 
