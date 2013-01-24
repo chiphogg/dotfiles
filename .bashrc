@@ -7,10 +7,11 @@
 
 export EDITOR=gvim
 
-# Added by Chip, 2010-08-24
-export HISTCONTROL=erasedups
-export HISTSIZE=10000
+# Keep a rich command line history: store 20,000 lines on disk, and keep 5,000
+# lines in memory.  Erase duplicates to save space.
+export HISTSIZE=5000
 export HISTFILESIZE=20000
+export HISTCONTROL=erasedups
 shopt -s histappend
 
 # Don't match dotfiles with autocomplete
@@ -24,15 +25,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-if [ "$TERM" = "linux" ]
-then
-  #we're on the system console or maybe telnetting in
-  export PS1="\[\e[32;1m\]\u@\H > \[\e[0m\]"
-else
-  #we're not on the console, assume an xterm
-  export PS1="\[\e]2;\u@\H \w\a\e[32;1m\]\u@\H \[\e[36m\]\W \\$ \[\e[0m\]"
-fi
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -44,11 +36,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
