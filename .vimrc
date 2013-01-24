@@ -40,6 +40,7 @@ Bundle 'argtextobj.vim'
 
 " Other plugins
 Bundle 'YankRing.vim'
+Bundle 'VimClojure'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-pandoc/vim-pandoc'
 Bundle 'tpope/vim-markdown'
