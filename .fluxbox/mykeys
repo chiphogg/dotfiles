@@ -87,3 +87,9 @@ Mod4 Shift KP_1 :ExecCommand halfscreen bottomleft 22 25
 Mod4 Shift KP_3 :ExecCommand halfscreen bottomright 22 25
 Mod4 Shift KP_7 :ExecCommand halfscreen topleft 22 25
 Mod4 Shift KP_9 :ExecCommand halfscreen topright 22 25
+
+# Alternative commands to halfscreen windows (for consistency with above)
+Mod4 Shift KP_4 :ExecCommand halfscreen left 22 25
+Mod4 Shift KP_2 :ExecCommand halfscreen bottom 22 25
+Mod4 Shift KP_8 :ExecCommand halfscreen top 22 25
+Mod4 Shift KP_6 :ExecCommand halfscreen right 22 25
