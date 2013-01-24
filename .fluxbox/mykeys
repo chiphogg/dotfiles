@@ -63,6 +63,8 @@ Control Mod1 v :ExecCommand gvim
 Control Mod1 x :Exit
 Control Mod1 y :ResizeHorizontal -8
 
+Control Mod1 Shift r :Restart
+
 Mod4 l :ExecCommand gnome-screensaver-command --lock
 
 Mod4 Shift a :ExecCommand feh -Z -D 2 /mnt/share/pictures/CU720/*/*.jpg
@@ -74,3 +76,14 @@ Mod4 Shift r :ExecCommand halfscreen right 50
 Mod4 Shift s :ExecCommand feh -Z -D 2 ~/.fluxbox/backgrounds ~/.fluxbox/old_family_bg
 Mod4 Shift t :ExecCommand halfscreen top 50
 
+# Poor man's tiling window management
+
+# Tile windows with preference for vertical arrangement
+# 51 = '\'
+Control Mod1 51 :ArrangeWindowsVertical (Workspace=[current])
+
+# Send window to corner
+Mod4 Shift KP_1 :ExecCommand halfscreen bottomleft 22 25
+Mod4 Shift KP_3 :ExecCommand halfscreen bottomright 22 25
+Mod4 Shift KP_7 :ExecCommand halfscreen topleft 22 25
+Mod4 Shift KP_9 :ExecCommand halfscreen topright 22 25
