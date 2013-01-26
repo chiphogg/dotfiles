@@ -47,3 +47,12 @@ Thumbs.db
 # Vim swapfiles #
 #################
 .*.sw*
+
+# R data and history #
+######################
+.RData
+.Rhistory
+
+# feh filelists #
+#################
+feh*filelist
