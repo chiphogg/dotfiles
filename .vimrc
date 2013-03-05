@@ -18,6 +18,27 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " ----------------------------------------------------------------------}}}2
 
+" BundleIfNewer -- Install a plugin, but only if Vim is recent enough. {{{2
+function! s:BundleIfNewer(version, bundle)
+  let l:version_parts = split(a:version, '\.')
+  let l:version = printf('%d%02d', l:version_parts[0], l:version_parts[1])
+  " Check that the major version is recent enough
+  if l:version < v:version
+    return
+  endif
+  " If the versions are equal, AND we require a specific patch, make sure that
+  " patch is present.
+  if l:version ==# v:version
+        \ && len(l:version_parts) >= 3
+        \ && !has('patch' . l:version_parts[2])
+    return
+  endif
+  Bundle a:bundle
+endfunction
+
+command! -nargs=+ BundleIfNewer call s:BundleIfNewer(<f-args>)
+" }}}2
+
 " tpope's plugins (Tim Pope)
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
@@ -28,6 +49,9 @@ Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-capslock'
 Bundle 'tpope/vim-sleuth'
+
+" C++
+BundleIfNewer 7.3.831 'Valloric/YouCompleteMe'
 
 " tomtom's plugins (Tom Link)
 Bundle 'tomtom/viki_vim'
