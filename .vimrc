@@ -303,6 +303,14 @@ noremap [] k$][%?}<CR>
 
 " Small feature enhancements -------------------------------------------{{{2
 
+" Extend dictionary; create if it doesn't exist ---------------------{{{3
+function! ExtendExNihilo(dict_name, new_entries)
+  if !exists(a:dict_name)
+    execute 'let' a:dict_name '= {}'
+  endif
+  execute 'call extend('.a:dict_name.', a:new_entries)'
+endfunction
+
 " Easy editing of .vimrc: ,ve to edit; ,vs to source ----------------{{{3
 nnoremap <Leader>ve :split ~/.vimrc<CR>
 nnoremap <Leader>vs :source ~/.vimrc<CR>
@@ -512,6 +520,16 @@ endfunction
 let g:yankring_replace_n_pkey = '<Char-172>'
 let g:yankring_replace_n_nkey = '<Char-174>'
 
+" YouCompleteMe --------------------------------------------------------{{{2
+
+" YCM changes the update time to 2000ms instead of 4000ms, which causes
+" easytags.vim to complain.  Disabling this for now.
+let g:ycm_allow_changing_updatetime = 0
+call ExtendExNihilo('g:ycm_filetypes_to_completely_ignore', {
+      \ 'markdown' : 1,
+      \ 'text' : 1,
+      \ 'gitcommit' : 1,
+      \ })
 
 " Filetype settings -------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
