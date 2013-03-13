@@ -193,6 +193,9 @@ nnoremap <silent> <Leader>wo :diffoff<CR><C-W>o
 " 80 characters helps readability (79 for fudge factor).
 set textwidth=79
 
+" Highlight lines which are too long
+set colorcolumn=+1
+
 " Spaces or tabs?
 " Experience shows: tabs *occasionally* cause problems; spaces *never* do.
 " e.g., http://bugs.python.org/issue7012
@@ -379,6 +382,9 @@ set showcmd  " Show partial commands as you type
 
 " Occasionally useful, but mainly too annoying.
 set nohlsearch
+
+" Command line history: the default is just 20 lines!
+set history=500
 
 " Disable the bell
 set vb t_vb=""
