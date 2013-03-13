@@ -527,11 +527,13 @@ let g:ycm_filetype_whitelist = {
       \ 'cpp' : 1,
       \ 'c' : 1,
       \ 'python' : 1,
+      \ 'vimwiki' : 1,
       \ }
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments_and_strings = 1
 let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_of_chars_for_completion = 1
 
 " Filetype settings -------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
