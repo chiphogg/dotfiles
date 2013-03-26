@@ -190,8 +190,8 @@ nnoremap <silent> <Leader>wo :diffoff<CR><C-W>o
 
 " Text formatting ------------------------------------------------------{{{2
 
-" 80 characters helps readability (79 for fudge factor).
-set textwidth=79
+" 80 characters helps readability.
+set textwidth=80
 
 " Highlight lines which are too long
 set colorcolumn=+1
