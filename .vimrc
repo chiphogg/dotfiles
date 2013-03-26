@@ -410,6 +410,11 @@ nnoremap <silent> <LocalLeader>b :CommandTBuffer<CR>
 set tags=./.tags;
 let g:easytags_dynamic_files = 2
 
+" The default of 4000 ms (4 sec) conflicts with YouCompleteMe, which
+" updates every 2 seconds by default.  I like the more frequent updating, and
+" I want easytags to stop complaining about it. :)
+let g:easytags_updatetime_min = 500
+
 " LaTeX Suite ----------------------------------------------------------{{{2
 set winaltkeys=no
 onoremap lp ?^$\\|^\s*\(\\begin\\|\\end\\|\\label\)?1<CR>//-1<CR>.<CR>
@@ -520,15 +525,6 @@ let g:yankring_replace_n_nkey = '<Char-174>'
 
 " YouCompleteMe --------------------------------------------------------{{{2
 
-" YCM changes the update time to 2000ms instead of 4000ms, which causes
-" easytags.vim to complain.  Disabling this for now.
-let g:ycm_allow_changing_updatetime = 0
-let g:ycm_filetype_whitelist = {
-      \ 'cpp' : 1,
-      \ 'c' : 1,
-      \ 'python' : 1,
-      \ 'vimwiki' : 1,
-      \ }
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments_and_strings = 1
 let g:ycm_add_preview_to_completeopt = 1
