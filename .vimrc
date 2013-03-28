@@ -525,6 +525,14 @@ let g:yankring_replace_n_nkey = '<Char-174>'
 
 " YouCompleteMe --------------------------------------------------------{{{2
 
+" Presently, YCM doesn't handle R's dotted variable names very well.  This
+" might be a bug where it doesn't respect nonstandard word boundary characters,
+" but I don't know how vim determines that and I don't have the energy to look
+" into it right now...
+let g:ycm_filetype_blacklist = {
+      \ 'r' : 1,
+      \ }
+
 " Comments and strings are fair game for autocompletion.
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments_and_strings = 1
