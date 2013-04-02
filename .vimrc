@@ -544,6 +544,9 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " Start autocompleting right away, after a single character!
 let g:ycm_min_num_of_chars_for_completion = 1
 
+" g[ should jump to the declaration (currently only works in C-family files).
+nnoremap g[ :YcmCompleter GoToDeclaration<CR>
+
 " Filetype settings -------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
 
