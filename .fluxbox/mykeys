@@ -63,6 +63,8 @@ Control Mod1 v :ExecCommand gvim
 Control Mod1 x :Exit
 Control Mod1 y :ResizeHorizontal -8
 
+Control Mod1 0 :ExecCommand urxvt -e bash -c "lein repl"
+
 Control Mod1 Shift r :Restart
 
 Mod4 l :ExecCommand gnome-screensaver-command --lock
