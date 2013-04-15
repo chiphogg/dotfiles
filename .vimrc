@@ -63,6 +63,7 @@ Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'argtextobj.vim'
 
 " Other plugins
+Bundle 'SirVer/ultisnips'
 Bundle 'YankRing.vim'
 Bundle 'VimClojure'
 Bundle 'scrooloose/syntastic'
