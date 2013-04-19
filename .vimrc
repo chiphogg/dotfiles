@@ -411,11 +411,6 @@ nnoremap <silent> <LocalLeader>b :CommandTBuffer<CR>
 set tags=./.tags;
 let g:easytags_dynamic_files = 2
 
-" The default of 4000 ms (4 sec) conflicts with YouCompleteMe, which
-" updates every 2 seconds by default.  I like the more frequent updating, and
-" I want easytags to stop complaining about it. :)
-let g:easytags_updatetime_min = 500
-
 " LaTeX Suite ----------------------------------------------------------{{{2
 set winaltkeys=no
 onoremap lp ?^$\\|^\s*\(\\begin\\|\\end\\|\\label\)?1<CR>//-1<CR>.<CR>
