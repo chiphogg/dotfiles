@@ -399,6 +399,9 @@ set vb t_vb=""
 " Default colorscheme for terminal-mode vim is unreadable
 colorscheme desert
 
+" Don't litter directories with swap files; stick them all here.
+set directory=~/.vimswp
+
 " Plugin settings ---------------------------------------------------------{{{1
 
 " fugitive -------------------------------------------------------------{{{2
