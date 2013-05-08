@@ -40,7 +40,6 @@ command! -nargs=+ BundleIfNewer call s:BundleIfNewer(<f-args>)
 " }}}2
 
 " tpope's plugins (Tim Pope)
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
@@ -50,8 +49,15 @@ Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-capslock'
 Bundle 'tpope/vim-sleuth'
 
+" git
+Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
+
 " C++
 BundleIfNewer 7.3.831 'Valloric/YouCompleteMe'
+
+" Python
+Bundle 'klen/python-mode'
 
 " tomtom's plugins (Tom Link)
 Bundle 'tomtom/viki_vim'
