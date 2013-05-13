@@ -483,9 +483,6 @@ let vimrplugin_underscore = 0
 
 " vimwiki --------------------------------------------------------------{{{2
 
-" Enable folding; it's really handy :)
-let g:vimwiki_folding=1
-
 " I already use ',ww' for zooming around windows, so I need to remap it:
 nmap <Leader><Leader>ww <Plug>VimwikiIndex
 
@@ -581,8 +578,13 @@ augroup filetype_vim
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" voomtree -------------------------------------------------------------{{{2
+" vimwiki --------------------------------------------------------------{{{2
+augroup filetype_vimwiki
+  autocmd!
+  autocmd FileType vimwiki setlocal foldmethod=syntax
+augroup END
 
+" voomtree -------------------------------------------------------------{{{2
 augroup filetype_voomtree
   autocmd!
   " Let hjkl navigate the tree just like arrow keys.  It's the Vim way. :)
