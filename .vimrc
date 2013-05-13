@@ -440,6 +440,11 @@ let g:leave_my_textwidth_alone = 1
 " NERD-tree ------------------------------------------------------------{{{2
 nnoremap <Leader>/ :NERDTreeToggle<CR>
 
+" UltiSnips ------------------------------------------------------------{{{2
+let g:UltiSnipsExpandTrigger = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+
 " viki -----------------------------------------------------------------{{{2
 
 augroup filetype_viki
