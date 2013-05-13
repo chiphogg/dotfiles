@@ -56,9 +56,6 @@ Bundle 'airblade/vim-gitgutter'
 " C++
 BundleIfNewer 7.3.831 'Valloric/YouCompleteMe'
 
-" Python
-Bundle 'klen/python-mode'
-
 " tomtom's plugins (Tom Link)
 Bundle 'tomtom/viki_vim'
 Bundle 'tomtom/tlib_vim'
