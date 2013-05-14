@@ -162,6 +162,25 @@ func! List_toggle()
         \ (&list ? l:nolist_feat : l:list_feat).")"
 endfunc
 
+" Soft-wrapping is more readable than scrolling...
+set wrap
+" ...but don't break in the middle of a word!
+set linebreak
+
+" Almost every filetype is better with autoindent.
+" (Let filetype-specific settings handle the rest.)
+set autoindent
+
+" Format options (full list at ":help fo-table"; see also ":help 'fo'")
+" Change between += and -= to toggle an option
+set fo -=t  " Don't auto-wrap text...
+set fo +=c  " ...or comments; I believe this is causing epic E323/E316 errors
+            " with easytag.vim (and possibly others).
+set fo +=q  " Let me format comments manually.
+set fo +=r  " Auto-continue comments if I'm still typing away in insert mode,
+set fo -=o  "  but not if I'm coming from normal mode (I find this annoying).
+set fo +=n  " Handle numbered lists properly: a lifesaver when writing emails!
+
 " Folding --------------------------------------------------------------{{{2
 "
 " Fold Focusing
