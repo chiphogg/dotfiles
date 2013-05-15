@@ -20,6 +20,7 @@ Bundle 'gmarik/vundle'
 
 " Vim enhancements
 Bundle 'bufexplorer.zip'
+Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'scrooloose/nerdtree'
 Bundle 'SirVer/ultisnips'
@@ -32,10 +33,17 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-fugitive'
 
-" Programming
-Bundle 'Valloric/YouCompleteMe'
+" General Programming
 Bundle 'scrooloose/syntastic'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'xolox/vim-easytags'
+
+" R Programming
+Bundle 'jcfaria/Vim-R-plugin'
+
+" Markdown and markup
+Bundle 'tpope/vim-markdown'
+Bundle 'vim-pandoc/vim-pandoc'
 
 " My productivity system
 Bundle 'chiphogg/vim-vtd'
@@ -230,6 +238,11 @@ let g:easytags_dynamic_files = 2
 
 " NERD-tree ------------------------------------------------------------{{{2
 nnoremap <Leader>/ :NERDTreeToggle<CR>
+
+" CtrlP ----------------------------------------------------------------{{{2
+" Show hidden files.
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_follow_symlinks = 1
 
 " UltiSnips ------------------------------------------------------------{{{2
 let g:UltiSnipsExpandTrigger = "<c-j>"
