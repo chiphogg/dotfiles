@@ -240,9 +240,16 @@ let g:easytags_dynamic_files = 2
 nnoremap <Leader>/ :NERDTreeToggle<CR>
 
 " CtrlP ----------------------------------------------------------------{{{2
+
 " Show hidden files.
 let g:ctrlp_show_hidden = 1
+
 let g:ctrlp_follow_symlinks = 1
+
+" Vim-R Plugin ---------------------------------------------------------{{{2
+
+" Don't expand _ into <-.
+let vimrplugin_underscore = 0
 
 " UltiSnips ------------------------------------------------------------{{{2
 let g:UltiSnipsExpandTrigger = "<c-j>"
