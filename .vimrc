@@ -20,7 +20,6 @@ Bundle 'gmarik/vundle'
 
 " Vim enhancements
 Bundle 'bufexplorer.zip'
-Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'scrooloose/nerdtree'
 Bundle 'SirVer/ultisnips'
