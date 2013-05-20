@@ -37,7 +37,10 @@ Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'xolox/vim-easytags'
 
-" R Programming
+" Python
+Bundle 'klen/python-mode'
+
+" R
 Bundle 'jcfaria/Vim-R-plugin'
 
 " Markdown and markup
