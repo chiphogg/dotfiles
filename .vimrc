@@ -296,12 +296,15 @@ let g:ycm_autoclose_preview_window_after_completion = 0
 " Start autocompleting right away, after a single character!
 let g:ycm_min_num_of_chars_for_completion = 1
 
-" g[ should jump to the declaration (currently only works in C-family files).
-nnoremap g[ :YcmCompleter GoToDeclaration<CR>
-
 " This gives me nice autocompletion for C++ #include's if I change vim's working
 " directory to the project root.
 let g:ycm_filepath_completion_use_working_dir = 1
+
+" g[ should jump to the declaration (currently only works in C-family files).
+nnoremap <silent> g[ :YcmCompleter GoToDeclaration<CR>
+" Force a *synchronous* compile-and-check.
+" (Caution!  Blocking, and potentially slow.)
+nnoremap <silent> <Leader>c :YcmForceCompileAndDiagnostics<CR>
 
 " Filetype settings -------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
