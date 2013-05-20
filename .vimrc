@@ -251,6 +251,9 @@ let g:ctrlp_follow_symlinks = 1
 " Don't expand _ into <-.
 let vimrplugin_underscore = 0
 
+" Don't line things up with opening braces.
+let r_indent_align_args = 0
+
 " UltiSnips ------------------------------------------------------------{{{2
 let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
