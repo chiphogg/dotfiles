@@ -250,6 +250,10 @@ let g:ctrlp_show_hidden = 1
 
 let g:ctrlp_follow_symlinks = 1
 
+" python-mode ----------------------------------------------------------{{{2
+let g:pymode_folding = 1
+let g:pymode_motion = 1
+
 " Vim-R Plugin ---------------------------------------------------------{{{2
 
 " Don't expand _ into <-.
