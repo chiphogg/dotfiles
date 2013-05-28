@@ -37,6 +37,7 @@ Bundle 'sjl/splice.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'xolox/vim-easytags'
+Bundle 'xolox/vim-misc'
 
 " Python
 Bundle 'klen/python-mode'
