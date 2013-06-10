@@ -307,6 +307,9 @@ let g:ycm_min_num_of_chars_for_completion = 1
 " directory to the project root.
 let g:ycm_filepath_completion_use_working_dir = 1
 
+" Add programming language keywords to the autocomplete list.
+let g:ycm_seed_identifiers_with_syntax = 1
+
 " g[ should jump to the declaration (currently only works in C-family files).
 nnoremap <silent> g[ :YcmCompleter GoToDeclaration<CR>
 " Force a *synchronous* compile-and-check.
