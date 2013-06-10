@@ -321,6 +321,12 @@ nnoremap <silent> <Leader>C :YcmCompleter ClearCompilationFlagCache<CR>
 " Filetype settings -------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
 
+" gitconfig ------------------------------------------------------------{{{2
+
+" `git config` uses hard tabs, but manually editing `~/.gitconfig` does not.
+"  This line corrects that inconsistency.
+autocmd FileType gitconfig setl noexpandtab shiftwidth=8 tabstop=8
+
 " Vimscript ------------------------------------------------------------{{{2
 augroup filetype_vim
   autocmd!
