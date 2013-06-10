@@ -311,6 +311,8 @@ nnoremap <silent> g[ :YcmCompleter GoToDeclaration<CR>
 " Force a *synchronous* compile-and-check.
 " (Caution!  Blocking, and potentially slow.)
 nnoremap <silent> <Leader>c :YcmForceCompileAndDiagnostics<CR>
+" Try this before restarting vim (useful if the cache gets stale).
+nnoremap <silent> <Leader>C :YcmCompleter ClearCompilationFlagCache<CR>
 
 " Filetype settings -------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
