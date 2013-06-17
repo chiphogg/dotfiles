@@ -1,3 +1,20 @@
-snippet echo "Echo the value of a variable" !b
-echomsg '$1: "'.${1}.'"'
+# If '~' represents UltiSnips expansion, then:
+#   echo~
+# results in
+#   echomsg 'varname: "' . varname . '"'
+# which gives a convenient way to output the value of 'varname'.
+#
+# For multiple variables, consider adding a number to align the output.  For
+# instance:
+#   echo15~
+# gives
+#   echomsg '        varname: "' . varname . '"'
+# Note:      ^- 15 spaces -^
+# which lets us line up differently-sized variables using another echo15~:
+#   echomsg '   my_other_var: "' . my_other_var . '"'
+snippet '\becho(\d*)' "Echo the value of a variable" !r
+echomsg '$1:`!p
+# Pads the output string up to the requested length (if any).
+snip.rv = ' ' * (int(match.group(1)) - len(t[1])) if match.group(1) else ''
+` "' . ${1} . '"'
 endsnippet
