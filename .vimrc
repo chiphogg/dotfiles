@@ -31,7 +31,6 @@ Bundle 'tpope/vim-unimpaired'
 " Git plugins
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-fugitive'
-Bundle 'sjl/splice.vim'
 
 " General Programming
 Bundle 'scrooloose/syntastic'
