@@ -16,5 +16,5 @@ snippet '\becho(\d*)' "Echo the value of a variable" !r
 echomsg '$1:`!p
 # Pads the output string up to the requested length (if any).
 snip.rv = ' ' * (int(match.group(1)) - len(t[1])) if match.group(1) else ''
-` "' . ${1} . '"'
+` "' . string(${1}) . '"'
 endsnippet
