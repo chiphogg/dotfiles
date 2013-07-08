@@ -38,6 +38,14 @@ Bundle 'tpope/vim-endwise'
 Bundle 'xolox/vim-easytags'
 Bundle 'xolox/vim-misc'
 
+" At work, or not:
+if filereadable(expand('~/.at_google'))
+  " Google-only
+else
+  " Non-Google only
+  Bundle 'Valloric/YouCompleteMe'
+endif
+
 " Python
 Bundle 'klen/python-mode'
 
