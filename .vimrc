@@ -35,7 +35,6 @@ Bundle 'tpope/vim-fugitive'
 " General Programming
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-endwise'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'xolox/vim-easytags'
 Bundle 'xolox/vim-misc'
 
