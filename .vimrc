@@ -250,6 +250,14 @@ set laststatus=2
 
 nnoremap <silent> <LocalLeader>gs :Gstatus<CR>
 
+" :Ggrep the word under the cursor (populates quickfix list).
+nnoremap <silent> <LocalLeader>gg :GitGrepWordUnderCursor<CR>
+command! -nargs=0 GitGrepWordUnderCursor call s:GitGrepWordUnderCursorImpl()
+function! s:GitGrepWordUnderCursorImpl()
+  let l:word = escape(expand('<cword>'), '#')
+  execute "Glgrep '\\b" . l:word . "\\b'"
+endfunction
+
 " easytags -------------------------------------------------------------{{{2
 
 " Make all tag files local to each project, rather than global.
