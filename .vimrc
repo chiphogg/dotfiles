@@ -29,6 +29,14 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 
+" Text objects (kana/vim-textobj-user is required by all the rest).
+Bundle 'kana/vim-textobj-user'
+Bundle 'glts/vim-textobj-comment'
+Bundle 'Julian/vim-textobj-variable-segment'
+Bundle 'kana/vim-textobj-entire'
+Bundle 'kana/vim-textobj-indent'
+Bundle 'sgur/vim-textobj-parameter'
+
 " Git plugins
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-fugitive'
