@@ -67,7 +67,6 @@ Bundle 'vim-pandoc/vim-pandoc'
 
 " My productivity system
 Bundle 'chiphogg/vim-vtd'
-Bundle 'vimwiki'
 
 filetype plugin indent on    " required for vundle (and generally a good idea!)
 
