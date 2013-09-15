@@ -36,6 +36,7 @@ Bundle 'Julian/vim-textobj-variable-segment'
 Bundle 'kana/vim-textobj-entire'
 Bundle 'kana/vim-textobj-indent'
 Bundle 'sgur/vim-textobj-parameter'
+Bundle 'tyru/open-browser.vim'
 
 " Git plugins
 Bundle 'airblade/vim-gitgutter'
@@ -272,6 +273,12 @@ nnoremap <Leader>/ :NERDTreeToggle<CR>
 let g:ctrlp_show_hidden = 1
 
 let g:ctrlp_follow_symlinks = 1
+
+" open-browser ---------------------------------------------------------{{{2
+" netrw already uses this mapping; disable it.
+let g:netrw_nogx = 1
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
 
 " python-mode ----------------------------------------------------------{{{2
 let g:pymode_folding = 1
