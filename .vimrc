@@ -277,8 +277,8 @@ let g:ctrlp_follow_symlinks = 1
 " open-browser ---------------------------------------------------------{{{2
 " netrw already uses this mapping; disable it.
 let g:netrw_nogx = 1
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
+nmap gx <Plug>(openbrowser-open)
+vmap gx <Plug>(openbrowser-open)
 
 " python-mode ----------------------------------------------------------{{{2
 let g:pymode_folding = 1
