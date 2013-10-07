@@ -208,6 +208,7 @@ set fo +=q  " Let me format comments manually.
 set fo +=r  " Auto-continue comments if I'm still typing away in insert mode,
 set fo -=o  "  but not if I'm coming from normal mode (I find this annoying).
 set fo +=n  " Handle numbered lists properly: a lifesaver when writing emails!
+set fo +=j  " Be smart about comment leaders when joining lines.
 
 " Folding --------------------------------------------------------------{{{2
 "
