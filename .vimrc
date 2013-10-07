@@ -21,7 +21,6 @@ Bundle 'gmarik/vundle'
 " Vim enhancements
 Bundle 'bufexplorer.zip'
 Bundle 'bling/vim-airline'
-Bundle 'scrooloose/nerdtree'
 Bundle 'SirVer/ultisnips'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-repeat'
@@ -267,9 +266,6 @@ endfunction
 " Make all tag files local to each project, rather than global.
 set tags=./.tags;
 let g:easytags_dynamic_files = 2
-
-" NERD-tree ------------------------------------------------------------{{{2
-nnoremap <Leader>/ :NERDTreeToggle<CR>
 
 " CtrlP ----------------------------------------------------------------{{{2
 
