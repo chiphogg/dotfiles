@@ -259,7 +259,7 @@ nnoremap <silent> <LocalLeader>gg :GitGrepWordUnderCursor<CR>
 command! -nargs=0 GitGrepWordUnderCursor call s:GitGrepWordUnderCursorImpl()
 function! s:GitGrepWordUnderCursorImpl()
   let l:word = escape(expand('<cword>'), '#')
-  execute "Glgrep '\\b" . l:word . "\\b'"
+  execute "Ggrep '\\b" . l:word . "\\b'"
 endfunction
 
 " easytags -------------------------------------------------------------{{{2
