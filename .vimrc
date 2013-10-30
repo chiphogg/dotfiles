@@ -251,6 +251,19 @@ set laststatus=2
 " Use powerline symbols.
 let g:airline_powerline_fonts = 1
 
+" CtrlP ----------------------------------------------------------------{{{2
+
+" Show hidden files.
+let g:ctrlp_show_hidden = 1
+
+let g:ctrlp_follow_symlinks = 1
+
+" easytags -------------------------------------------------------------{{{2
+
+" Make all tag files local to each project, rather than global.
+set tags=./.tags;
+let g:easytags_dynamic_files = 2
+
 " fugitive -------------------------------------------------------------{{{2
 
 nnoremap <silent> <LocalLeader>gs :Gstatus<CR>
@@ -262,19 +275,6 @@ function! s:GitGrepWordUnderCursorImpl()
   let l:word = escape(expand('<cword>'), '#')
   execute "Ggrep '\\b" . l:word . "\\b'"
 endfunction
-
-" easytags -------------------------------------------------------------{{{2
-
-" Make all tag files local to each project, rather than global.
-set tags=./.tags;
-let g:easytags_dynamic_files = 2
-
-" CtrlP ----------------------------------------------------------------{{{2
-
-" Show hidden files.
-let g:ctrlp_show_hidden = 1
-
-let g:ctrlp_follow_symlinks = 1
 
 " open-browser ---------------------------------------------------------{{{2
 " netrw already uses this mapping; disable it.
@@ -294,6 +294,12 @@ let g:pymode_rope_enable_shortcuts = 0
 " Not sure why I'd ever want my syntax checked when I'm quitting...
 let g:syntastic_check_on_wq = 0
 
+" UltiSnips ------------------------------------------------------------{{{2
+let g:UltiSnipsExpandTrigger = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
+let g:UltiSnipsDontReverseSearchPath=1
+
 " Vim-R Plugin ---------------------------------------------------------{{{2
 
 " Don't expand _ into <-.
@@ -301,12 +307,6 @@ let vimrplugin_underscore = 0
 
 " Don't line things up with opening braces.
 let r_indent_align_args = 0
-
-" UltiSnips ------------------------------------------------------------{{{2
-let g:UltiSnipsExpandTrigger = "<c-j>"
-let g:UltiSnipsJumpForwardTrigger = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:UltiSnipsDontReverseSearchPath=1
 
 " vimwiki --------------------------------------------------------------{{{2
 
