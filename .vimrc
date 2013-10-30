@@ -289,6 +289,11 @@ let g:pymode_motion = 1
 " Rope shortcuts make <C-X> slow, and I never use rope.
 let g:pymode_rope_enable_shortcuts = 0
 
+" Syntastic ------------------------------------------------------------{{{2
+
+" Not sure why I'd ever want my syntax checked when I'm quitting...
+let g:syntastic_check_on_wq = 0
+
 " Vim-R Plugin ---------------------------------------------------------{{{2
 
 " Don't expand _ into <-.
