@@ -39,7 +39,6 @@ Bundle 'sgur/vim-textobj-parameter'
 Bundle 'tyru/open-browser.vim'
 
 " Git plugins
-Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-fugitive'
 
 " General Programming
