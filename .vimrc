@@ -28,6 +28,7 @@ Bundle 'tpope/vim-sleuth'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-vinegar'
 Bundle 'tyru/open-browser.vim'
 
 " Text objects (kana/vim-textobj-user is required by all the rest).
