@@ -330,9 +330,8 @@ endfunction
 
 " VTD ------------------------------------------------------------------{{{2
 
-" I like my VTD commands to start with ',t'
-" (',th' to go Home, ',td' to check off as "done", etc.)
-let g:vtd_map_prefix=',t'
+" Enable keymappings for VTD.
+Glaive vim_vtd plugin[mappings]
 
 " YouCompleteMe --------------------------------------------------------{{{2
 
