@@ -18,6 +18,11 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " ----------------------------------------------------------------------}}}2
 
+" Google's vim enhancements
+Bundle 'google/maktaba'
+Bundle 'google/glaive'
+call glaive#Install()
+
 " Vim enhancements
 Bundle 'bufexplorer.zip'
 Bundle 'bling/vim-airline'
