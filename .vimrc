@@ -54,8 +54,9 @@ Bundle 'xolox/vim-easytags'
 Bundle 'xolox/vim-misc'
 
 " At work, or not:
-if filereadable(expand('~/.at_google'))
+if filereadable(expand('~/.at_google.vim'))
   " Google-only
+  source ~/.at_google.vim
 else
   " Non-Google only
   Bundle 'Valloric/YouCompleteMe'
