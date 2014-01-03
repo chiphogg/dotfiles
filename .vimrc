@@ -331,7 +331,7 @@ endfunction
 " VTD ------------------------------------------------------------------{{{2
 
 " Enable keymappings for VTD.
-Glaive vim_vtd plugin[mappings]
+Glaive vtd plugin[mappings]
 
 " YouCompleteMe --------------------------------------------------------{{{2
 
