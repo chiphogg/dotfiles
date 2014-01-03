@@ -18,11 +18,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 " ----------------------------------------------------------------------}}}2
 
-" Google's vim enhancements
-Bundle 'google/maktaba'
-Bundle 'google/glaive'
-call glaive#Install()
-
 " Vim enhancements
 Bundle 'bufexplorer.zip'
 Bundle 'bling/vim-airline'
@@ -60,6 +55,9 @@ if filereadable(expand('~/.at_google.vim'))
 else
   " Non-Google only
   Bundle 'Valloric/YouCompleteMe'
+  Bundle 'google/maktaba'
+  Bundle 'google/glaive'
+  call glaive#Install()
 endif
 
 " Python
