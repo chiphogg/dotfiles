@@ -290,8 +290,8 @@ vmap gx <Plug>(openbrowser-open)
 let g:pymode_folding = 1
 let g:pymode_motion = 1
 
-" Rope shortcuts make <C-X> slow, and I never use rope.
-let g:pymode_rope_enable_shortcuts = 0
+" I never use rope.
+let g:pymode_rope = 0
 
 " Syntastic ------------------------------------------------------------{{{2
 
