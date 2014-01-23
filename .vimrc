@@ -312,6 +312,9 @@ let vimrplugin_underscore = 0
 " Don't line things up with opening braces.
 let r_indent_align_args = 0
 
+" Insert-mode mappings are incredibly annoying.
+let g:vimrplugin_insert_mode_cmds = 0
+
 " vimwiki --------------------------------------------------------------{{{2
 
 " Open URLs with chrome, if possible
