@@ -295,6 +295,10 @@ let g:pymode_rope = 0
 
 " Syntastic ------------------------------------------------------------{{{2
 
+" The location list is really convenient, and I always want to use it.
+" (Don't forget that vim-unimpaired makes it even nicer!)
+let g:syntastic_always_populate_loc_list = 1
+
 " Not sure why I'd ever want my syntax checked when I'm quitting...
 let g:syntastic_check_on_wq = 0
 
