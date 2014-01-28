@@ -1,4 +1,3 @@
-colorscheme desert
 set gfn=Inconsolata\ Medium\ 12
 
 " We have to disable the bell here too; it gets reset for gvim. See:
