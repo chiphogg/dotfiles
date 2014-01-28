@@ -360,6 +360,13 @@ let g:ycm_filepath_completion_use_working_dir = 1
 " Add programming language keywords to the autocomplete list.
 let g:ycm_seed_identifiers_with_syntax = 1
 
+" The signs are nice, but they're way too slow for me.
+let g:ycm_enable_diagnostic_signs = 0
+
+" This can change the location list out from under me.  Instead, populate it
+" manually using :YcmDiags.
+let g:ycm_always_populate_location_list = 0
+
 " g[ should jump to the declaration (currently only works in C-family files).
 nnoremap <silent> g[ :YcmCompleter GoToDeclaration<CR>
 " Force a *synchronous* compile-and-check.
