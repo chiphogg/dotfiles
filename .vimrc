@@ -244,6 +244,7 @@ set showcmd  " Show partial commands as you type
 
 " Occasionally useful, but mainly too annoying.
 set nohlsearch
+set completeopt-=preview
 
 " Command line history: the default is just 20 lines!
 set history=500
@@ -356,10 +357,8 @@ Glaive vtd plugin[mappings]
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments_and_strings = 1
 
-" Pop up a preview window with more info about the selected autocomplete option.
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 0
-let g:ycm_autoclose_preview_window_after_insertion = 1
+" Skip the preview window.
+let g:ycm_add_preview_to_completeopt = 0
 
 " Start autocompleting right away, after a single character!
 let g:ycm_min_num_of_chars_for_completion = 1
