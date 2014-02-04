@@ -389,27 +389,28 @@ nnoremap <silent> <Leader>C :YcmCompleter ClearCompilationFlagCache<CR>
 " Repopulate the location list.
 nnoremap <silent> <Leader>l :YcmDiags<CR>
 
-" Filetype settings -------------------------------------------------------{{{1
+" Filetype settings (wrapped in an augroup for re-entrantness) ------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
 
-" gitconfig ------------------------------------------------------------{{{2
-
-" `git config` uses hard tabs, but manually editing `~/.gitconfig` does not.
-"  This line corrects that inconsistency.
-autocmd FileType gitconfig setl noexpandtab shiftwidth=8 tabstop=8
-
-" Vimscript ------------------------------------------------------------{{{2
-augroup filetype_vim
+augroup vimrc_filetypes
   autocmd!
+
+  " gitconfig ------------------------------------------------------------{{{2
+
+  " `git config` uses hard tabs, but manually editing `~/.gitconfig` does not.
+  "  This line corrects that inconsistency.
+  autocmd FileType gitconfig setl noexpandtab shiftwidth=8 tabstop=8
+
+  " Vimscript ------------------------------------------------------------{{{2
+
   " Fold based on the triple-{ symbol.  sjl explains why you want this:
   " http://learnvimscriptthehardway.stevelosh.com/chapters/18.html
   autocmd FileType vim setlocal foldmethod=marker
-augroup END
 
-" vimwiki --------------------------------------------------------------{{{2
-augroup filetype_vimwiki
-  autocmd!
+  " vimwiki --------------------------------------------------------------{{{2
   autocmd FileType vimwiki setlocal foldmethod=syntax
+
+" augroup END ----------------------------------------------------------{{{2
 augroup END
 
 " Local settings ----------------------------------------------------------{{{1
