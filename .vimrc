@@ -377,6 +377,7 @@ let g:ycm_enable_diagnostic_signs = 0
 " This can change the location list out from under me.  Instead, populate it
 " manually using :YcmDiags.
 let g:ycm_always_populate_location_list = 0
+let g:ycm_open_loclist_on_ycm_diags = 0
 
 " g[ should jump to the declaration (currently only works in C-family files).
 nnoremap <silent> g[ :YcmCompleter GoToDeclaration<CR>
@@ -385,6 +386,8 @@ nnoremap <silent> g[ :YcmCompleter GoToDeclaration<CR>
 nnoremap <silent> <Leader>c :YcmForceCompileAndDiagnostics<CR>
 " Try this before restarting vim (useful if the cache gets stale).
 nnoremap <silent> <Leader>C :YcmCompleter ClearCompilationFlagCache<CR>
+" Repopulate the location list.
+nnoremap <silent> <Leader>l :YcmDiags<CR>
 
 " Filetype settings -------------------------------------------------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
