@@ -395,6 +395,9 @@ nnoremap <silent> <Leader>l :YcmDiags<CR>
 augroup vimrc_filetypes
   autocmd!
 
+  " gitcommit ------------------------------------------------------------{{{2
+  autocmd FileType gitcommit setlocal textwidth=72
+
   " gitconfig ------------------------------------------------------------{{{2
 
   " `git config` uses hard tabs, but manually editing `~/.gitconfig` does not.
