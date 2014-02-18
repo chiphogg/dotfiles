@@ -298,6 +298,11 @@ let g:netrw_nogx = 1
 nmap gx <Plug>(openbrowser-open)
 vmap gx <Plug>(openbrowser-open)
 
+" pandoc ---------------------------------------------------------------{{{2
+
+" I find conceal harms my understanding of markdown documents.
+let g:pandoc_use_conceal = 0
+
 " python-mode ----------------------------------------------------------{{{2
 let g:pymode_folding = 1
 let g:pymode_motion = 1
