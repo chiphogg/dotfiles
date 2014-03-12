@@ -329,8 +329,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
 " Vim-R Plugin ---------------------------------------------------------{{{2
 
-" Don't expand _ into <-.
-let vimrplugin_underscore = 0
+" Expand << into <-.
+let vimrplugin_assign_map = '<<'
 
 " Don't line things up with opening braces.
 let r_indent_align_args = 0
