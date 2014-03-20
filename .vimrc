@@ -115,6 +115,10 @@ inoremap <C-W> <C-G>u<C-W>
 nnoremap ZL zL
 nnoremap ZH zH
 
+" This makes it easier to tell when I hit the last search result.  In practice,
+" I rarely want it to wrap around more than once, and 'gg' is easy enough.
+set nowrapscan
+
 " Easy Datestamp <F4> and timestamp <F5> ----------------------------{{{3
 nnoremap <F4> "=strftime("%F")<CR>p
 vnoremap <F4> "=strftime("%F")<CR>p
