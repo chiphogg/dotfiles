@@ -326,7 +326,6 @@ let g:syntastic_check_on_wq = 0
 let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
-let g:UltiSnipsDontReverseSearchPath=1
 
 " Vim-R Plugin ---------------------------------------------------------{{{2
 
