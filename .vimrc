@@ -15,38 +15,38 @@ call vundle#rc()
 
 " let Vundle manage Vundle ---------------------------------------------{{{2
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 " ----------------------------------------------------------------------}}}2
 
 " Vim enhancements
-Bundle 'bufexplorer.zip'
-Bundle 'bling/vim-airline'
-Bundle 'SirVer/ultisnips'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-sleuth'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-vinegar'
-Bundle 'tyru/open-browser.vim'
+Plugin 'bufexplorer.zip'
+Plugin 'bling/vim-airline'
+Plugin 'SirVer/ultisnips'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-vinegar'
+Plugin 'tyru/open-browser.vim'
 
 " Text objects (kana/vim-textobj-user is required by all the rest).
-Bundle 'kana/vim-textobj-user'
-Bundle 'glts/vim-textobj-comment'
-Bundle 'Julian/vim-textobj-variable-segment'
-Bundle 'kana/vim-textobj-entire'
-Bundle 'kana/vim-textobj-indent'
-Bundle 'sgur/vim-textobj-parameter'
+Plugin 'kana/vim-textobj-user'
+Plugin 'glts/vim-textobj-comment'
+Plugin 'Julian/vim-textobj-variable-segment'
+Plugin 'kana/vim-textobj-entire'
+Plugin 'kana/vim-textobj-indent'
+Plugin 'sgur/vim-textobj-parameter'
 
 " Git plugins
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 
 " General Programming
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-endwise'
-Bundle 'xolox/vim-easytags'
-Bundle 'xolox/vim-misc'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-endwise'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
 
 " At work, or not:
 if filereadable(expand('~/.at_google.vim'))
@@ -54,24 +54,24 @@ if filereadable(expand('~/.at_google.vim'))
   source ~/.at_google.vim
 else
   " Non-Google only
-  Bundle 'Valloric/YouCompleteMe'
-  Bundle 'google/maktaba'
-  Bundle 'google/glaive'
+  Plugin 'Valloric/YouCompleteMe'
+  Plugin 'google/maktaba'
+  Plugin 'google/glaive'
   call glaive#Install()
 endif
 
 " Python
-Bundle 'klen/python-mode'
+Plugin 'klen/python-mode'
 
 " R
-Bundle 'jcfaria/Vim-R-plugin'
+Plugin 'jcfaria/Vim-R-plugin'
 
 " Markdown and markup
-Bundle 'tpope/vim-markdown'
-Bundle 'vim-pandoc/vim-pandoc'
+Plugin 'tpope/vim-markdown'
+Plugin 'vim-pandoc/vim-pandoc'
 
 " My productivity system
-Bundle 'chiphogg/vim-vtd'
+Plugin 'chiphogg/vim-vtd'
 
 filetype plugin indent on    " required for vundle (and generally a good idea!)
 
