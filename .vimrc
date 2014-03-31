@@ -401,6 +401,9 @@ nnoremap <silent> <Leader>l :YcmDiags<CR>
 augroup vimrc_filetypes
   autocmd!
 
+  " physicsforums --------------------------------------------------------{{{2
+  autocmd FileType physicsforums setlocal textwidth=0
+
   " gitcommit ------------------------------------------------------------{{{2
   autocmd FileType gitcommit setlocal textwidth=72
 
