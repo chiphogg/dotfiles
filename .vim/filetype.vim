@@ -3,6 +3,6 @@ if exists("did_load_filetypes")
 endif
 
 augroup filetypedetect
-  " tab-delimited files go here
+  " Tab-delimited files go here.
   au BufNewFile,BufRead *.tab set noexpandtab
 augroup END
