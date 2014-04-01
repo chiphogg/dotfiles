@@ -52,7 +52,6 @@ Control Mod1 j :MoveDown 30
 Control Mod1 k :MoveUp 30
 Control Mod1 l :MoveRight 30
 Control Mod1 m :MaximizeWindow
-Control Mod1 n :Exec /home/chogg/bin/run_or_switchto "(/mnt/share/chip_notes/src) - GVIM" "/home/chogg/bin/VikiIndex /mnt/share/chip_notes/src"
 Control Mod1 o :ResizeHorizontal 8
 Control Mod1 p :ExecCommand urxvt -e bash -c ipython
 Control Mod1 q :Close
