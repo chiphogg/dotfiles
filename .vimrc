@@ -21,7 +21,6 @@ Plugin 'gmarik/vundle'
 " Vim enhancements
 Plugin 'bufexplorer.zip'
 Plugin 'bling/vim-airline'
-Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sleuth'
@@ -30,6 +29,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'tyru/open-browser.vim'
+
+" Snippets.
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " Text objects (kana/vim-textobj-user is required by all the rest).
 Plugin 'kana/vim-textobj-user'
