@@ -20,7 +20,7 @@ Plugin 'gmarik/vundle'
 
 " Vim enhancements
 Plugin 'bufexplorer.zip'
-Plugin 'bling/vim-airline'
+Plugin 'chiphogg/vim-airline'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sleuth'
