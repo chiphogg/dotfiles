@@ -376,6 +376,11 @@ endfunction
 " Enable keymappings for VTD.
 Glaive vtd plugin[mappings]
 
+" Vundle ---------------------------------------------------------------{{{2
+
+" Keyboard shortcut to update vundle plugins.
+nnoremap <Leader>vu :VundleUpdate<CR>
+
 " YouCompleteMe --------------------------------------------------------{{{2
 
 " Comments and strings are fair game for autocompletion.
