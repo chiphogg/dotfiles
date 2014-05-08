@@ -273,6 +273,14 @@ set laststatus=2
 " Use powerline symbols.
 let g:airline_powerline_fonts = 1
 
+" Show VTD late/due counts in statusline.
+function! PrependVtdToAirline(...)
+  call a:1.add_section('', '%#Error#%{vtd#statusline#Late()}%*')
+  call a:1.add_section('', '%#Todo#%{vtd#statusline#Due()}%*')
+  return 0
+endfunction
+call airline#add_statusline_func('PrependVtdToAirline')
+
 " CtrlP ----------------------------------------------------------------{{{2
 
 " Show hidden files.
