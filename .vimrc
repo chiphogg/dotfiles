@@ -21,6 +21,7 @@ Plugin 'gmarik/vundle'
 " Vim enhancements
 Plugin 'bufexplorer.zip'
 Plugin 'chiphogg/vim-airline'
+Plugin 'eiginn/netrw'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sleuth'
@@ -305,6 +306,12 @@ function! s:GitGrepWordUnderCursorImpl()
   let l:word = escape(expand('<cword>'), '#')
   execute "Ggrep '\\b" . l:word . "\\b'"
 endfunction
+
+" netrw ----------------------------------------------------------------{{{2
+
+" <Ctrl-^> should never go to netrw; we'd just use `-` (from vinegar) to do
+" that.  Make it go to the previous actual file instead.
+let g:netrw_altfile = 1
 
 " open-browser ---------------------------------------------------------{{{2
 " netrw already uses this mapping; disable it.
