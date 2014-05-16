@@ -21,7 +21,7 @@ Plugin 'gmarik/vundle'
 " Vim enhancements
 Plugin 'bufexplorer.zip'
 Plugin 'chiphogg/vim-airline'
-Plugin 'eiginn/netrw'
+Plugin 'eiginn/netrw', {'pinned': 1}
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sleuth'
@@ -281,13 +281,6 @@ function! PrependVtdToAirline(...)
   return 0
 endfunction
 call airline#add_statusline_func('PrependVtdToAirline')
-
-" CtrlP ----------------------------------------------------------------{{{2
-
-" Show hidden files.
-let g:ctrlp_show_hidden = 1
-
-let g:ctrlp_follow_symlinks = 1
 
 " easytags -------------------------------------------------------------{{{2
 
