@@ -349,21 +349,6 @@ let r_indent_align_args = 0
 " Insert-mode mappings are incredibly annoying.
 let g:vimrplugin_insert_mode_cmds = 0
 
-" vimwiki --------------------------------------------------------------{{{2
-
-" Open URLs with chrome, if possible
-function! VimwikiLinkHandler(link)
-  try
-    if a:link =~# '\v^http'
-      execute ':!google-chrome ' . a:link
-      return 1
-    endif
-  catch
-    echo "Couldn't open chrome.  Is the command 'google-chrome'?"
-  endtry
-  return 0
-endfunction
-
 " VTD ------------------------------------------------------------------{{{2
 
 " Enable keymappings for VTD.
@@ -434,9 +419,6 @@ augroup vimrc_filetypes
   " Fold based on the triple-{ symbol.  sjl explains why you want this:
   " http://learnvimscriptthehardway.stevelosh.com/chapters/18.html
   autocmd FileType vim setlocal foldmethod=marker
-
-  " vimwiki --------------------------------------------------------------{{{2
-  autocmd FileType vimwiki setlocal foldmethod=syntax
 
 " augroup END ----------------------------------------------------------{{{2
 augroup END
