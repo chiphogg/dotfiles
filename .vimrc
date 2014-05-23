@@ -3,15 +3,16 @@
 " Vundle -- the Right Way to manage Vim plugins ---------------------------{{{1
 
 " The basic pattern of this code is adapted from gmarik/vundle README.md
-" I believe this section has to come first... but looking back, I'm not
-" really sure *why* I think that.
 
 " Opening boilerplate --------------------------------------------------{{{2
-set nocompatible               " be iMproved
-filetype off                   " required!
+set nocompatible
+
+" It's faster to turn off 'filetype' while loading plugins, and turn it on only
+" once we're ready to start editing.
+filetype off
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle ---------------------------------------------{{{2
 " required!
@@ -78,6 +79,7 @@ Plugin 'vim-pandoc/vim-pandoc'
 " My productivity system
 Plugin 'chiphogg/vim-vtd'
 
+call vundle#end()
 filetype plugin indent on    " required for vundle (and generally a good idea!)
 
 " Basic settings ----------------------------------------------------------{{{1
