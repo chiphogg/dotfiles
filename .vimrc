@@ -80,7 +80,6 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'chiphogg/vim-vtd'
 
 call vundle#end()
-filetype plugin indent on    " required for vundle (and generally a good idea!)
 
 " Basic settings ----------------------------------------------------------{{{1
 
@@ -433,3 +432,6 @@ if filereadable(expand("~/.vimrc_local"))
   source ~/.vimrc_local
 endif
 
+" Turn filetype back on ---------------------------------------------------{{{1
+" This goes at the end for speed reasons.
+filetype plugin indent on
