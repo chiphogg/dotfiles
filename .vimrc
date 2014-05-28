@@ -248,7 +248,6 @@ nnoremap ZK zkzMzv
 
 " When would I ever *not* want these?
 set number   " Line numbers
-syntax on    " syntax highlighting
 set showcmd  " Show partial commands as you type
 
 " Occasionally useful, but mainly too annoying.
@@ -435,3 +434,4 @@ endif
 " Turn filetype back on ---------------------------------------------------{{{1
 " This goes at the end for speed reasons.
 filetype plugin indent on
+syntax on
