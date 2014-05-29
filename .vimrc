@@ -21,7 +21,7 @@ Plugin 'gmarik/vundle'
 " Vim enhancements
 Plugin 'bufexplorer.zip'
 Plugin 'chiphogg/vim-airline'
-Plugin 'eiginn/netrw', {'pinned': 1}
+Plugin 'eiginn/netrw'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
