@@ -20,8 +20,8 @@ Plugin 'gmarik/vundle'
 " ----------------------------------------------------------------------}}}2
 
 " Vim enhancements
+Plugin 'bling/vim-airline'
 Plugin 'bufexplorer.zip'
-Plugin 'chiphogg/vim-airline'
 Plugin 'eiginn/netrw'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-abolish'
