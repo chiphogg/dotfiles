@@ -63,7 +63,6 @@ else
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'google/maktaba'
   Plugin 'google/glaive'
-  call glaive#Install()
 endif
 
 " Python
@@ -80,6 +79,7 @@ Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'chiphogg/vim-vtd'
 
 call vundle#end()
+call glaive#Install()
 
 " Basic settings ----------------------------------------------------------{{{1
 
