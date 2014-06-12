@@ -269,6 +269,11 @@ set directory=~/.vimswp
 " Put a statusline for *every* window, *always*.
 set laststatus=2
 
+" This odd incantation disables scrollbars in gvim.  Source:
+" http://thisblog.runsfreesoftware.com/?q=Remove+scrollbars+from+Gvim
+set guioptions+=LlRrb
+set guioptions-=LlRrb
+
 " Plugin settings ---------------------------------------------------------{{{1
 
 " airline --------------------------------------------------------------{{{2
