@@ -227,13 +227,13 @@ set autoindent
 
 " Format options (full list at ":help fo-table"; see also ":help 'fo'")
 " Change between += and -= to toggle an option
-set fo +=t  " Auto-wrap text...
-set fo +=c  " ...and comments.
-set fo +=q  " Let me format comments manually.
-set fo +=r  " Auto-continue comments if I'm still typing away in insert mode,
-set fo -=o  "  but not if I'm coming from normal mode (I find this annoying).
-set fo +=n  " Handle numbered lists properly: a lifesaver when writing emails!
-set fo +=j  " Be smart about comment leaders when joining lines.
+set formatoptions+=t  " Auto-wrap text...
+set formatoptions+=c  " ...and comments.
+set formatoptions+=q  " Let me format comments manually.
+set formatoptions+=r  " Auto-continue comments if I'm still in insert mode,
+set formatoptions-=o  " but not when coming from normal mode (that's annoying).
+set formatoptions+=n  " Handle numbered lists properly: good for writing emails!
+set formatoptions+=j  " Be smart about comment leaders when joining lines.
 
 " Folding --------------------------------------------------------------{{{2
 "
