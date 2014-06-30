@@ -274,6 +274,11 @@ set laststatus=2
 set guioptions+=LlRrb
 set guioptions-=LlRrb
 
+" Always prefer vertical diffs (it's easier to understand when side-by-side).
+" Note that newer versions of fugitive will sometimes use horizontal diffs
+" (e.g., for thinner windows) unless this is explicitly set.
+set diffopt+=vertical
+
 " Plugin settings ---------------------------------------------------------{{{1
 
 " airline --------------------------------------------------------------{{{2
