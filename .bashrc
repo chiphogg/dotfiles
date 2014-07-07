@@ -67,13 +67,15 @@ then
 fi
 
 
-# ghar setup: for synchronizing homedir stuff
+# ghar setup (for synchronizing homedir stuff).
 export GHAR_DIR="$HOME/tools/ghar"
 export PATH="$PATH:$GHAR_DIR/bin/"
+. "$GHAR_DIR/ghar-bash-completion.sh"
+
+# Tweak path to include executable locations.
 export PATH="$PATH:$HOME/.local/bin/"
 export PATH="$PATH:$HOME/local/bin"
 export PATH="$PATH:$HOME/bin/"
-. "$GHAR_DIR/ghar-bash-completion.sh"
 
 # Fixes errors like this one:
 # WARNING **: Unable to create Ubuntu Menu Proxy: Timeout was reached
