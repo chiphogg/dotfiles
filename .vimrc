@@ -74,6 +74,7 @@ Plugin 'jcfaria/Vim-R-plugin'
 " Markdown and markup
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-pandoc/vim-pandoc'
+Plugin 'vim-pandoc/vim-pandoc-syntax'
 
 " My productivity system
 Plugin 'chiphogg/vim-vtd'
