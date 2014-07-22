@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-export EDITOR=gvim
+export EDITOR="gvim -f"
 
 # Keep a rich command line history: store 20,000 lines on disk, and keep 5,000
 # lines in memory.  Erase duplicates to save space.
