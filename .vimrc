@@ -426,6 +426,11 @@ augroup vimrc_filetypes
   "  This line corrects that inconsistency.
   autocmd FileType gitconfig setl noexpandtab shiftwidth=8 tabstop=8
 
+  " TeX-type files -------------------------------------------------------{{{2
+
+  " TeX + git: put each sentence on its own line(s) so the diffs are nicer.
+  autocmd FileType tex,rnoweb setl textwidth=0
+
   " Vimscript ------------------------------------------------------------{{{2
 
   " Fold based on the triple-{ symbol.  sjl explains why you want this:
