@@ -245,6 +245,23 @@ nnoremap <Leader>z zMzv
 nnoremap ZJ zjzMzv
 nnoremap ZK zkzMzv
 
+" Experimental: easy HTML export ---------------------------------------{{{2
+
+noremap <silent> <Leader><> :HtmlExport<CR>
+ounmap <Leader><>
+command! -nargs=0 -range=% HtmlExport <line1>,<line2>call s:HtmlExport()
+function! s:HtmlExport() range
+  let l:old_colorscheme = g:colors_name
+  colorscheme default
+  execute a:firstline . ',' . a:lastline 'TOhtml'
+  w
+  let l:html_file = @%
+  call system(printf("sensible-browser '%s'", l:html_file))
+  bwipeout
+  call system(printf("rm '%s'", l:html_file))
+  execute 'colorscheme' l:old_colorscheme
+endfunction
+
 " Miscellaneous settings -----------------------------------------------{{{2
 
 " When would I ever *not* want these?
@@ -279,6 +296,10 @@ set guioptions-=LlRrb
 " Note that newer versions of fugitive will sometimes use horizontal diffs
 " (e.g., for thinner windows) unless this is explicitly set.
 set diffopt+=vertical
+
+" Don't copy the fold column (f), line numbers (n), or diff filler (d) in HTML
+" output.
+let g:html_prevent_copy = "fnd"
 
 " Plugin settings ---------------------------------------------------------{{{1
 
