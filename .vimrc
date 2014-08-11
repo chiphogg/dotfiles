@@ -249,17 +249,22 @@ nnoremap ZK zkzMzv
 
 noremap <silent> <Leader><> :HtmlExport<CR>
 ounmap <Leader><>
-command! -nargs=0 -range=% HtmlExport <line1>,<line2>call s:HtmlExport()
-function! s:HtmlExport() range
-  let l:old_colorscheme = g:colors_name
-  colorscheme default
+command! -bang -nargs=0 -range=% HtmlExport
+    \ <line1>,<line2>call s:HtmlExport('<bang>' ==# '!')
+function! s:HtmlExport(keep_colorscheme) range
+  if (!a:keep_colorscheme)
+    let l:old_colorscheme = g:colors_name
+    colorscheme default
+  endif
   execute a:firstline . ',' . a:lastline 'TOhtml'
   w
   let l:html_file = @%
   call system(printf("sensible-browser '%s'", l:html_file))
   bwipeout
   call system(printf("rm '%s'", l:html_file))
-  execute 'colorscheme' l:old_colorscheme
+  if (!a:keep_colorscheme)
+    execute 'colorscheme' l:old_colorscheme
+  endif
 endfunction
 
 " Miscellaneous settings -----------------------------------------------{{{2
