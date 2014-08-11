@@ -305,6 +305,7 @@ set diffopt+=vertical
 " Don't copy the fold column (f), line numbers (n), or diff filler (d) in HTML
 " output.
 let g:html_prevent_copy = "fnd"
+let g:html_dynamic_folds = 1
 
 " Plugin settings ---------------------------------------------------------{{{1
 
