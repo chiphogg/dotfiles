@@ -306,6 +306,9 @@ set diffopt+=vertical
 " output.
 let g:html_prevent_copy = "fnd"
 let g:html_dynamic_folds = 1
+" But that only works for middle-click paste, and Ctrl-V is more useful for me.
+" So just disable the number output altogether.
+let g:html_number_lines = 0
 
 " Plugin settings ---------------------------------------------------------{{{1
 
