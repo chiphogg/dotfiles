@@ -375,6 +375,10 @@ let g:syntastic_always_populate_loc_list = 1
 " Not sure why I'd ever want my syntax checked when I'm quitting...
 let g:syntastic_check_on_wq = 0
 
+" Filetype-specific settings.
+let g:syntastic_javascript_checkers = ['gjslint']
+let g:syntastic_javascript_gjslint_args = '--strict'
+
 " UltiSnips ------------------------------------------------------------{{{2
 let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
