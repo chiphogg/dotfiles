@@ -22,6 +22,7 @@ Plugin 'gmarik/vundle'
 " Vim enhancements
 Plugin 'bling/vim-airline'
 Plugin 'bufexplorer.zip'
+Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'eiginn/netrw'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-abolish'
