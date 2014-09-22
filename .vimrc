@@ -366,6 +366,9 @@ let g:pymode_motion = 1
 " I never use rope.
 let g:pymode_rope = 0
 
+" Use syntastic to lint python instead.
+let g:pymode_lint = 0
+
 " Syntastic ------------------------------------------------------------{{{2
 
 " The location list is really convenient, and I always want to use it.
