@@ -254,7 +254,7 @@ command! -bang -nargs=0 -range=% HtmlExport
     \ <line1>,<line2>call s:HtmlExport('<bang>' ==# '!')
 function! s:HtmlExport(keep_colorscheme) range
   if (!a:keep_colorscheme)
-    let l:old_colorscheme = g:colors_name
+    let l:old_colorscheme = get(g:, 'colors_name', 'default')
     colorscheme default
   endif
   execute a:firstline . ',' . a:lastline 'TOhtml'
