@@ -306,10 +306,10 @@ set diffopt+=vertical
 " Don't copy the fold column (f), line numbers (n), or diff filler (d) in HTML
 " output.
 let g:html_prevent_copy = "fnd"
-let g:html_dynamic_folds = 1
 " But that only works for middle-click paste, and Ctrl-V is more useful for me.
-" So just disable the number output altogether.
+" So just disable line numbers and folding altogether.
 let g:html_number_lines = 0
+let g:html_ignore_folding = 1
 
 " Plugin settings ---------------------------------------------------------{{{1
 
