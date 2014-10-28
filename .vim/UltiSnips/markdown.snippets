@@ -1,0 +1,28 @@
+snippet focus "Answer some questions to help me focus" b
+# Here is my worthy challenge:
+
+- In the next $1 minutes (ending at `!p
+import datetime
+now = datetime.datetime.now()
+try:
+	minutes = int(t[1])
+except ValueError:
+	minutes = 0
+later = now + datetime.timedelta(minutes=minutes)
+snip.rv = datetime.datetime.strftime(later, '%H:%M')
+  `), I will accomplish:
+	-$2
+
+# Here are the specific steps to achieve it:
+
+-$3
+
+# Why does this matter?  How does it fit into the big picture?
+
+-$4
+
+# Now, create a conducive environment
+- Snooze Hangouts. [${5: }]
+- Put on some music. [${6: }]
+endsnippet
+
