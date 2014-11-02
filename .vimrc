@@ -388,6 +388,10 @@ let g:UltiSnipsExpandTrigger = "<c-j>"
 let g:UltiSnipsJumpForwardTrigger = "<c-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 
+" Experimental command to help me enter the flow state.
+nnoremap ,foc :Focus<CR>a
+command -nargs=0 Focus setfiletype markdown | normal! Ofocus
+
 " Vim-R Plugin ---------------------------------------------------------{{{2
 
 " Expand << into <-.
