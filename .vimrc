@@ -282,14 +282,6 @@ set guioptions-=LlRrb
 " (e.g., for thinner windows) unless this is explicitly set.
 set diffopt+=vertical
 
-" Don't copy the fold column (f), line numbers (n), or diff filler (d) in HTML
-" output.
-let g:html_prevent_copy = "fnd"
-" But that only works for middle-click paste, and Ctrl-V is more useful for me.
-" So just disable line numbers and folding altogether.
-let g:html_number_lines = 0
-let g:html_ignore_folding = 1
-
 " Plugin settings ---------------------------------------------------------{{{1
 
 " airline --------------------------------------------------------------{{{2
@@ -351,7 +343,16 @@ let g:pymode_lint = 0
 
 " syncopate ------------------------------------------------------------{{{2
 
+" Enable keymapping for HTML output.
 Glaive syncopate plugin[mappings]
+
+" Don't copy the fold column (f), line numbers (n), or diff filler (d) in HTML
+" output.
+let g:html_prevent_copy = "fnd"
+" But that only works for middle-click paste, and Ctrl-V is more useful for me.
+" So just disable line numbers and folding altogether.
+let g:html_number_lines = 0
+let g:html_ignore_folding = 1
 
 " Syntastic ------------------------------------------------------------{{{2
 
