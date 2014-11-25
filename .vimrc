@@ -24,6 +24,7 @@ Plugin 'bling/vim-airline'
 Plugin 'bufexplorer.zip'
 Plugin 'ConradIrwin/vim-bracketed-paste'
 Plugin 'eiginn/netrw'
+Plugin 'google/vim-syncopate'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-repeat'
@@ -246,28 +247,6 @@ nnoremap <Leader>z zMzv
 nnoremap ZJ zjzMzv
 nnoremap ZK zkzMzv
 
-" Experimental: easy HTML export ---------------------------------------{{{2
-
-noremap <silent> <Leader><> :HtmlExport<CR>
-ounmap <Leader><>
-command! -bang -nargs=0 -range=% HtmlExport
-    \ <line1>,<line2>call s:HtmlExport('<bang>' ==# '!')
-function! s:HtmlExport(keep_colorscheme) range
-  if (!a:keep_colorscheme)
-    let l:old_colorscheme = get(g:, 'colors_name', 'default')
-    colorscheme default
-  endif
-  execute a:firstline . ',' . a:lastline 'TOhtml'
-  w
-  let l:html_file = @%
-  call system(printf("sensible-browser '%s'", l:html_file))
-  bwipeout
-  call system(printf("rm '%s'", l:html_file))
-  if (!a:keep_colorscheme)
-    execute 'colorscheme' l:old_colorscheme
-  endif
-endfunction
-
 " Miscellaneous settings -----------------------------------------------{{{2
 
 " When would I ever *not* want these?
@@ -369,6 +348,10 @@ let g:pymode_rope = 0
 
 " Use syntastic to lint python instead.
 let g:pymode_lint = 0
+
+" syncopate ------------------------------------------------------------{{{2
+
+Glaive syncopate plugin[mappings]
 
 " Syntastic ------------------------------------------------------------{{{2
 
