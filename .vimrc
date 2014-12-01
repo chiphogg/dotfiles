@@ -82,7 +82,7 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 Plugin 'chiphogg/vim-vtd'
 
 call vundle#end()
-call glaive#Install()
+call maktaba#plugin#Detect()
 
 " Basic settings ----------------------------------------------------------{{{1
 
