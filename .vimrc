@@ -70,9 +70,6 @@ endif
 " Python
 Plugin 'klen/python-mode'
 
-" R
-Plugin 'jcfaria/Vim-R-plugin'
-
 " Markdown and markup
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-pandoc/vim-pandoc'
@@ -375,17 +372,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 " Experimental command to help me enter the flow state.
 nnoremap ,foc :Focus<CR>a
 command -nargs=0 Focus setfiletype markdown | normal! Ofocus
-
-" Vim-R Plugin ---------------------------------------------------------{{{2
-
-" Expand << into <-.
-let vimrplugin_assign_map = '<<'
-
-" Don't line things up with opening braces.
-let r_indent_align_args = 0
-
-" Insert-mode mappings are incredibly annoying.
-let g:vimrplugin_insert_mode_cmds = 0
 
 " VTD ------------------------------------------------------------------{{{2
 
