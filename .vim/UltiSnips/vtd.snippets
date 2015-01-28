@@ -1,0 +1,13 @@
+snippet wd "WONTDO with datetimestamp"
+(WONTDO `!p
+import datetime
+snip.rv = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
+`)
+endsnippet
+
+snippet d "DONE with datetimestamp"
+(DONE `!p
+import datetime
+snip.rv = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
+`)
+endsnippet
