@@ -385,6 +385,9 @@ nnoremap <Leader>vu :VundleUpdate<CR>
 
 " YouCompleteMe --------------------------------------------------------{{{2
 
+" Turn it on for everything; it's annoying not to have it.
+let g:ycm_filetype_blacklist = {}
+
 " Comments and strings are fair game for autocompletion.
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments_and_strings = 1
