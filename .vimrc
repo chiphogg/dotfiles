@@ -20,6 +20,7 @@ Plugin 'gmarik/vundle'
 " ----------------------------------------------------------------------}}}2
 
 " Vim enhancements
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'bufexplorer.zip'
 Plugin 'ConradIrwin/vim-bracketed-paste'
