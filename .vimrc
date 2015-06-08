@@ -262,8 +262,10 @@ set history=500
 " Disable the bell
 set vb t_vb=""
 
-" Default colorscheme for terminal-mode vim is unreadable
+" Default colorscheme for terminal-mode vim is unreadable.
 colorscheme desert
+" Concealed characters in desert are *also* unreadable, so let's fix that.
+highlight Conceal guibg=Black
 
 " Don't litter directories with swap files; stick them all here.
 set directory=~/.vimswp
