@@ -2,7 +2,7 @@ urxvt*scrollBar: false
 urxvt*foreground: grey75
 urxvt*background: grey15
 urxvt*savelines: 10000
-urxvt*termName: rxvt-unicode
+urxvt*termName: rxvt-unicode-256color
 urxvt.font: xft:Inconsolata-14
 urxvt.boldFont: xft:Inconsolata-14
 urxvt.loginShell: true
