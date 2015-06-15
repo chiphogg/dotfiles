@@ -10,6 +10,14 @@ def Now():
   return datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
 
 
+def Today():
+  """The current date.
+
+  Returns:
+    The current date in "YYYY-MM-DD" format.
+  """
+  return datetime.datetime.now().strftime('%Y-%m-%d')
+
 endglobal
 
 snippet wd "WONTDO with datetimestamp"
@@ -18,4 +26,20 @@ endsnippet
 
 snippet d "DONE with datetimestamp"
 (DONE `!p snip.rv = Now()`)
+endsnippet
+
+snippet <t "Due today"
+<`!p snip.rv = Today()`
+endsnippet
+
+snippet <n "Due now"
+<`!p snip.rv = Now()`
+endsnippet
+
+snippet >t "Visible after today"
+>`!p snip.rv = Today()`
+endsnippet
+
+snippet >n "Visible after now"
+>`!p snip.rv = Now()`
 endsnippet
