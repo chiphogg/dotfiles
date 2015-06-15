@@ -1,13 +1,21 @@
-snippet wd "WONTDO with datetimestamp"
-(WONTDO `!p
+global !p
 import datetime
-snip.rv = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
-`)
+
+def Now():
+  """The current date-and-time.
+
+  Returns:
+    The current datetime in "YYYY-MM-DD hh:mm" format.
+  """
+  return datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
+
+
+endglobal
+
+snippet wd "WONTDO with datetimestamp"
+(WONTDO `!p snip.rv = Now()`)
 endsnippet
 
 snippet d "DONE with datetimestamp"
-(DONE `!p
-import datetime
-snip.rv = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
-`)
+(DONE `!p snip.rv = Now()`)
 endsnippet
