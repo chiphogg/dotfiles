@@ -61,7 +61,6 @@ Plugin 'xolox/vim-misc'
 " At work, or not:
 if filereadable(expand('~/.at_google.vim'))
   " Google-only
-  let g:google_ft_bzl = 1
   source ~/.at_google.vim
 else
   " Non-Google only
