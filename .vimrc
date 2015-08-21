@@ -264,8 +264,6 @@ set vb t_vb=""
 
 " Default colorscheme for terminal-mode vim is unreadable.
 colorscheme desert
-" Concealed characters in desert are *also* unreadable, so let's fix that.
-highlight Conceal guibg=Black
 
 " Don't litter directories with swap files; stick them all here.
 set directory=~/.vimswp
@@ -470,3 +468,6 @@ endif
 " This goes at the end for speed reasons.
 filetype plugin indent on
 syntax on
+
+" Concealed characters are unreadable, so let's fix that.
+highlight Conceal guibg=Black guifg=LightGrey
