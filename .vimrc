@@ -191,18 +191,6 @@ set tabstop=8 softtabstop=2 shiftwidth=2 expandtab smarttab
 " Make tabs visible!
 set list listchars=tab:»·,precedes:<,extends:>
 
-" Highlight trailing whitespace (but not in insert mode).
-" See http://vim.wikia.com/wiki/Highlight_unwanted_spaces
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-augroup extra_whitespace
-  autocmd!
-  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-  autocmd BufWinLeave * call clearmatches()
-augroup END
-
 " Unfortunately, visible tabs require 'list', which makes soft word wrap behave
 " badly.  So it should be toggleable.
 noremap <F8> :call List_toggle()<CR>
