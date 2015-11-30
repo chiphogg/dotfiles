@@ -419,6 +419,8 @@ nnoremap <silent> <Leader>l :YcmDiags<CR>
 
 augroup vimrc_filetypes
   autocmd!
+  " sh -------------------------------------------------------------------{{{2
+  autocmd BufEnter /tmp/bash-fc-* setfiletype sh
 
   " physicsforums --------------------------------------------------------{{{2
   autocmd FileType physicsforums setlocal textwidth=0
