@@ -448,6 +448,36 @@ augroup vimrc_filetypes
 " augroup END ----------------------------------------------------------{{{2
 augroup END
 
+" Nanoc helpers -----------------------------------------------------------{{{1
+
+" The nanoc root at or above the given directory, or '' if none is found.
+function! s:NanocRoot(path)
+  let l:path_split = maktaba#path#Split(maktaba#path#GetDirectory(a:path))
+  while len(l:path_split) > 0
+    let l:dir = maktaba#path#Join(l:path_split)
+    if maktaba#path#Exists(maktaba#path#Join([l:dir, 'nanoc.yaml']))
+      return l:dir
+    endif
+    call remove(l:path_split, -1)
+  endwhile
+  return ''
+endfunction
+
+" Change to the nanoc root (if any), compile the website, and change back.
+function! s:CompileNanoc()
+  let l:cwd = getcwd()
+  let l:nanoc_dir = s:NanocRoot(l:cwd)
+  if empty(l:nanoc_dir)
+    call maktaba#error#Warn('Nanoc not found under "' . l:cwd . '"!')
+    return
+  endif
+  execute 'cd' l:nanoc_dir
+  !nanoc
+  execute 'cd' l:cwd
+endfunction
+
+command! -nargs=0 Nanoc call s:CompileNanoc()
+
 " Local settings ----------------------------------------------------------{{{1
 
 " We can put settings local to this particular machine in ~/.vimrc_local
