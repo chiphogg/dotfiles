@@ -56,19 +56,13 @@ Plugin 'tpope/vim-fugitive'
 " General Programming
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-endwise'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 
-" At work, or not:
-if filereadable(expand('~/.at_google.vim'))
-  " Google-only
-  source ~/.at_google.vim
-else
-  " Non-Google only
-  Plugin 'Valloric/YouCompleteMe'
-  Plugin 'google/maktaba'
-  Plugin 'google/glaive'
-endif
+" For maktaba-based plugins
+Plugin 'google/maktaba'
+Plugin 'google/glaive'
 
 " Python
 Plugin 'klen/python-mode'
