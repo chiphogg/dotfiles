@@ -381,6 +381,9 @@ nnoremap <Leader>vu :VundleUpdate<CR>
 " Turn it on for everything; it's annoying not to have it.
 let g:ycm_filetype_blacklist = {}
 
+" Always load the extra_conf file when it exists.
+let g:ycm_confirm_extra_conf = 0
+
 " Comments and strings are fair game for autocompletion.
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_comments_and_strings = 1
