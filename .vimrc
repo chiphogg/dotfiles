@@ -54,6 +54,7 @@ Plugin 'sgur/vim-textobj-parameter'
 Plugin 'tpope/vim-fugitive'
 
 " General Programming
+Plugin 'google/vim-codefmt'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-endwise'
 Plugin 'Valloric/YouCompleteMe'
@@ -277,6 +278,10 @@ function! PrependVtdToAirline(...)
   return 0
 endfunction
 call airline#add_statusline_func('PrependVtdToAirline')
+
+" codefmt --------------------------------------------------------------{{{2
+" Enable mappings.
+Glaive codefmt plugin[mappings]
 
 " easytags -------------------------------------------------------------{{{2
 
