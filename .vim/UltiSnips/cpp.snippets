@@ -28,3 +28,18 @@ endsnippet
 snippet "(\W)\<\<" "Description" r
 `!p snip.rv=match.group(1)`'" << $1 << "'
 endsnippet
+
+snippet ns "ATC-style namespace" b
+namespace $1
+{
+$0
+} // namespace $1
+endsnippet
+
+snippet sp "std::shared_ptr<T>" w
+std::shared_ptr<${1:${VISUAL}}>
+endsnippet
+
+snippet ms "std::make_shared<T>()" w
+std::make_shared<${1:${VISUAL}}>($2)
+endsnippet
