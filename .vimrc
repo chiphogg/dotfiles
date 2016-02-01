@@ -236,6 +236,9 @@ nnoremap ZK zkzMzv
 set number   " Line numbers
 set showcmd  " Show partial commands as you type
 
+" Make backspace act like backspace in insert mode.
+set backspace=indent,eol,start
+
 " Occasionally useful, but mainly too annoying.
 set nohlsearch
 set completeopt-=preview
