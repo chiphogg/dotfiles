@@ -57,3 +57,8 @@ Thumbs.db
 # feh filelists #
 #################
 feh*filelist
+
+# clang-format #
+################
+# If I want to track this in git, I should add it explicitly.
+.clang-format
