@@ -36,10 +36,35 @@ $0
 } // namespace $1
 endsnippet
 
+global !p
+def appears_in_file(x):
+  """Does any line in this file match x?
+
+  Args:
+    x:  The string to search for.
+
+  Returns:
+    A boolean indicating whether x is found.
+  """
+  for line in vim.current.window.buffer:
+    if line == x:
+      return True
+  return False
+
+def ns_x_unless_using_x(ns, x):
+  """'ns::x', unless 'using ns::x;' appears in the file.
+
+  Args:
+    x:  Some identifier.
+  """
+  full_name = '{}::{}'.format(ns, x)
+  return x if appears_in_file('using {};'.format(full_name)) else full_name
+endglobal
+
 snippet sp "std::shared_ptr<T>" w
-std::shared_ptr<${1:${VISUAL}}>
+`!p snip.rv=ns_x_unless_using_x('std', 'shared_ptr')`<${1:${VISUAL}}>
 endsnippet
 
 snippet ms "std::make_shared<T>()" w
-std::make_shared<${1:${VISUAL}}>($2)
+`!p snip.rv=ns_x_unless_using_x('std', 'make_shared')`<${1:${VISUAL}}>($2)
 endsnippet
