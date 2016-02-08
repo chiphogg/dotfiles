@@ -77,6 +77,11 @@ Plugin 'vim-pandoc/vim-pandoc-syntax'
 " My productivity system
 Plugin 'chiphogg/vim-vtd'
 
+" Other local-only plugins.
+if filereadable(expand("~/.local_plugins.vim"))
+  source ~/.local_plugins.vim
+endif
+
 call vundle#end()
 call glaive#Install()
 
