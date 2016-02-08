@@ -68,3 +68,19 @@ endsnippet
 snippet ms "std::make_shared<T>()" w
 `!p snip.rv=ns_x_unless_using_x('std', 'make_shared')`<${1:${VISUAL}}>($2)
 endsnippet
+
+snippet up "std::unique_ptr<T>" w
+`!p snip.rv=ns_x_unless_using_x('std', 'unique_ptr')`<${1:${VISUAL}}>
+endsnippet
+
+snippet mu "std::make_unique<T>()" w
+`!p snip.rv=ns_x_unless_using_x('std', 'make_unique')`<${1:${VISUAL}}>($2)
+endsnippet
+
+snippet em "Eigen::MatrixXd" w
+`!p snip.rv=ns_x_unless_using_x('Eigen', 'MatrixXd')`
+endsnippet
+
+snippet ev "Eigen::VectorXd" w
+`!p snip.rv=ns_x_unless_using_x('Eigen', 'VectorXd')`
+endsnippet
