@@ -36,6 +36,15 @@ $0
 } // namespace $1
 endsnippet
 
+snippet once "Include guard" b
+#ifndef ${1:`!p snip.rv = '_'.join(re.split(r'[./]', path.upper())) `}
+#define $1
+
+${0:${VISUAL}}
+
+#endif // $1
+endsnippet
+
 global !p
 def appears_in_file(x):
   """Does any line in this file match x?
