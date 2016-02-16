@@ -24,9 +24,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'bufexplorer.zip'
 Plugin 'ConradIrwin/vim-bracketed-paste'
-Plugin 'eiginn/netrw'
 Plugin 'google/vim-searchindex'
 Plugin 'google/vim-syncopate'
+Plugin 'justinmk/vim-dirvish'
 Plugin 'justinmk/vim-sneak'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-eunuch'
@@ -296,6 +296,15 @@ call airline#add_statusline_func('PrependVtdToAirline')
 " Enable mappings.
 Glaive codefmt plugin[mappings]
 
+" dirvish --------------------------------------------------------------{{{2
+
+augroup dirvish_customization
+  autocmd!
+  " By default, sort alphabetically with all the folders at the top.
+  autocmd FileType dirvish
+      \ setlocal modifiable | sort! | sort! r /[/]$/ | setlocal nomodifiable
+augroup END
+
 " easytags -------------------------------------------------------------{{{2
 
 " Make all tag files local to each project, rather than global.
@@ -313,12 +322,6 @@ function! s:GitGrepWordUnderCursorImpl()
   let l:word = escape(expand('<cword>'), '#')
   execute "Ggrep '\\b" . l:word . "\\b'"
 endfunction
-
-" netrw ----------------------------------------------------------------{{{2
-
-" <Ctrl-^> should never go to netrw; we'd just use `-` (from vinegar) to do
-" that.  Make it go to the previous actual file instead.
-let g:netrw_altfile = 1
 
 " open-browser ---------------------------------------------------------{{{2
 " netrw already uses this mapping; disable it.
