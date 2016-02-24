@@ -30,10 +30,10 @@ snippet "(\W)\<\<" "Description" r
 endsnippet
 
 snippet ns "ATC-style namespace" b
-namespace $1
+namespace`!p snip.rv = ' ' if t[1] else ''`$1
 {
 $0
-} // namespace $1
+} // namespace`!p snip.rv = ' ' if t[1] else ''`$1
 endsnippet
 
 snippet once "Include guard" b
