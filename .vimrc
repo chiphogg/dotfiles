@@ -277,6 +277,17 @@ set diffopt+=vertical
 
 " Plugin settings ---------------------------------------------------------{{{1
 
+" ag -------------------------------------------------------------------{{{2
+
+" :Ag the word under the cursor (populates quickfix list).
+nnoremap <silent> <LocalLeader>ag :AgWordUnderCursor<CR>
+command! -nargs=0 AgWordUnderCursor call s:AgWordUnderCursorImpl()
+function! s:AgWordUnderCursorImpl()
+  let l:word = escape(expand('<cword>'), '#')
+  execute "Ag '\\b" . l:word . "\\b'"
+endfunction
+
+
 " airline --------------------------------------------------------------{{{2
 " Use powerline symbols.
 let g:airline_powerline_fonts = 1
