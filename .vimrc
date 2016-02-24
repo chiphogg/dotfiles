@@ -312,8 +312,7 @@ Glaive codefmt plugin[mappings]
 augroup dirvish_customization
   autocmd!
   " By default, sort alphabetically with all the folders at the top.
-  autocmd FileType dirvish
-      \ setlocal modifiable | sort! | sort! r /[/]$/ | setlocal nomodifiable
+  autocmd FileType dirvish sort! | sort! r /[/]$/
 augroup END
 
 " easytags -------------------------------------------------------------{{{2
