@@ -443,6 +443,9 @@ augroup vimrc_filetypes
   " physicsforums --------------------------------------------------------{{{2
   autocmd FileType physicsforums setlocal textwidth=0
 
+  " Vim Quickfix ---------------------------------------------------------{{{2
+  autocmd FileType qf setlocal textwidth=0 nowrap cursorline
+
   " gitcommit ------------------------------------------------------------{{{2
   autocmd FileType gitcommit setlocal textwidth=72
 
