@@ -86,6 +86,14 @@ snippet mu "std::make_unique<T>()" w
 `!p snip.rv=ns_x_unless_using_x('std', 'make_unique')`<${1:${VISUAL}}>($2)
 endsnippet
 
+snippet v "std::vector<T>" w
+`!p snip.rv=ns_x_unless_using_x('std', 'vector')`<${1:${VISUAL}}>
+endsnippet
+
+snippet s "std::string<T>" w
+`!p snip.rv=ns_x_unless_using_x('std', 'string')`
+endsnippet
+
 snippet em "Eigen::MatrixXd" w
 `!p snip.rv=ns_x_unless_using_x('Eigen', 'MatrixXd')`
 endsnippet
