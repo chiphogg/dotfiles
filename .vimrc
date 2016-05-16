@@ -55,6 +55,7 @@ Plugin 'sgur/vim-textobj-parameter'
 Plugin 'tpope/vim-fugitive'
 
 " General Programming
+Plugin 'chiphogg/vim-prototxt'
 Plugin 'google/vim-codefmt'
 Plugin 'mrtazz/DoxygenToolkit.vim'
 Plugin 'rking/ag.vim'
