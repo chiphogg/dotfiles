@@ -36,13 +36,17 @@ $0
 } // namespace`!p snip.rv = ' ' if t[1] else ''`$1
 endsnippet
 
-snippet once "Include guard" b
+snippet once_legacy "Include guard" b
 #ifndef ${1:`!p snip.rv = '_'.join(re.split(r'[./]', path.upper())) `}
 #define $1
 
 ${0:${VISUAL}}
 
 #endif // $1
+endsnippet
+
+snippet once "`#pragma once` include guard" b
+#pragma once
 endsnippet
 
 global !p
