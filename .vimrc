@@ -69,9 +69,6 @@ Plugin 'xolox/vim-misc'
 Plugin 'google/maktaba'
 Plugin 'google/glaive'
 
-" Python
-Plugin 'klen/python-mode'
-
 " Markdown and markup
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-pandoc/vim-pandoc'
@@ -345,16 +342,6 @@ vmap gx <Plug>(openbrowser-open)
 
 " I find conceal harms my understanding of markdown documents.
 let g:pandoc_use_conceal = 0
-
-" python-mode ----------------------------------------------------------{{{2
-let g:pymode_folding = 1
-let g:pymode_motion = 1
-
-" I never use rope.
-let g:pymode_rope = 0
-
-" Use syntastic to lint python instead.
-let g:pymode_lint = 0
 
 " syncopate ------------------------------------------------------------{{{2
 
