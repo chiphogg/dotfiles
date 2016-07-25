@@ -65,6 +65,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 
+" Python
+Plugin 'tmhedberg/SimpylFold'
+
 " For maktaba-based plugins
 Plugin 'google/maktaba'
 Plugin 'google/glaive'
