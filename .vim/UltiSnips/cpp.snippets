@@ -25,6 +25,10 @@ snippet "\b(\w+)\<\<" "output a variable to a stream" r
 ${1:`!p snip.rv=match.group(1)`}: '" << ${2:`!p snip.rv=match.group(1)`} << "'
 endsnippet
 
+snippet "\\n" "<< std::endl" r
+ << std::endl
+endsnippet
+
 snippet "(\W)\<\<" "Description" r
 `!p snip.rv=match.group(1)`'" << $1 << "'
 endsnippet
