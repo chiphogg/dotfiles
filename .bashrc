@@ -66,6 +66,9 @@ then
   source /etc/profile
 fi
 
+# Don't write the .pyc files; they just clutter up all my directories and make
+# it harder to navigate in vim.
+export PYTHONDONTWRITEBYTECODE=1
 
 # ghar setup (for synchronizing homedir stuff).
 export GHAR_DIR="$HOME/tools/ghar"
