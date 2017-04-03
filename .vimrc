@@ -311,16 +311,7 @@ Glaive codefmt plugin[mappings]
 
 " dirvish --------------------------------------------------------------{{{2
 
-augroup dirvish_customization
-  autocmd!
-  " By default, sort alphabetically with all the folders at the top.
-  "
-  " We also need to search the current line's contents when we're done; see:
-  "     https://github.com/justinmk/vim-dirvish/issues/45
-  autocmd FileType dirvish let b:dirvish['pos']=getline('.') |
-      \ sort! | sort! r /[/]$/ |
-      \ keepjumps call search('\V\^'.escape(b:dirvish['pos'], '\').'\$', 'cw')
-augroup END
+let g:dirvish_mode = ':sort! | :sort! r /[/]$/'
 
 " easytags -------------------------------------------------------------{{{2
 
