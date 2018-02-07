@@ -261,8 +261,8 @@ set vb t_vb=""
 " Default colorscheme for terminal-mode vim is unreadable.
 colorscheme desert
 
-" Don't litter directories with swap files; stick them all here.
-set directory=~/.vimswp
+" I am much more often annoyed by swap files than helped by them.
+set noswapfile
 
 " Put a statusline for *every* window, *always*.
 set laststatus=2
