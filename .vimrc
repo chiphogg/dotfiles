@@ -281,14 +281,24 @@ set diffopt+=vertical
 
 " ag -------------------------------------------------------------------{{{2
 
-" :Ag the word under the cursor (populates quickfix list).
-nnoremap <silent> <LocalLeader>ag :AgWordUnderCursor<CR>
-command! -nargs=0 AgWordUnderCursor call s:AgWordUnderCursorImpl()
-function! s:AgWordUnderCursorImpl()
+" Search for the word under the cursor, along with suitable prefix/suffix.
+function! s:AgSearchWordUnderCursor(prefix, suffix)
   let l:word = escape(expand('<cword>'), '#')
-  execute "Ag '\\b" . l:word . "\\b'"
+  execute "Ag '" . a:prefix . l:word . a:suffix . "'"
 endfunction
 
+" :Ag the word under the cursor (populates quickfix list).
+nnoremap <silent> <LocalLeader>ag :AgWordUnderCursor<CR>
+command! -nargs=0 AgWordUnderCursor call s:AgSearchWordUnderCursor("\\b", "\\b")
+
+" Hacky substitute for a proper "jump-to-definition".
+"
+" Look for `struct identifier`-type patterns, likewise for `class` and `using`.
+" Typically, this gives me a very short list of candidates, even in a very large
+" repo.  It's not uncommon for the right answer to be the only result!
+nnoremap <silent> <LocalLeader>ad :AgHeuristicDefinitionWordUnderCursor<CR>
+command! -nargs=0 AgHeuristicDefinitionWordUnderCursor 
+        \ call s:AgSearchWordUnderCursor('(class|struct|using) ', "\\b")
 
 " airline --------------------------------------------------------------{{{2
 " Use powerline symbols.
