@@ -33,6 +33,14 @@ snippet "(\W)\<\<" "Description" r
 `!p snip.rv=match.group(1)`'" << $1 << "'
 endsnippet
 
+snippet mp "std::make_pair"
+`!p snip.rv=ns_x_unless_using_x('std', 'make_pair')`(${1:${VISUAL}}, $2)
+endsnippet
+
+snippet p "std::pair"
+`!p snip.rv=ns_x_unless_using_x('std', 'pair')`<${1:${VISUAL}}, $2>
+endsnippet
+
 snippet ns "ATC-style namespace" b
 namespace`!p snip.rv = ' ' if t[1] else ''`$1
 {
