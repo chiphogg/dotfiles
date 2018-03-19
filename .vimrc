@@ -298,7 +298,7 @@ command! -nargs=0 AgWordUnderCursor call s:AgSearchWordUnderCursor("\\b", "\\b")
 " repo.  It's not uncommon for the right answer to be the only result!
 nnoremap <silent> <LocalLeader>ad :AgHeuristicDefinitionWordUnderCursor<CR>
 command! -nargs=0 AgHeuristicDefinitionWordUnderCursor 
-        \ call s:AgSearchWordUnderCursor('(class|struct|using) ', "\\b")
+        \ call s:AgSearchWordUnderCursor('(class|struct|using) ', "\\b(?!;)")
 
 " airline --------------------------------------------------------------{{{2
 " Use powerline symbols.
