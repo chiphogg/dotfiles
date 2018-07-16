@@ -1,0 +1,21 @@
+snippet cct "cc_test() rule"
+cc_test(
+    name = "${1}_test",
+    size = "small",
+    srcs = ["$1_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        ":$1",
+        "@gtest//:main",
+    ],
+)
+endsnippet
+
+snippet ccl "cc_library() rule"
+cc_library(
+    name = "${1}",
+    srcs = ["$1.cc"],
+    hdrs = ["$1.hh"],
+    deps = [${2}],
+)
+endsnippet
