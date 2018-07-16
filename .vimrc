@@ -277,6 +277,12 @@ set guioptions-=LlRrb
 " (e.g., for thinner windows) unless this is explicitly set.
 set diffopt+=vertical
 
+" Persistent undo; see: https://advancedweb.hu/2017/09/19/vim-persistent-undo/
+let s:undo_dir = '/tmp/.vim-undo-dir'
+call mkdir(s:undo_dir, 'p', 0700)
+execute 'set undodir=' . s:undo_dir
+set undofile
+
 " Plugin settings ---------------------------------------------------------{{{1
 
 " ag -------------------------------------------------------------------{{{2
