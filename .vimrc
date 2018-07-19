@@ -279,7 +279,9 @@ set diffopt+=vertical
 
 " Persistent undo; see: https://advancedweb.hu/2017/09/19/vim-persistent-undo/
 let s:undo_dir = '/tmp/.vim-undo-dir'
-call mkdir(s:undo_dir, 'p', 0700)
+if (!isdirectory(s:undo_dir))
+  call mkdir(s:undo_dir, 'p', 0700)
+endif
 execute 'set undodir=' . s:undo_dir
 set undofile
 
