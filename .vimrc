@@ -360,6 +360,11 @@ vmap gx <Plug>(openbrowser-open)
 " I find conceal harms my understanding of markdown documents.
 let g:pandoc_use_conceal = 0
 
+" This plugin egregiously enables all its modules by default, even the ones with
+" surprising and unwelcome effects.  See:
+" https://github.com/vim-pandoc/vim-pandoc/issues/272
+let g:pandoc#modules#disabled = ["chdir"]
+
 " syncopate ------------------------------------------------------------{{{2
 
 " Enable keymapping for HTML output.
