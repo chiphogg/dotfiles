@@ -62,3 +62,5 @@ feh*filelist
 ################
 # If I want to track this in git, I should add it explicitly.
 .clang-format
+
+wget-log*
