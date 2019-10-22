@@ -56,7 +56,7 @@ Plugin 'tpope/vim-fugitive'
 
 " General Programming
 Plugin 'chiphogg/vim-prototxt'
-Plugin 'google/vim-codefmt'
+Plugin 'chiphogg/vim-codefmt'
 Plugin 'mrtazz/DoxygenToolkit.vim'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/syntastic'
