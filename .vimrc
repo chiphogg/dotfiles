@@ -1,91 +1,76 @@
 " Charles Hogg's vimrc settings
 
-" Vundle -- the Right Way to manage Vim plugins ---------------------------{{{1
+" vim-plug: the Right Way to manage Vim plugins ---------------------------{{{1
 
-" The basic pattern of this code is adapted from gmarik/vundle README.md
-
-" Opening boilerplate --------------------------------------------------{{{2
-set nocompatible
-
-" It's faster to turn off 'filetype' while loading plugins, and turn it on only
-" once we're ready to start editing.
-filetype off
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-
-" let Vundle manage Vundle ---------------------------------------------{{{2
-" required!
-Plugin 'gmarik/vundle'
-" ----------------------------------------------------------------------}}}2
+call plug#begin('~/.vim/plugged')
 
 " Vim enhancements
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
-Plugin 'bufexplorer.zip'
-Plugin 'ConradIrwin/vim-bracketed-paste'
-Plugin 'google/vim-searchindex'
-Plugin 'google/vim-syncopate'
-Plugin 'justinmk/vim-dirvish'
-Plugin 'justinmk/vim-sneak'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-scriptease'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tyru/open-browser.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bling/vim-airline'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'google/vim-searchindex'
+Plug 'google/vim-syncopate'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'justinmk/vim-dirvish'
+Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'tyru/open-browser.vim'
 
 " Snippets.
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Text objects (kana/vim-textobj-user is required by all the rest).
-Plugin 'kana/vim-textobj-user'
-Plugin 'glts/vim-textobj-comment'
-Plugin 'Julian/vim-textobj-variable-segment'
-Plugin 'kana/vim-textobj-entire'
-Plugin 'kana/vim-textobj-indent'
-Plugin 'sgur/vim-textobj-parameter'
+Plug 'kana/vim-textobj-user'
+Plug 'glts/vim-textobj-comment'
+Plug 'Julian/vim-textobj-variable-segment'
+Plug 'kana/vim-textobj-entire'
+Plug 'kana/vim-textobj-indent'
+Plug 'sgur/vim-textobj-parameter'
 
 " Git plugins
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " General Programming
-Plugin 'chiphogg/vim-prototxt'
-Plugin 'chiphogg/vim-codefmt'
-Plugin 'mrtazz/DoxygenToolkit.vim'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-endwise'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'xolox/vim-easytags'
-Plugin 'xolox/vim-misc'
+Plug 'chiphogg/vim-prototxt'
+Plug 'chiphogg/vim-codefmt'
+Plug 'mrtazz/DoxygenToolkit.vim'
+Plug 'rking/ag.vim'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-endwise'
+Plug 'Valloric/YouCompleteMe'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
 
 " Python
-Plugin 'tmhedberg/SimpylFold'
+Plug 'tmhedberg/SimpylFold'
 
 " For maktaba-based plugins
-Plugin 'google/maktaba'
-Plugin 'google/glaive'
+Plug 'google/maktaba'
+Plug 'google/glaive'
 
 " Markdown and markup
-Plugin 'tpope/vim-markdown'
-Plugin 'vim-pandoc/vim-pandoc'
-Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plug 'tpope/vim-markdown'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 " My productivity system
-Plugin 'chiphogg/vim-vtd'
+Plug 'chiphogg/vim-vtd'
 
 " Other local-only plugins.
 if filereadable(expand("~/.local_plugins.vim"))
   source ~/.local_plugins.vim
 endif
 
-call vundle#end()
+call plug#end()
 call glaive#Install()
 
 " Basic settings ----------------------------------------------------------{{{1
