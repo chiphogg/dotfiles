@@ -43,10 +43,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'chiphogg/vim-prototxt'
 Plug 'chiphogg/vim-codefmt'
 Plug 'mrtazz/DoxygenToolkit.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rking/ag.vim'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-endwise'
-Plug 'Valloric/YouCompleteMe'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 
@@ -297,9 +297,6 @@ command! -nargs=0 AgHeuristicDefinitionWordUnderCursor
 " Use powerline symbols.
 let g:airline_powerline_fonts = 1
 
-" Show YCM information.
-let g:airline#extensions#ycm#enabled = 1
-
 " Show VTD late/due counts in statusline.
 function! PrependVtdToAirline(...)
   call a:1.add_section('', '%#Error#%{vtd#statusline#Late()}%*')
@@ -307,6 +304,21 @@ function! PrependVtdToAirline(...)
   return 0
 endfunction
 call airline#add_statusline_func('PrependVtdToAirline')
+
+" coc.nvim -------------------------------------------------------------{{{2
+
+" Use tab for trigger completion with characters ahead and navigate.
+" (This whole section is copy-pasted from coc's homepage.)
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " codefmt --------------------------------------------------------------{{{2
 " Enable mappings.
@@ -394,49 +406,6 @@ Glaive vtd plugin[mappings]
 
 " Keyboard shortcut to update vundle plugins.
 nnoremap <Leader>vu :VundleUpdate<CR>
-
-" YouCompleteMe --------------------------------------------------------{{{2
-
-" Turn it on for everything; it's annoying not to have it.
-let g:ycm_filetype_blacklist = {}
-
-" Always load the extra_conf file when it exists.
-let g:ycm_confirm_extra_conf = 0
-
-" Comments and strings are fair game for autocompletion.
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_comments_and_strings = 1
-
-" Skip the preview window.
-let g:ycm_add_preview_to_completeopt = 0
-
-" Start autocompleting right away, after a single character!
-let g:ycm_min_num_of_chars_for_completion = 1
-
-" This gives me nice autocompletion for C++ #include's if I change vim's working
-" directory to the project root.
-let g:ycm_filepath_completion_use_working_dir = 1
-
-" Add programming language keywords to the autocomplete list.
-let g:ycm_seed_identifiers_with_syntax = 1
-
-" The signs are nice, but they're way too slow for me.
-let g:ycm_enable_diagnostic_signs = 0
-
-" This can change the location list out from under me.  Instead, populate it
-" manually using :YcmDiags.
-let g:ycm_always_populate_location_list = 0
-let g:ycm_open_loclist_on_ycm_diags = 0
-
-" g[ should jump to the declaration (currently only works in C-family files).
-nnoremap <silent> g[ :YcmCompleter GoToDeclaration<CR>
-" Force a *synchronous* compile-and-check.
-" (Caution!  Blocking, and potentially slow.)
-nnoremap <silent> <Leader>c :YcmForceCompileAndDiagnostics<CR>
-" Try this before restarting vim (useful if the cache gets stale).
-nnoremap <silent> <Leader>C :YcmCompleter ClearCompilationFlagCache<CR>
-" Repopulate the location list.
-nnoremap <silent> <Leader>l :YcmDiags<CR>
 
 " Filetype settings (wrapped in an augroup for re-entrantness) ------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
