@@ -320,6 +320,12 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" Jump to definition/declaration.
+nnoremap <silent> gd :call CocAction('jumpDefinition')<cr>
+nnoremap <silent> gD :call CocAction('jumpDeclaration')<cr>
+nnoremap <silent> gr :call CocAction('jumpReferences')<cr>
+nnoremap <silent> gs :CocList symbols<cr>
+
 " codefmt --------------------------------------------------------------{{{2
 " Enable mappings.
 Glaive codefmt plugin[mappings]
