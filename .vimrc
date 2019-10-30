@@ -45,7 +45,6 @@ Plug 'chiphogg/vim-codefmt'
 Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rking/ag.vim'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-endwise'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
@@ -380,19 +379,6 @@ let g:html_prevent_copy = "fnd"
 " So just disable line numbers and folding altogether.
 let g:html_number_lines = 0
 let g:html_ignore_folding = 1
-
-" Syntastic ------------------------------------------------------------{{{2
-
-" The location list is really convenient, and I always want to use it.
-" (Don't forget that vim-unimpaired makes it even nicer!)
-let g:syntastic_always_populate_loc_list = 1
-
-" Not sure why I'd ever want my syntax checked when I'm quitting...
-let g:syntastic_check_on_wq = 0
-
-" Filetype-specific settings.
-let g:syntastic_javascript_checkers = ['gjslint']
-let g:syntastic_javascript_gjslint_args = '--strict'
 
 " UltiSnips ------------------------------------------------------------{{{2
 let g:UltiSnipsExpandTrigger = "<c-j>"
