@@ -394,11 +394,6 @@ command -nargs=0 Focus setfiletype markdown | normal! Ofocus
 " Enable keymappings for VTD.
 Glaive vtd plugin[mappings]
 
-" Vundle ---------------------------------------------------------------{{{2
-
-" Keyboard shortcut to update vundle plugins.
-nnoremap <Leader>vu :VundleUpdate<CR>
-
 " Filetype settings (wrapped in an augroup for re-entrantness) ------------{{{1
 " NOTE: I should probably consider putting these in a full-fledged ftplugin!
 
