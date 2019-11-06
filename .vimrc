@@ -389,6 +389,16 @@ let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
 nnoremap ,foc :Focus<CR>a
 command -nargs=0 Focus setfiletype markdown | normal! Ofocus
 
+" unimpaired -----------------------------------------------------------{{{2
+
+" Use the old `co` mappings instead of the new `yo` mappings.
+"
+" I use `coh` the most frequently, by far, and it's easier to type quickly and
+" correctly than `yoh`.
+"
+" See: https://github.com/tpope/vim-unimpaired/issues/150
+nmap co yo
+
 " VTD ------------------------------------------------------------------{{{2
 
 " Enable keymappings for VTD.
