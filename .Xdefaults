@@ -1,7 +1,7 @@
 urxvt*scrollBar: false
 urxvt*foreground: grey75
 urxvt*background: grey15
-urxvt*savelines: 10000
+URxvt.saveLines: 100000
 urxvt*termName: rxvt-unicode-256color
 urxvt.font: xft:Inconsolata-14
 urxvt.loginShell: true
