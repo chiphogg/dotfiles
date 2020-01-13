@@ -33,7 +33,7 @@ snippet "(\W)\<\<" "Description" r
 `!p snip.rv=match.group(1)`'" << $1 << "'
 endsnippet
 
-snippet mp "std::make_pair"
+snippet mp "std::make_pair" w
 `!p snip.rv=ns_x_unless_using_x('std', 'make_pair')`(${1:${VISUAL}}, $2)
 endsnippet
 
