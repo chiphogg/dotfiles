@@ -6,3 +6,6 @@ urxvt*termName: rxvt-unicode-256color
 urxvt.font: xft:JetBrainsMono-12
 urxvt.loginShell: true
 urxvt.cutchars: ()*.<>[]{}|`""''
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
