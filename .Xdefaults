@@ -3,6 +3,6 @@ urxvt*foreground: grey75
 urxvt*background: grey15
 URxvt.saveLines: 100000
 urxvt*termName: rxvt-unicode-256color
-urxvt.font: xft:Inconsolata-14
+urxvt.font: xft:JetBrainsMono-12
 urxvt.loginShell: true
 urxvt.cutchars: ()*.<>[]{}|`""''
