@@ -50,6 +50,7 @@ Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 
 " Python
+Plug 'psf/black'
 Plug 'tmhedberg/SimpylFold'
 
 " For maktaba-based plugins
