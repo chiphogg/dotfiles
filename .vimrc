@@ -410,6 +410,9 @@ Glaive vtd plugin[mappings]
 
 augroup vimrc_filetypes
   autocmd!
+  " python ---------------------------------------------------------------{{{2
+  autocmd BufWritePre *.py execute ':Black'
+
   " sh -------------------------------------------------------------------{{{2
   autocmd BufEnter /tmp/bash-fc-* setfiletype sh
 
