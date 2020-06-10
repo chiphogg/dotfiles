@@ -309,6 +309,8 @@ call airline#add_statusline_func('PrependVtdToAirline')
 
 " coc.nvim -------------------------------------------------------------{{{2
 
+let g:coc_enable_locationlist = 1
+
 " Use tab for trigger completion with characters ahead and navigate.
 " (This whole section is copy-pasted from coc's homepage.)
 inoremap <silent><expr> <TAB>
