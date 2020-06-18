@@ -310,7 +310,7 @@ call airline#add_statusline_func('PrependVtdToAirline')
 " coc.nvim -------------------------------------------------------------{{{2
 
 " Add a keyboard shortcut to populate location list with current diagnostics.
-nnoremap <Leader>cd :CocDiagnostics<CR>
+nnoremap <Leader>cd :CocDiagnostics<CR><CR>:lclose<CR>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " (This whole section is copy-pasted from coc's homepage.)
