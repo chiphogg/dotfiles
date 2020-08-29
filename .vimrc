@@ -52,7 +52,7 @@ Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 
 " Python
-Plug 'psf/black', {'tag': '*'}
+Plug 'psf/black', {'branch': 'stable'}
 Plug 'tmhedberg/SimpylFold'
 
 " For maktaba-based plugins
