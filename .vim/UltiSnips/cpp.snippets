@@ -115,7 +115,7 @@ snippet mo "std::make_optional<T>()" w
 endsnippet
 
 snippet v "std::vector<T>" w
-`!p snip.rv=ns_x_unless_using_x('std', 'vector')`<${1:${VISUAL}}>
+`!p snip.rv=ns_x_unless_using_x('std', 'vector')`${1:<${2:${VISUAL}}>}
 endsnippet
 
 snippet m "std::map<T>" w
