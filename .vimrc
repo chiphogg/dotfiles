@@ -347,7 +347,7 @@ let g:easytags_dynamic_files = 2
 
 " fugitive -------------------------------------------------------------{{{2
 
-nnoremap <silent> <LocalLeader>gs :Gstatus<CR>
+nnoremap <silent> <LocalLeader>gs :Git<CR>
 
 " :Ggrep the word under the cursor (populates quickfix list).
 nnoremap <silent> <LocalLeader>gg :GitGrepWordUnderCursor<CR>
