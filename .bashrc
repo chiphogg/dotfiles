@@ -18,6 +18,9 @@ shopt -s histappend
 # (Unless, of course, you start by typing the dot)
 bind 'set match-hidden-files off'
 
+# Disable flow control, so that <C-Q> commands work in terminal vim.
+stty -ixon
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
