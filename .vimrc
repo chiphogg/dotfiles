@@ -248,6 +248,9 @@ set vb t_vb=""
 " Default colorscheme for terminal-mode vim is unreadable.
 colorscheme desert
 
+" Make colors in vim as nice as for gvim, when available.
+set termguicolors
+
 " I am much more often annoyed by swap files than helped by them.
 set noswapfile
 
