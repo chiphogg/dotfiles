@@ -91,7 +91,7 @@ User="\u"
 Space=" "
 
 
-export PS1=$IBlack$Time24h$Space$Purple$User@$HostnameSmall$Color_Off'$(\
+export PS1=$IBlack$Time24h$Space$BIPurple$User@$HostnameSmall$Color_Off'$(\
 git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
   echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
