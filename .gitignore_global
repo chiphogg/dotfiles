@@ -68,3 +68,7 @@ wget-log*
 ################
 # I think coc.nvim is creating these?
 .clangd
+
+# Local (per-project) vimrc settings
+################
+_vimrc_local.vim
