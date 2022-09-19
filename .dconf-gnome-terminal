@@ -1,0 +1,15 @@
+[legacy/profiles:]
+default='4d5ef169-75bf-4807-a50a-3abece5d7889'
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '4d5ef169-75bf-4807-a50a-3abece5d7889']
+
+[legacy/profiles:/:4d5ef169-75bf-4807-a50a-3abece5d7889]
+audible-bell=false
+background-color='rgb(32,32,32)'
+font='JetBrains Mono 12'
+foreground-color='rgb(192,192,192)'
+login-shell=true
+scrollback-lines=100000
+scrollbar-policy='never'
+use-system-font=false
+use-theme-colors=false
+visible-name='chip_settings'
