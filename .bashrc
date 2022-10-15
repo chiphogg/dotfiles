@@ -60,8 +60,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-[[ -f ~/.bash_custom_settings ]] && . ~/.bash_custom_settings
-
 # If this is a non-interactive shell, we still want to get
 # the stuff (like $PATH) in /etc/profile if we haven't already
 if [[ -z "$Environ_Sourced" && -f /etc/profile ]]
@@ -88,3 +86,5 @@ export PATH="$PATH:$HOME/bin/"
 alias gvim='UBUNTU_MENUPROXY= gvim'
 
 [[ -f ~/.bash_prompt ]] && . ~/.bash_prompt
+
+[[ -f ~/.bash_custom_settings ]] && . ~/.bash_custom_settings
