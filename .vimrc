@@ -279,6 +279,10 @@ set undofile
 
 " ag -------------------------------------------------------------------{{{2
 
+" Use ripgrep (it's much faster), but keep the blank lines between files.
+" (See chiphogg/binfiles on github for this script's definition.)
+let g:ag_prg = "rg_vimgrep_spaced"
+
 " Search for the word under the cursor, along with suitable prefix/suffix.
 function! s:AgSearchWordUnderCursor(prefix, suffix)
   let l:word = escape(expand('<cword>'), '#')
