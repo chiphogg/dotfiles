@@ -63,6 +63,7 @@ Plug 'google/glaive'
 Plug 'tpope/vim-markdown'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-rmarkdown'
 
 " My productivity system
 Plug 'chiphogg/vim-vtd'
