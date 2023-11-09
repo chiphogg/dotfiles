@@ -44,6 +44,7 @@ Plug 'tpope/vim-fugitive'
 " General Programming
 Plug 'chiphogg/vim-prototxt'
 Plug 'chiphogg/vim-codefmt'
+Plug 'github/copilot.vim'
 Plug 'mrtazz/DoxygenToolkit.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rking/ag.vim'
