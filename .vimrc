@@ -15,6 +15,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rhubarb'
@@ -53,6 +54,7 @@ Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 
 " Python
+Plug 'fisadev/vim-isort'
 Plug 'psf/black', {'branch': 'stable'}
 Plug 'tmhedberg/SimpylFold'
 
