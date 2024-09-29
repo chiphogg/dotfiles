@@ -90,21 +90,40 @@ HostnameSmall="\h"
 User="\u"
 Space=" "
 
+git_raw_status_code_no_timeout() {
+  X=$(git status --porcelain)
+  if [ -z "$X" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+
+# A code representing the current git status, max cost 0.3 s.  Results:
+#
+# 0: clean git repo
+# 1: dirty git repo
+# 2: not a git repo
+# 124: timeout
+git_status_code() {
+  git branch &>/dev/null
+  if [ $? -ne 0 ]; then
+    return 2
+  fi
+  export -f git_raw_status_code_no_timeout
+  timeout 0.3s bash -c 'git_raw_status_code_no_timeout';
+}
+
 
 export PS1=$IBlack$Time24h$Space$BIPurple$User@$HostnameSmall$Color_Off'$(\
-git branch &>/dev/null;\
-if [ $? -eq 0 ]; then \
-  echo "$(CHANGES="$(timeout 0.2s git status --porcelain)"; \
-  if [ "$?" -eq "124" ]; then \
-    echo "'$IYellow'"$(__git_ps1 " <%s>"); \
-  elif [ -z "$CHANGES" ]; then \
-    # @4 - Clean repository - nothing to commit
-    echo "'$Green'"$(__git_ps1 " (%s)"); \
-  else \
-    # @5 - Changes to working tree
-    echo "'$IRed'"$(__git_ps1 " {%s}"); \
-  fi) '$BCyan$PathShort$Color_Off'\$ "; \
-else \
-  # @2 - Prompt when not in GIT repo
-  echo " '$Cyan$PathShort$Color_Off'\$ "; \
-fi)'
+git_status_code; \
+CODE=$?; \
+if [ $CODE -eq 0 ]; then \
+  echo -n "'$Green'"$(__git_ps1 " (%s)"); \
+elif [ $CODE -eq 1 ]; then \
+  echo -n "'$IRed'"$(__git_ps1 " {%s}"); \
+elif [ $CODE -eq 124 ]; then \
+  echo -n "'$IYellow'"$(__git_ps1 " <%s>"); \
+fi; \
+echo -n " '$BCyan$PathShort$Color_Off'\$ ")'
