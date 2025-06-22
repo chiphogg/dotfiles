@@ -127,3 +127,4 @@ elif [ $CODE -eq 124 ]; then \
   echo -n "'$IYellow'"$(__git_ps1 " <%s>"); \
 fi; \
 echo -n " '$BCyan$PathShort$Color_Off'\$ ")'
+export PS1="(gitstatus not installed) $PS1"
