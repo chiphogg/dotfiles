@@ -211,6 +211,10 @@ vim.api.nvim_set_keymap('n', '<Leader>z', 'zMzv', {noremap=true})
 vim.api.nvim_set_keymap('n', 'ZJ', 'zjzMzv', {noremap=true})
 vim.api.nvim_set_keymap('n', 'ZK', 'zkzMzv', {noremap=true})
 
+-- Terminals ---------------------------------------------------------------{{{2
+
+vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
+
 -- Miscellaneous settings --------------------------------------------------{{{2
 
 vim.opt.number = true
