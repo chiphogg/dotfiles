@@ -41,6 +41,7 @@ vim.pack.add({
     from_github("kana", "vim-textobj-user"),
 
     from_github("Julian", "vim-textobj-variable-segment"),
+    from_github("kana", "vim-textobj-entire"),
     from_github("kana", "vim-textobj-indent"),
 
     -- Git and general programming -----------------------------------------{{{2
