@@ -2,6 +2,8 @@
 --
 -- Adapted from `~/.vimrc`, starting November 2025.
 
+-- vim: set foldmethod=marker foldlevel=0:
+
 -- Plugins -----------------------------------------------------------------{{{1
 --
 -- Use neovim's native package manager, `vim.pack`, rather than `lazy.vim`.  I
