@@ -229,6 +229,30 @@ vim.opt.diffopt:append("vertical")
 
 -- Plugin settings ---------------------------------------------------------{{{1
 
+-- ag ----------------------------------------------------------------------{{{2
+
+-- Use ripgrep (it's much faster), but keep the blank lines between files.
+-- (See chiphogg/binfiles on github for this script's definition.)
+vim.g.ag_prg = "rg_vimgrep_spaced"
+
+-- Search for the word under the cursor, along with suitable prefix/suffix.
+local function AgSearchWordUnderCursor(prefix, suffix)
+    local word = vim.fn.escape(vim.fn.expand('<cword>'), '#')
+    vim.cmd("Ag '" .. prefix .. word .. suffix .. "'")
+end
+
+-- :Ag the word under the cursor (populates quickfix list).
+vim.api.nvim_create_user_command(
+    'AgWordUnderCursor',
+    function() AgSearchWordUnderCursor("\\b", "\\b") end,
+    {nargs = 0}
+)
+vim.api.nvim_set_keymap(
+    'n',
+    '<LocalLeader>ag',
+    ":AgWordUnderCursor<CR>",
+    {noremap=true, silent=true})
+
 -- dirvish -----------------------------------------------------------------{{{2
 
 vim.g.dirvish_mode = ':sort! | :sort! r /[/]$/'
