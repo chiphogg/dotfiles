@@ -24,7 +24,6 @@ vim.pack.add({
     from_github("justinmk", "vim-sneak"),
     from_github("klen", "nvim-config-local"),
     from_github("ntpeters", "vim-better-whitespace"),
-    from_github("nvim-treesitter", "nvim-treesitter", {version = "main"}),
     from_github("tpope", "vim-abolish"),
     from_github("tpope", "vim-eunuch"),
     from_github("tpope", "vim-repeat"),
@@ -32,6 +31,12 @@ vim.pack.add({
     from_github("tpope", "vim-speeddating"),
     from_github("tpope", "vim-surround"),
     from_github("tpope", "vim-unimpaired"),
+
+    -- Tree-sitter ---------------------------------------------------------{{{2
+
+    from_github("nvim-treesitter", "nvim-treesitter", {version = "main"}),
+    from_github(
+        "nvim-treesitter", "nvim-treesitter-textobjects", {version = "main"}),
 
     -- Snippets ------------------------------------------------------------{{{2
     from_github("SirVer", "ultisnips"),
@@ -286,6 +291,32 @@ require("nvim-treesitter").install({
     "vim",
     "yaml",
 })
+
+require("nvim-treesitter-textobjects").setup({
+    select = {
+        lookahead = true,
+        selection_modes = {
+            ['@parameter.outer'] = 'v',
+            ['@function.outer'] = 'V',
+        },
+    },
+})
+
+-- Add keymaps for text objects provided by nvim-treesitter-textobjects.
+-- Note that "x" indicates visual mode, and "o" indicates operator-pending mode.
+-- See `:help map-modes` for more details.
+local function ts_textobj(abbrev, textobj)
+    vim.keymap.set({"x", "o"}, abbrev, function()
+        require("nvim-treesitter-textobjects.select").select_textobject(
+            textobj, "textobjects")
+    end)
+end
+ts_textobj("af", "@function.outer")
+ts_textobj("if", "@function.inner")
+ts_textobj("ac", "@class.outer")
+ts_textobj("ic", "@class.inner")
+ts_textobj("a,", "@parameter.outer")
+ts_textobj("i,", "@parameter.inner")
 
 -- pandoc ------------------------------------------------------------------{{{2
 
