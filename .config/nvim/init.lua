@@ -24,6 +24,7 @@ vim.pack.add({
     from_github("justinmk", "vim-sneak"),
     from_github("klen", "nvim-config-local"),
     from_github("ntpeters", "vim-better-whitespace"),
+    from_github("nvim-treesitter", "nvim-treesitter", {version = "main"}),
     from_github("tpope", "vim-abolish"),
     from_github("tpope", "vim-eunuch"),
     from_github("tpope", "vim-repeat"),
@@ -271,6 +272,20 @@ vim.api.nvim_set_keymap(
 -- nvim-config-local -------------------------------------------------------{{{2
 
 require("config-local").setup()
+
+-- nvim-treesitter ---------------------------------------------------------{{{2
+
+require("nvim-treesitter").install({
+    "bash",
+    "c",
+    "cpp",
+    "json",
+    "lua",
+    "markdown",
+    "python",
+    "vim",
+    "yaml",
+})
 
 -- pandoc ------------------------------------------------------------------{{{2
 
