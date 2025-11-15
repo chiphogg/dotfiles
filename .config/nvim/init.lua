@@ -59,6 +59,10 @@ vim.pack.add({
     from_github("tpope", "vim-endwise"),
     from_github("tpope", "vim-fugitive"),
 
+    -- Terminals -----------------------------------------------------------{{{2
+
+    from_github("akinsho", "toggleterm.nvim"),
+
     -- Markdown and markup -------------------------------------------------{{{2
     from_github("vim-pandoc", "vim-pandoc"),
     from_github("vim-pandoc", "vim-pandoc-syntax"),
@@ -340,6 +344,14 @@ vim.g.html_prevent_copy = "fnd"
 -- So just disable line numbers and folding altogether.
 vim.g.html_number_lines = 0
 vim.g.html_ignore_folding = 1
+
+-- toggleterm.nvim ---------------------------------------------------------{{{2
+
+require("toggleterm").setup{
+    size = 100,
+    open_mapping = [[<c-\>]],
+    direction = 'vertical',
+}
 
 -- UltiSnips ---------------------------------------------------------------{{{2
 vim.g.UltiSnipsExpandTrigger = "<c-j>"
