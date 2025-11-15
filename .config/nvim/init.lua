@@ -22,6 +22,7 @@ vim.pack.add({
     from_github("jlanzarotta", "bufexplorer"),
     from_github("justinmk", "vim-dirvish"),
     from_github("justinmk", "vim-sneak"),
+    from_github("klen", "nvim-config-local"),
     from_github("ntpeters", "vim-better-whitespace"),
     from_github("tpope", "vim-eunuch"),
     from_github("tpope", "vim-repeat"),
@@ -236,6 +237,10 @@ vim.g.dirvish_mode = ':sort! | :sort! r /[/]$/'
 
 vim.api.nvim_set_keymap(
     'n', '<LocalLeader>gs', ':Git<CR>', {noremap=true, silent=true})
+
+-- nvim-config-local -------------------------------------------------------{{{2
+
+require("config-local").setup()
 
 -- pandoc ------------------------------------------------------------------{{{2
 
