@@ -24,6 +24,7 @@ vim.pack.add({
     from_github("justinmk", "vim-sneak"),
     from_github("klen", "nvim-config-local"),
     from_github("ntpeters", "vim-better-whitespace"),
+    from_github("tpope", "vim-abolish"),
     from_github("tpope", "vim-eunuch"),
     from_github("tpope", "vim-repeat"),
     from_github("tpope", "vim-rhubarb"),
