@@ -1,2 +1,0 @@
-SpeedDatingFormat! %v
-SpeedDatingFormat! %^v
