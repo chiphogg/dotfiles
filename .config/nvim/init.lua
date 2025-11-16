@@ -224,7 +224,13 @@ vim.api.nvim_set_keymap('n', 'ZK', 'zkzMzv', {noremap=true})
 
 -- Terminals ---------------------------------------------------------------{{{2
 
+-- Exit insert mode in terminals using the familiar `<Esc>` key.
+--
+-- Note that we shouldn't really need to explicitly map `<C-[>` too, in
+-- principle, since it's typically equivalent to `<Esc>`.  But in practice, some
+-- GUIs (such as neovide) don't treat these as equivalent.
 vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
+vim.keymap.set('t', '<C-[>', [[<C-\><C-n>]])
 
 -- Miscellaneous settings --------------------------------------------------{{{2
 
