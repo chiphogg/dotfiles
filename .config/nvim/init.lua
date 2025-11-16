@@ -213,6 +213,18 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Text highlighting -------------------------------------------------------{{{2
 
+-- A nice, balanced, readable choice.
+vim.cmd.colorscheme("desert")
+
+-- The `MatchParen` in `desert` is awful: it looks just like the cursor, so you
+-- can't tell where you are when the cursor is on a parenthesis.
+-- (Interestingly, I never had this problem in vim, only nvim.)  Anyway, the fix
+-- is to stop changing the background color, while still keeping the match easy
+-- to spot.
+vim.cmd.highlight(
+    "MatchParen ctermfg=yellow ctermbg=none guifg=magenta guibg=none gui=bold"
+)
+
 -- The default colours in diff mode have poor readability.  This change seems to
 -- work well for a wide variety of colorschemes.  See
 -- <https://www.reddit.com/r/neovim/comments/1k3ugsd> for more details.
@@ -260,8 +272,6 @@ vim.opt.number = true
 
 -- Occasionally useful, but mainly too annoying.
 vim.opt.hlsearch = false
-
-vim.cmd.colorscheme("desert")
 
 -- I am much more often annoyed by swap files than helped by them.
 vim.opt.swapfile = false
