@@ -336,17 +336,21 @@ require("nvim-treesitter").install({
 
 require("nvim-treesitter-textobjects").setup({
     select = {
+        -- If we're not in a matching textobject, jump forward to the next one.
+        -- Super convenient!
         lookahead = true,
         selection_modes = {
+            -- For parameters, select by individual characters:
             ['@parameter.outer'] = 'v',
+            -- For functions, select entire lines:
             ['@function.outer'] = 'V',
         },
     },
 })
 
 -- Add keymaps for text objects provided by nvim-treesitter-textobjects.
--- Note that "x" indicates visual mode, and "o" indicates operator-pending mode.
--- See `:help map-modes` for more details.
+-- Recall that "x" indicates visual mode, and "o" indicates operator-pending
+-- mode.  See `:help map-modes` for more details.
 local function ts_textobj(abbrev, textobj)
     vim.keymap.set({"x", "o"}, abbrev, function()
         require("nvim-treesitter-textobjects.select").select_textobject(
