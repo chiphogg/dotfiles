@@ -211,6 +211,28 @@ vim.api.nvim_create_autocmd("FileType", {
     command = "setlocal formatoptions-=o",
 })
 
+-- Text highlighting -------------------------------------------------------{{{2
+
+-- The default colours in diff mode have poor readability.  This change seems to
+-- work well for a wide variety of colorschemes.  See
+-- <https://www.reddit.com/r/neovim/comments/1k3ugsd> for more details.
+local function set_diff_highlights()
+    if vim.o.background == "dark" then
+        vim.cmd("highlight DiffAdd    gui=bold guifg=none guibg=#2e4b2e")
+        vim.cmd("highlight DiffDelete gui=bold guifg=none guibg=#4c1e15")
+        vim.cmd("highlight DiffChange gui=bold guifg=none guibg=#45565c")
+        vim.cmd("highlight DiffText   gui=bold guifg=none guibg=#996d74")
+    else
+        vim.cmd("highlight DiffAdd    gui=bold guifg=none guibg=palegreen")
+        vim.cmd("highlight DiffDelete gui=bold guifg=none guibg=tomato")
+        vim.cmd("highlight DiffChange gui=bold guifg=none guibg=lightblue")
+        vim.cmd("highlight DiffText   gui=bold guifg=none guibg=lightpink")
+    end
+end
+augroup("diff_highlight", function(autocmd)
+    autocmd("ColorScheme", {pattern = "*", callback = set_diff_highlights})
+end)
+
 -- Folding -----------------------------------------------------------------{{{2
 
 -- Here are some "fold focusing" commands.
