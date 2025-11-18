@@ -202,10 +202,12 @@ augroup("colorcolumn", function(autocmd)
     })
     autocmd("ColorScheme", {
         pattern = "*",
+        -- NOTE: this does not appear to actually work.  The characters are
+        -- bold, but not red.  This always worked on vim, so I hope I can figure
+        -- this out later.
         command = "highlight ColorColumn guifg=red ctermfg=red gui=bold",
     })
 end)
-
 
 -- Experience shows: tabs *occasionally* cause problems; spaces *never* do.
 -- Besides, neovim is smart enough to make it "feel like" real tabs.
