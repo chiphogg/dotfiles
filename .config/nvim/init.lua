@@ -283,6 +283,14 @@ vim.cmd.colorscheme("zenburn")
 -- the match easy to spot.
 highlight("MatchParen", {allfg = "magenta", gui = "bold"})
 
+-- Show highlighting information for what's under the cursor.
+vim.cmd([[
+    nnoremap <Leader>h :echo "hi<"
+    \ . synIDattr(synID(line("."), col("."), 1), "name") . '> trans<'
+    \ . synIDattr(synID(line("."), col("."), 0), "name") . "> lo<"
+    \ . synIDattr(synIDtrans(synID(line("."), col("."), 1)), "name") . ">"<CR>
+]])
+
 -- Folding -----------------------------------------------------------------{{{2
 
 -- Here are some "fold focusing" commands.
