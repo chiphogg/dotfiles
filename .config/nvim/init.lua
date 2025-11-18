@@ -73,10 +73,7 @@ vim.pack.add({
 
     -- Python --------------------------------------------------------------{{{2
     from_github("fisadev", "vim-isort"),
-
-    -- Currently timing out:
-    -- from_github("psf", "black", {version = "stable"}),
-
+    from_github("psf", "black", {version = "stable"}),
     from_github("tmhedberg", "SimpylFold"),
 
     -- For maktaba-based plugins -------------------------------------------{{{2
