@@ -102,6 +102,41 @@ local function augroup(name, func)
     func(autocmd)
 end
 
+-- Make it easier to set a `highlight` command.
+--
+-- Specify only the options you want; others will be undisturbed.
+--
+-- Set `allbg` or `allfg` to set both cterm and gui colors at once.  (Note that
+-- this will not be a good idea unless your color is valid for cterm, not just
+-- gui.  See `:help cterm-colors` for more details.)
+local function highlight(group, args)
+    if args["allbg"] then
+        args["ctermbg"] = args["allbg"]
+        args["guibg"] = args["allbg"]
+    end
+    if args["allfg"] then
+        args["ctermfg"] = args["allfg"]
+        args["guifg"] = args["allfg"]
+    end
+    local function setting(key)
+        if args[key] then
+            return string.format("%s=%s", key, args[key])
+        else
+            return ""
+        end
+    end
+    highlight_cmd = string.format(
+        "highlight %s %s %s %s %s %s",
+        group,
+        setting("ctermfg"),
+        setting("ctermbg"),
+        setting("guifg"),
+        setting("guibg"),
+        setting("gui")
+    )
+    vim.cmd(highlight_cmd)
+end
+
 -- Basic settings ----------------------------------------------------------{{{1
 
 -- ',' is easy to type, so use it for <Leader> to make compound commands easier:
@@ -213,29 +248,23 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Text highlighting -------------------------------------------------------{{{2
 
--- The `MatchParen` in `desert` is awful: it looks just like the cursor, so you
--- can't tell where you are when the cursor is on a parenthesis.
--- (Interestingly, I never had this problem in vim, only nvim.)  Anyway, the fix
--- is to stop changing the background color, while still keeping the match easy
--- to spot.
-vim.cmd.highlight(
-    "MatchParen ctermfg=yellow ctermbg=none guifg=magenta guibg=none gui=bold"
-)
+-- Always enable true color support wherever possible.
+vim.opt.termguicolors = true
 
 -- The default colours in diff mode have poor readability.  This change seems to
 -- work well for a wide variety of colorschemes.  See
 -- <https://www.reddit.com/r/neovim/comments/1k3ugsd> for more details.
 local function set_diff_highlights()
     if vim.o.background == "dark" then
-        vim.cmd("highlight DiffAdd    gui=bold guifg=none guibg=#2e4b2e")
-        vim.cmd("highlight DiffDelete gui=bold guifg=none guibg=#4c1e15")
-        vim.cmd("highlight DiffChange gui=bold guifg=none guibg=#45565c")
-        vim.cmd("highlight DiffText   gui=bold guifg=none guibg=#996d74")
+        highlight("DiffAdd",    {gui="bold", guibg="#2e4b2e", guifg="none"})
+        highlight("DiffDelete", {gui="bold", guibg="#4c1e15", guifg="none"})
+        highlight("DiffChange", {gui="bold", guibg="#45565c", guifg="none"})
+        highlight("DiffText",   {gui="bold", guibg="#996d74", guifg="none"})
     else
-        vim.cmd("highlight DiffAdd    gui=bold guifg=none guibg=palegreen")
-        vim.cmd("highlight DiffDelete gui=bold guifg=none guibg=tomato")
-        vim.cmd("highlight DiffChange gui=bold guifg=none guibg=lightblue")
-        vim.cmd("highlight DiffText   gui=bold guifg=none guibg=lightpink")
+        highlight("DiffAdd",    {gui="bold", guibg="palegreen", guifg="none"})
+        highlight("DiffDelete", {gui="bold", guibg="tomato", guifg="none"})
+        highlight("DiffChange", {gui="bold", guibg="lightblue", guifg="none"})
+        highlight("DiffText",   {gui="bold", guibg="lightpink", guifg="none"})
     end
 end
 augroup("diff_highlight", function(autocmd)
@@ -244,6 +273,13 @@ end)
 
 -- A nice, balanced, readable choice.
 vim.cmd.colorscheme("zenburn")
+
+-- The `MatchParen` in some colorschemes, such as `desert`, is awful: it looks
+-- just like the cursor, so you can't tell where you are when the cursor is on a
+-- parenthesis. (Interestingly, I never had this problem in vim, only nvim.)
+-- Anyway, the fix is to stop changing the background color, while still keeping
+-- the match easy to spot.
+highlight("MatchParen", {allfg = "magenta", gui = "bold"})
 
 -- Folding -----------------------------------------------------------------{{{2
 
