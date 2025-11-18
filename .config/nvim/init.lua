@@ -32,8 +32,11 @@ vim.pack.add({
     from_github("tpope", "vim-surround"),
     from_github("tpope", "vim-unimpaired"),
 
-    -- Tree-sitter ---------------------------------------------------------{{{2
+    -- Colorschemes --------------------------------------------------------{{{2
+    from_github("jnurmine", "Zenburn"),
+    from_github("Mofiqul", "vscode.nvim"),
 
+    -- Tree-sitter ---------------------------------------------------------{{{2
     from_github("nvim-treesitter", "nvim-treesitter", {version = "main"}),
     from_github(
         "nvim-treesitter", "nvim-treesitter-textobjects", {version = "main"}),
@@ -213,9 +216,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Text highlighting -------------------------------------------------------{{{2
 
--- A nice, balanced, readable choice.
-vim.cmd.colorscheme("desert")
-
 -- The `MatchParen` in `desert` is awful: it looks just like the cursor, so you
 -- can't tell where you are when the cursor is on a parenthesis.
 -- (Interestingly, I never had this problem in vim, only nvim.)  Anyway, the fix
@@ -244,6 +244,9 @@ end
 augroup("diff_highlight", function(autocmd)
     autocmd("ColorScheme", {pattern = "*", callback = set_diff_highlights})
 end)
+
+-- A nice, balanced, readable choice.
+vim.cmd.colorscheme("zenburn")
 
 -- Folding -----------------------------------------------------------------{{{2
 
