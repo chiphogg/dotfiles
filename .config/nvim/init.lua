@@ -455,6 +455,10 @@ require("toggleterm").setup{
     size = 100,
     open_mapping = [[<c-\>]],
     direction = 'vertical',
+
+    -- I strongly prefer to be able to go into normal mode, and have the cursor
+    -- stay put when I do.  If I want to hop to the end, I can press `G` or `a`.
+    auto_scroll = false,
 }
 
 -- UltiSnips ---------------------------------------------------------------{{{2
