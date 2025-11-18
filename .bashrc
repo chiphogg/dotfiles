@@ -5,7 +5,10 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-export EDITOR="gvim -f"
+# This extra variable means that if we're using the `nvim-unception` plugin,
+# nvim's terminal will wait for the buffer to be closed before returning to the
+# host shell.
+export EDITOR="nvim --cmd 'let g:unception_block_while_host_edits=1'"
 
 # Keep a rich command line history: store 20,000 lines on disk, and keep 5,000
 # lines in memory.  Erase duplicates to save space.

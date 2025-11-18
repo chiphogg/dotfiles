@@ -63,8 +63,8 @@ vim.pack.add({
     from_github("tpope", "vim-fugitive"),
 
     -- Terminals -----------------------------------------------------------{{{2
-
     from_github("akinsho", "toggleterm.nvim"),
+    from_github("samjwill", "nvim-unception"),
 
     -- Markdown and markup -------------------------------------------------{{{2
     from_github("vim-pandoc", "vim-pandoc"),
