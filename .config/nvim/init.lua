@@ -266,6 +266,9 @@ vim.api.nvim_set_keymap('n', 'ZK', 'zkzMzv', {noremap=true})
 vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
 vim.keymap.set('t', '<C-[>', [[<C-\><C-n>]])
 
+-- Keep _lots_ of history.  (Default is 10,000, and I often feel I need more.)
+vim.opt.scrollback = 100000
+
 -- Miscellaneous settings --------------------------------------------------{{{2
 
 vim.opt.number = true
