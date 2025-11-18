@@ -346,10 +346,12 @@ require("nvim-treesitter-textobjects").setup({
         -- Super convenient!
         lookahead = true,
         selection_modes = {
-            -- For parameters, select by individual characters:
+            -- Select by individual characters:
             ['@parameter.outer'] = 'v',
-            -- For functions, select entire lines:
+            -- Select entire lines:
             ['@function.outer'] = 'V',
+            ['@loop.outer'] = 'V',
+            ['@statement.outer'] = 'V',
         },
     },
 })
@@ -363,12 +365,33 @@ local function ts_textobj(abbrev, textobj)
             textobj, "textobjects")
     end)
 end
-ts_textobj("af", "@function.outer")
-ts_textobj("if", "@function.inner")
-ts_textobj("ac", "@class.outer")
-ts_textobj("ic", "@class.inner")
-ts_textobj("a,", "@parameter.outer")
-ts_textobj("i,", "@parameter.inner")
+ts_textobj("atb", "@block.outer")
+ts_textobj("itb", "@block.inner")
+ts_textobj("atc", "@class.outer")
+ts_textobj("itc", "@class.inner")
+ts_textobj("at?", "@conditional.outer")
+ts_textobj("it?", "@conditional.inner")
+ts_textobj("at/", "@comment.outer")
+ts_textobj("it/", "@comment.inner")
+ts_textobj("atf", "@function.outer")
+ts_textobj("itf", "@function.inner")
+ts_textobj("atl", "@loop.outer")
+ts_textobj("itl", "@loop.inner")
+ts_textobj("at,", "@parameter.outer")
+ts_textobj("it,", "@parameter.inner")
+ts_textobj("atr", "@return.outer")
+ts_textobj("itr", "@return.inner")
+ts_textobj("at;", "@statement.outer")
+
+-- Parameter swaps with `,th` and `,tl`
+vim.keymap.set('n', '<Leader>th', function()
+    require("nvim-treesitter-textobjects.swap").swap_previous(
+        "@parameter.inner")
+end)
+vim.keymap.set('n', '<Leader>tl', function()
+    require("nvim-treesitter-textobjects.swap").swap_next(
+        "@parameter.inner")
+end)
 
 -- pandoc ------------------------------------------------------------------{{{2
 
