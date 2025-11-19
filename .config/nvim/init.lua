@@ -56,11 +56,15 @@ vim.pack.add({
 
     -- Git and general programming -----------------------------------------{{{2
     from_github("chiphogg", "vim-codefmt"),
-    from_github("github", "copilot.vim"),
     from_github("neoclide", "coc.nvim", {version = "release"}),
     from_github("rking", "ag.vim"),
     from_github("tpope", "vim-endwise"),
     from_github("tpope", "vim-fugitive"),
+
+    -- AI ------------------------------------------------------------------{{{2
+    from_github("github", "copilot.vim"),
+    from_github("nvim-lua", "plenary.nvim"),
+    from_github("olimorris", "codecompanion.nvim"),
 
     -- Terminals -----------------------------------------------------------{{{2
     from_github("akinsho", "toggleterm.nvim"),
@@ -355,6 +359,10 @@ vim.api.nvim_set_keymap(
     '<LocalLeader>ag',
     ":AgWordUnderCursor<CR>",
     {noremap=true, silent=true})
+
+-- CodeCompanion -----------------------------------------------------------{{{2
+
+require("codecompanion").setup()
 
 -- dirvish -----------------------------------------------------------------{{{2
 
