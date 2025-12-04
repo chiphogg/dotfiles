@@ -90,7 +90,8 @@ alias gvim='UBUNTU_MENUPROXY= gvim'
 
 [[ -f ~/.bash_prompt ]] && . ~/.bash_prompt
 
-# Overrule with gitstatus prompt if available
+# Overrule with gitstatus prompt if available.  (Do not truncate branch names.)
+export GITSTATUS_USE_FULL_BRANCH_NAME=1
 [[ -f ~/gitstatus/gitstatus.prompt.sh ]] && . ~/gitstatus/gitstatus.prompt.sh \
 
 [[ -f ~/.bash_custom_settings ]] && . ~/.bash_custom_settings
