@@ -86,6 +86,11 @@ vim.pack.add({
     from_github("google", "glaive"),
 })
 
+-- Check for a `~/.local_plugins.lua` file, and source it if it exists.
+if vim.fn.filereadable(vim.fn.expand("~/.local_plugins.lua")) == 1 then
+    vim.cmd("source ~/.local_plugins.lua")
+end
+
 vim.cmd("call glaive#Install()")
 
 -- Utilities ---------------------------------------------------------------{{{1
