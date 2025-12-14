@@ -58,7 +58,7 @@ vim.pack.add({
     from_github("chiphogg", "vim-codefmt"),
     from_github("neoclide", "coc.nvim", {version = "release"}),
     from_github("rking", "ag.vim"),
-    from_github("sindrets", "diffview.nvim")
+    from_github("sindrets", "diffview.nvim"),
     from_github("tpope", "vim-endwise"),
     from_github("tpope", "vim-fugitive"),
 
