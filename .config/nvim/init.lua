@@ -316,6 +316,27 @@ vim.api.nvim_set_keymap('n', 'ZK', 'zkzMzv', {noremap=true})
 vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
 vim.keymap.set('t', '<C-[>', [[<C-\><C-n>]])
 
+-- <C-,> goes into insert mode, whether or not you're already there.
+--
+-- Why do this?  Because often I go into normal mode after running a command (so
+-- that I can elegantly control scrolling), but not always.  If I hit `a` when I
+-- think I'm in normal mode but I'm actually in insert mode, and then complete
+-- the previous command, it'll grab _the previous command with an `a` prefix_.
+-- Much better to train a keystroke that doesn't depend on the mode.
+--
+-- Here's the terminal-mode version...
+vim.keymap.set('t', '<C-,>', [[<Esc>i]])
+-- ...and here's the normal-mode version.  We use an autocmd so that it only
+-- applies to terminal buffers:
+augroup("terminal_insert_mode", function(autocmd)
+    autocmd("TermOpen", {
+        pattern = "term://*",
+        callback = function()
+            vim.keymap.set('n', '<C-,>', [[i]], {buffer = true})
+        end,
+    })
+end)
+
 -- Keep _lots_ of history.  (Default is 10,000, and I often feel I need more.)
 vim.opt.scrollback = 100000
 
