@@ -331,10 +331,10 @@ vim.keymap.set('t', '<C-[>', [[<C-\><C-n>]])
 -- the previous command, it'll grab _the previous command with an `a` prefix_.
 -- Much better to train a keystroke that doesn't depend on the mode.
 --
--- Here's the terminal-mode version...
-vim.keymap.set('t', '<C-x>', [[<Esc>i]])
--- ...and here's the normal-mode version.  We use an autocmd so that it only
--- applies to terminal buffers:
+-- Here's the terminal-mode version (maps to no-op since we're already good)...
+vim.keymap.set('t', '<C-x>', [[]])
+-- ...and here's the normal-mode version (where we use an autocmd so that it
+-- only applies to terminal buffers).
 augroup("terminal_insert_mode", function(autocmd)
     autocmd("TermOpen", {
         pattern = "term://*",
