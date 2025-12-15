@@ -498,7 +498,7 @@ vim.g.html_ignore_folding = 1
 -- toggleterm.nvim ---------------------------------------------------------{{{2
 
 require("toggleterm").setup{
-    size = 100,
+    size = 160,
     open_mapping = [[<c-\>]],
     direction = 'vertical',
 
