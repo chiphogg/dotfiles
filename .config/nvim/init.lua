@@ -515,3 +515,10 @@ vim.g.UltiSnipsJumpBackwardTrigger = "<c-k>"
 -- GUI settings ------------------------------------------------------------{{{1
 
 vim.o.guifont = "JetBrains Mono:h10"
+
+-- Local vimrc settings ----------------------------------------------------{{{1
+
+-- If `~/.config/nvim/init_local.lua` exists, source it.
+if vim.fn.filereadable(vim.fn.expand("~/.config/nvim/init_local.lua")) == 1 then
+    vim.cmd("source ~/.config/nvim/init_local.lua")
+end
