@@ -73,3 +73,8 @@ wget-log*
 ################
 _vimrc_local.vim
 .nvim.lua
+
+# AI assistants
+# ################
+CLAUDE.local.md
+.claude
