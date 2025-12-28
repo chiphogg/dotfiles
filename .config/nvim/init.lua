@@ -322,6 +322,11 @@ vim.api.nvim_set_keymap('n', 'ZK', 'zkzMzv', {noremap=true})
 vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
 vim.keymap.set('t', '<C-[>', [[<C-\><C-n>]])
 
+-- Sometimes we actually need to send <Esc> to the terminal program (e.g.,
+-- Claude Code).  `<C-_>` should be both robust across various terminal types,
+-- and rarely used for other things.
+vim.keymap.set('t', '<C-_>', '<Esc>')
+
 -- <C-x> goes into "terminal mode" (i.e., "insert mode for terminal"), whether
 -- or not you're already there.
 --
