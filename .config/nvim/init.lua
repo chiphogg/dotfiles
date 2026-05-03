@@ -477,6 +477,14 @@ vim.keymap.set('n', '<Leader>tl', function()
         "@parameter.inner")
 end)
 
+-- nvim-unception ----------------------------------------------------------{{{2
+
+-- Make nested nvim sessions block until the host quits the buffer.  Setting
+-- this via `init.lua` (rather than `$EDITOR`) keeps `$EDITOR` a single token,
+-- so tools that do naive whitespace splits (e.g. Claude Code's Ctrl-G) don't
+-- misparse it and create stray files.
+vim.g.unception_block_while_host_edits = 1
+
 -- pandoc ------------------------------------------------------------------{{{2
 
 -- I find conceal harms my understanding of markdown documents.
