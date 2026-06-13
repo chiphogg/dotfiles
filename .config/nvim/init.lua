@@ -4,6 +4,15 @@
 
 -- vim: set foldmethod=marker foldlevel=0:
 
+-- Leader ------------------------------------------------------------------{{{1
+--
+-- Set <Leader> *before* any plugins load.  Plugins (including the
+-- `~/.local_plugins.lua` sourced below) may create `<leader>…` mappings, and
+-- `<leader>` is resolved to the current mapleader at map-creation time -- so if
+-- this came later, those mappings would silently bind under the default `\`.
+-- ',' is easy to type, which makes compound commands easier.
+vim.g.mapleader = ","
+
 -- Plugins -----------------------------------------------------------------{{{1
 --
 -- Use neovim's native package manager, `vim.pack`, rather than `lazy.vim`.  I
@@ -149,10 +158,8 @@ end
 
 -- Basic settings ----------------------------------------------------------{{{1
 
--- ',' is easy to type, so use it for <Leader> to make compound commands easier:
-vim.g.mapleader = ","
--- Unfortunately, this introduces a delay for the ',' command.  Let's compensate
--- by introducing a speedy alternative...
+-- <Leader> is ',' (set near the top, before plugins load).  Using ',' introduces
+-- a delay for the ',' command; compensate with a speedy alternative...
 vim.api.nvim_set_keymap('', ',.', ',', {noremap=true})
 
 -- Improving basic commands ------------------------------------------------{{{2
