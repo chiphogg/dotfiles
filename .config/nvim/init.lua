@@ -313,11 +313,11 @@ vim.cmd([[
 -- Here are some "fold focusing" commands.
 
 -- Close all folds, and open only enough to view the current line
-vim.api.nvim_set_keymap('n', '<Leader>z', 'zMzv', {noremap=true})
+vim.api.nvim_set_keymap('n', '<Leader>z', 'zMzv', {})
 
 -- Go up (ZK) and down (ZJ) a fold, closing all other folds
-vim.api.nvim_set_keymap('n', 'ZJ', 'zjzMzv', {noremap=true})
-vim.api.nvim_set_keymap('n', 'ZK', 'zkzMzv', {noremap=true})
+vim.api.nvim_set_keymap('n', 'ZJ', 'zjzMzv', {})
+vim.api.nvim_set_keymap('n', 'ZK', 'zkzMzv', {})
 
 -- Terminals ---------------------------------------------------------------{{{2
 
