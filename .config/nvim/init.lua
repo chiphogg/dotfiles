@@ -25,6 +25,18 @@ local function from_github(user, repo, opts)
     return opts
 end
 
+-- Rebuild tree-sitter parsers whenever nvim-treesitter itself gets updated.
+-- The plugin ships queries that must match the grammar version it expects; if
+-- the compiled parsers in `~/.local/share/nvim/site/parser/` fall behind, we
+-- get errors like `Invalid node type "tab"` on every buffer open.
+vim.api.nvim_create_autocmd("PackChanged", {
+    callback = function(ev)
+        if ev.data.spec.name == "nvim-treesitter" and ev.data.kind == "update" then
+            vim.schedule(function() require("nvim-treesitter").update() end)
+        end
+    end,
+})
+
 vim.pack.add({
     -- Vim enhancements ----------------------------------------------------{{{2
     from_github("google", "vim-syncopate"),
